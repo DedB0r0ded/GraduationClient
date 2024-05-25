@@ -10,9 +10,7 @@ Item{
         id: _button
         background: Rectangle{
             id: _bg
-            color: _button.hovered && !_button.down ? _root.colors.hover
-                    : _button.down ? _root.colors.active
-                    : _root.colors.idle
+            color: _funs.bgcolor()
         }
         contentItem: Text{
             id: _text
@@ -21,6 +19,15 @@ Item{
     }
 
     QtObject{
-        id: functions
+        id: _funs
+
+        function bgcolor(){
+            if(_button.hovered && !_button.down)
+                return _root.colors.hover
+            else if(_button.down)
+                return _root.colors.active
+            else
+                return _root.colors.idle
+        }
     }
 }
