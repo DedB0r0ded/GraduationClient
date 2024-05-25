@@ -5,21 +5,35 @@ import "../types/basic"
 GColorScheme{
   basic: GColorSet{
     id: _basic
-    background: GColorTriplet {
+    background: GColorTriplet{
       idle: "#F9FAFA"
       hover: _basic.background.idle
       active: _basic.background.idle
     }
-    text: GColorTriplet {
+    text: GColorTriplet{
       idle: "#033B63"
       hover: _basic.text.idle
       active: _basic.text.idle
     }
   }
 
+  control: GColorSet{
+    id: _control
+    background: GColorTriplet{
+      idle: "#CDEAFE"
+      hover: "#9CD4FC"
+      active: "#83CAFC"
+    }
+    text: GColorTriplet{
+      idle: _basic.text.idle
+      hover: "#002D4D"
+      active: _basic.text.idle
+    }
+  }
+
   input: GColorSet{
     id: _input
-    background: GColorTriplet {
+    background: GColorTriplet{
       idle: "#DBE7F0"
       hover: _input.background.idle
       active: "#F5FBFF"
@@ -29,12 +43,12 @@ GColorScheme{
 
   danger: GColorSet{
     id: _danger
-    background: GColorTriplet {
+    background: GColorTriplet{
       idle: "#FEE6E6"
       hover: "#FC8383"
       active: "#FDB4B4"
     }
-    text: GColorTriplet {
+    text: GColorTriplet{
       idle: "#300303"
       hover: "#F90606"
       active: "#610505"

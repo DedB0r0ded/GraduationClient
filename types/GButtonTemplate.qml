@@ -9,6 +9,7 @@ Item{
   property int minHeight
   width: _button.width
   height: _button.height
+  property bool hovered: _button.hovered
   property alias text: _text.text
   property GColorSet colors
 
@@ -58,6 +59,10 @@ Item{
     }
 
     function bgcolor(){
+      console.log("Button color changed!")
+      console.log(_root.colors.background.idle)
+      console.log(_root.colors.background.hover)
+      console.log(_root.colors.background.active)
       if(_button.hovered && !_button.down)
         return _root.colors.background.hover
       else if(_button.down)

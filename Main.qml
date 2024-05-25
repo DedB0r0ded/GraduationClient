@@ -10,12 +10,11 @@ Window {
   visible: true
   title: qsTr("Hello World")
 
-  GButtonTemplate{
+  GButton{
     id: item
     minWidth: 300
     minHeight: 100
     text: "Hello world!"
-    colors: DefaultColorSet
   }
 
   Component.onCompleted: {
