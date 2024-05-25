@@ -1,5 +1,6 @@
 import QtQuick
-import GQml
+import "const"
+import "qml"
 
 Window {
     width: Constants.stdWidth

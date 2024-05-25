@@ -12,24 +12,34 @@ qt_add_executable(appQtApp
     main.cpp
 )
 
+list(APPEND PROJECT_QML_FILES
+  qml/GButton.qml
+  qml/GColorGroup.qml
+)
+
 list(APPEND PROJECT_CONSTANTS_FILES
   const/Constants.qml
-  const/DefaultColorScheme.qml)
+  const/DefaultColorScheme.qml
+)
+
+list(APPEND PROJECT_JS_FILES
+  js/script.js
+)
 
 set_source_files_properties(
   ${PROJECT_CONSTANTS_FILES} PROPERTIES
-  QT_QML_SINGLETON_TYPE TRUE)
+  QT_QML_SINGLETON_TYPE TRUE
+)
 
 qt_add_qml_module(appQtApp
     URI QtApp
     VERSION 1.0
     QML_FILES
         Main.qml
+        QML_FILES ${PROJECT_QML_FILES}
+        QML_FILES ${PROJECT_JS_FILES}
         QML_FILES ${PROJECT_CONSTANTS_FILES}
 )
-
-add_subdirectory(qml)
-add_subdirectory(js)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
@@ -44,8 +54,6 @@ set_target_properties(appQtApp PROPERTIES
 
 target_link_libraries(appQtApp
     PRIVATE Qt6::Quick Qt6::QuickControls2
-    GQmlLibplugin
-    GSourceJSLibplugin
 )
 
 include(GNUInstallDirs)
