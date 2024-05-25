@@ -1,7 +1,6 @@
 pragma Singleton
 
 import QtQuick
-import "../qml"
 
 QtObject{
   id: windowConstants

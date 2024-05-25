@@ -12,14 +12,26 @@ qt_add_executable(appQtApp
     main.cpp
 )
 
-list(APPEND PROJECT_QML_FILES
-  qml/GButton.qml
-  qml/GColorGroup.qml
+list(APPEND PROJECT_BASIC_TYPES
+  types/basic/GColorSet.qml
+  types/basic/GColorScheme.qml
+  types/basic/GColorTriplet.qml
 )
 
-list(APPEND PROJECT_CONSTANTS_FILES
-  const/Constants.qml
-  const/DefaultColorScheme.qml
+list(APPEND PROJECT_TYPES
+  types/GButtonTemplate.qml
+  types/GButton.qml
+)
+
+list(APPEND PROJECT_COLOR_SCHEMES
+  colorSchemes/BlueDark.qml
+  colorSchemes/BlueLight.qml
+)
+
+list(APPEND PROJECT_CONFIG_FILES
+  config/WindowSizes.qml
+  config/DefaultColorSet.qml
+  config/CurrentColorScheme.qml
 )
 
 list(APPEND PROJECT_JS_FILES
@@ -27,7 +39,7 @@ list(APPEND PROJECT_JS_FILES
 )
 
 set_source_files_properties(
-  ${PROJECT_CONSTANTS_FILES} PROPERTIES
+  ${PROJECT_CONFIG_FILES} ${PROJECT_COLOR_SCHEMES} PROPERTIES
   QT_QML_SINGLETON_TYPE TRUE
 )
 
@@ -36,9 +48,11 @@ qt_add_qml_module(appQtApp
     VERSION 1.0
     QML_FILES
         Main.qml
-        QML_FILES ${PROJECT_QML_FILES}
+        QML_FILES ${PROJECT_BASIC_TYPES}
+        QML_FILES ${PROJECT_TYPES}
+        QML_FILES ${PROJECT_COLOR_SCHEMES}
+        QML_FILES ${PROJECT_CONFIG_FILES}
         QML_FILES ${PROJECT_JS_FILES}
-        QML_FILES ${PROJECT_CONSTANTS_FILES}
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
