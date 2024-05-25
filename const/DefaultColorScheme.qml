@@ -1,7 +1,7 @@
 pragma Singleton
 
 import QtQuick
-import GQml
+import "../qml"
 
 GColorGroup{
         idle: "#88F"
