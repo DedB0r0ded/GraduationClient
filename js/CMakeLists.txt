@@ -1,4 +1,4 @@
-set(MODULE_NAME GSource)
+set(MODULE_NAME GSourceJS)
 set(LIB_NAME ${MODULE_NAME}Lib)
 
 qt_add_library(${LIB_NAME} STATIC)

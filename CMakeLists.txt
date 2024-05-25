@@ -4,7 +4,7 @@ project(QtApp VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Quick)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Quick QuickControls2)
 
 qt_standard_project_setup(REQUIRES 6.5)
 
@@ -21,7 +21,7 @@ qt_add_qml_module(appQtApp
 
 add_subdirectory(const)
 add_subdirectory(qml)
-add_subdirectory(src)
+add_subdirectory(js)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
@@ -35,7 +35,10 @@ set_target_properties(appQtApp PROPERTIES
 )
 
 target_link_libraries(appQtApp
-    PRIVATE Qt6::Quick
+    PRIVATE Qt6::Quick Qt6::QuickControls2
+    GConstLibplugin
+    GQmlLibplugin
+    GSourceJSLibplugin
 )
 
 include(GNUInstallDirs)

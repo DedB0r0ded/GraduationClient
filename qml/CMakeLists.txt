@@ -13,4 +13,5 @@ qt_add_qml_module(${LIB_NAME}
   VERSION 0.1
   RESOURCE_PREFIX /
   QML_FILES ${G_QML_FILES}
+  QML_FILES GColorGroup.qml
 )

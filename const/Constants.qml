@@ -26,3 +26,4 @@ QtObject{
   readonly property int tallFormWidth: 640
   readonly property int tallFormHeight: 1280
 }
+
