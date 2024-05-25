@@ -2,10 +2,16 @@ import QtQuick
 import GQml
 
 Window {
-    width: 640
-    height: 480
+    width: Constants.stdWidth
+    height: Constants.stdHeight
     visible: true
     title: qsTr("Hello World")
 
-    GButton{}
+    GButton{
+        colors: DefaultColorScheme
+    }
+
+    Component.onCompleted: {
+        //console.log(DefaultColorScheme)
+    }
 }

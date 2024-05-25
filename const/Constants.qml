@@ -3,7 +3,7 @@ pragma Singleton
 import QtQuick
 
 QtObject{
-  id: windowProperties
+  id: windowConstants
   
   readonly property int stdWidth: 1920
   readonly property int stdHeight: 1080
@@ -26,4 +26,5 @@ QtObject{
   readonly property int tallFormWidth: 640
   readonly property int tallFormHeight: 1280
 }
+
 

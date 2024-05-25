@@ -1,6 +1,6 @@
 import QtQuick
 
-QtObject {
+Item {
     property color idle
     property color hover
     property color active
