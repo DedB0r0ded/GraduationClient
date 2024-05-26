@@ -22,7 +22,6 @@ Window {
       nextTabItem: button2
       //colors: CurrentColorScheme.value.control
       onActiveFocusChanged: if(activeFocus) console.log("B1")
-      onFocusChanged: if(focus) button1.forceActiveFocus()
     }
     GButton{
       id: button2
@@ -33,7 +32,6 @@ Window {
       nextTabItem: button3
       //colors: CurrentColorScheme.value.control
       onActiveFocusChanged: if(activeFocus) console.log("B2")
-      onFocusChanged: if(focus) button2.forceActiveFocus()
     }
     GButton{
       id: button3
@@ -44,7 +42,6 @@ Window {
       nextTabItem: button4
       //colors: CurrentColorScheme.value.control
       onActiveFocusChanged: if(activeFocus) console.log("B3")
-      onFocusChanged: if(focus) button3.forceActiveFocus()
     }
     GButton{
       id: button4
@@ -55,7 +52,6 @@ Window {
       nextTabItem: button5
       //colors: CurrentColorScheme.value.control
       onActiveFocusChanged: if(activeFocus) console.log("B4")
-      onFocusChanged: if(focus) button4.forceActiveFocus()
     }
 
     GButton{
@@ -67,7 +63,12 @@ Window {
       nextTabItem: button1
       //colors: CurrentColorScheme.value.control
       onActiveFocusChanged: if(activeFocus) console.log("B5")
-      onFocusChanged: if(focus) button5.forceActiveFocus()
+    }
+
+    GTextArea{
+      width: 300
+      height: 100
     }
   }
+
 }

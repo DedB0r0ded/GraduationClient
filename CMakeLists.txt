@@ -55,6 +55,7 @@ qt_add_qml_module(appQtApp
         QML_FILES ${PROJECT_COLOR_SCHEMES}
         QML_FILES ${PROJECT_CONFIG_FILES}
         QML_FILES ${PROJECT_JS_FILES}
+        RESOURCES Images.qrc
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

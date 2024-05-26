@@ -3,19 +3,27 @@ import QtQuick.Controls
 import '../config'
 import './basic'
 
-Item {
+FocusScope {
   id: _root
-  readonly property GColorSet colors: CurrentColorScheme.input
+  x: _textArea.x; y: _textArea.y
+  width: _textArea.width; height: _textArea.height
+  readonly property GColorSet colors: CurrentColorScheme.value.input
 
   signal editingFinished
+
 
   ScrollView{
     id: _scrollView
     anchors.centerIn: parent
     anchors.fill: parent
+
     TextArea{
       id: _textArea
-      font.pointSize: FontProperties.plainTextSize
+      font{
+        pointSize: FontProperties.plainTextSize
+        weight: FontProperties.plainTextWeight
+      }
+      wrapMode: TextArea.Wrap
       onEditingFinished: _root.editingFinished()
     }
   }
