@@ -2,67 +2,75 @@ import QtQuick
 import QtQuick.Controls
 import "./basic"
 
-Item{
+FocusScope{
   id: _root
+  readonly property int radiusModifier: 32
 
-  property int minWidth
-  property int minHeight
+  x: _button.x; y: _button.y
   width: _button.width
   height: _button.height
-  property bool hovered: _button.hovered
+  property int minWidth
+  property int minHeight
+  property Item nextTabItem
+  property Item previousTabItem
+
+  property alias font: _text.font
   property alias text: _text.text
   property GColorSet colors
-
-  readonly property int radiusModifier: 32
+  property GColorTriplet borderColors
 
   signal clicked
   signal doubleClicked
 
+
   Button{
-    id: _button
+  id: _button
+  focus: true
+  padding: 0
 
-    background: Rectangle{
-      id: _bg
-      implicitWidth: _funs.width()
-      implicitHeight: _funs.height()
-      color: _funs.bgcolor()
-      radius: _funs.radius()
+  background: Rectangle{
+    id: _bg
+    implicitWidth: _funs.width()
+    implicitHeight: _funs.height()
+    color: _funs.bgcolor()
+    radius: _funs.radius()
+    border{
+      color: _root.borderColors.active
+      width: _funs.borderWidth()
     }
-
-    contentItem: Text{
-      id: _text
-      color: colors.text.idle
-      wrapMode: Text.WordWrap
-      horizontalAlignment: Text.AlignHCenter
-      verticalAlignment: Text.AlignVCenter
-    }
-
-    onClicked: event => _funs.onClicked_default(event)
-    onDoubleClicked: event => _funs.onDoubleClicked_default(event)
   }
+
+  contentItem: Text{
+    id: _text
+    color: colors.text.idle
+    anchors.fill: parent
+    anchors.centerIn: parent
+    wrapMode: Text.WordWrap
+    horizontalAlignment: Text.AlignHCenter
+    verticalAlignment: Text.AlignVCenter
+  }
+
+  onClicked: event => _funs.onClicked_default(event)
+  onDoubleClicked: event => _funs.onDoubleClicked_default(event)
+  onFocusChanged: _button.forceActiveFocus()
+
+  KeyNavigation.tab: _funs.nextTabItem()
+  KeyNavigation.backtab: _funs.prevTabItem()
+  }
+
 
   QtObject{
     id: _funs
 
     function width(){
-      if(_root.minWidth > _text.implicitWidth)
-        return _root.minWidth
-      else
-        return _text.implicitWidth
+      return Math.max(_root.minWidth, _text.implicitWidth)
     }
 
     function height(){
-      if(_root.minHeight > _text.implicitHeight)
-        return _root.minHeight
-      else
-        return _text.implicitHeight
+      return Math.max(_root.minHeight, _text.implicitHeight)
     }
 
     function bgcolor(){
-      console.log("Button color changed!")
-      console.log(_root.colors.background.idle)
-      console.log(_root.colors.background.hover)
-      console.log(_root.colors.background.active)
       if(_button.hovered && !_button.down)
         return _root.colors.background.hover
       else if(_button.down)
@@ -78,12 +86,30 @@ Item{
         return _bg.width / radiusModifier
     }
 
+    function borderWidth(){
+      if(_root.activeFocus)
+        return 1
+      else
+        return 0
+    }
+
+
     function onClicked_default(event){
       _root.clicked(event)
     }
 
     function onDoubleClicked_default(event){
       _root.doubleClicked(event)
+    }
+
+    function nextTabItem(){
+      _root.nextTabItem.forceActiveFocus()
+      return _root.nextTabItem
+    }
+
+    function prevTabItem(){
+      _root.previousTabItem.forceActiveFocus()
+      return _root.previousTabItem
     }
   }
 }

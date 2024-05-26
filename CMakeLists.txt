@@ -21,6 +21,7 @@ list(APPEND PROJECT_BASIC_TYPES
 list(APPEND PROJECT_TYPES
   types/GButtonTemplate.qml
   types/GButton.qml
+  types/GTextArea.qml
 )
 
 list(APPEND PROJECT_COLOR_SCHEMES
@@ -32,6 +33,7 @@ list(APPEND PROJECT_CONFIG_FILES
   config/WindowSizes.qml
   config/DefaultColorSet.qml
   config/CurrentColorScheme.qml
+  config/FontProperties.qml
 )
 
 list(APPEND PROJECT_JS_FILES
