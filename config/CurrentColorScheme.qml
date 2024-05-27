@@ -4,6 +4,6 @@ import QtQuick
 import "../types/basic"
 import "../colorSchemes"
 
-Item {
+QtObject {
   readonly property GColorScheme value: BlueLight
 }

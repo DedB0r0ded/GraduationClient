@@ -45,8 +45,8 @@ GColorScheme{
     id: _danger
     background: GColorTriplet{
       idle: "#521914"
-      hover: "#A33329"
-      active: "#7A261F"
+      hover: "#7A261F"
+      active: "#A33329"
     }
     text: GColorTriplet{
       idle: "#FBECEA"

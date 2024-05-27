@@ -3,8 +3,6 @@ pragma Singleton
 import QtQuick
 
 QtObject{
-  id: windowSizes
-  
   readonly property int stdWidth: 1920
   readonly property int stdHeight: 1080
   

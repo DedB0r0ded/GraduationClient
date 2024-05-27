@@ -14,6 +14,7 @@ FocusScope{
   property Item nextTabItem
   property Item previousTabItem
 
+  property bool rounded: true
   property alias font: _text.font
   property alias text: _text.text
   property GColorSet colors
@@ -80,6 +81,8 @@ FocusScope{
     }
 
     function radius(){
+      if(!_root.rounded)
+        return 0;
       if(_bg.implicitWidth > 128)
         return _bg.width / radiusModifier / 2
       else

@@ -12,6 +12,10 @@ qt_add_executable(appQtApp
     main.cpp
 )
 
+list(APPEND PROJECT_STRINGS
+  strings/Russian.qml
+)
+
 list(APPEND PROJECT_BASIC_TYPES
   types/basic/GColorSet.qml
   types/basic/GColorScheme.qml
@@ -22,6 +26,7 @@ list(APPEND PROJECT_TYPES
   types/GButtonTemplate.qml
   types/GButton.qml
   types/GTextArea.qml
+  types/GTextField.qml
 )
 
 list(APPEND PROJECT_COLOR_SCHEMES
@@ -34,6 +39,7 @@ list(APPEND PROJECT_CONFIG_FILES
   config/DefaultColorSet.qml
   config/CurrentColorScheme.qml
   config/FontProperties.qml
+  config/ControlsProperties.qml
 )
 
 list(APPEND PROJECT_JS_FILES
@@ -41,7 +47,10 @@ list(APPEND PROJECT_JS_FILES
 )
 
 set_source_files_properties(
-  ${PROJECT_CONFIG_FILES} ${PROJECT_COLOR_SCHEMES} PROPERTIES
+  ${PROJECT_STRINGS}
+  ${PROJECT_CONFIG_FILES}
+  ${PROJECT_COLOR_SCHEMES}
+  PROPERTIES
   QT_QML_SINGLETON_TYPE TRUE
 )
 
@@ -50,6 +59,7 @@ qt_add_qml_module(appQtApp
     VERSION 1.0
     QML_FILES
         Main.qml
+        QML_FILES ${PROJECT_STRINGS}
         QML_FILES ${PROJECT_BASIC_TYPES}
         QML_FILES ${PROJECT_TYPES}
         QML_FILES ${PROJECT_COLOR_SCHEMES}

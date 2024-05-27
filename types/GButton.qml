@@ -2,7 +2,7 @@ import QtQuick
 import "../config"
 
 FocusScope {
-  focus: true
+  id: _root; focus: true
   x: _button.x; y: _button.y
   width: _button.width
   height: _button.height
@@ -10,14 +10,19 @@ FocusScope {
   property alias minHeight: _button.minHeight
   property alias nextTabItem: _button.nextTabItem
   property alias previousTabItem: _button.previousTabItem
+  property alias rounded: _button.rounded
   property alias font: _button.font
   property alias text: _button.text
+  property bool dangerous: false
 
 
   GButtonTemplate{
     id: _button
-    colors: CurrentColorScheme.value.control
+    colors: _root.dangerous
+      ? CurrentColorScheme.value.danger
+      : CurrentColorScheme.value.control
     borderColors: CurrentColorScheme.value.stroke
+    font.pointSize: FontProperties.standartTextSize
   }
 
   onFocusChanged: if(focus) _button.forceActiveFocus()

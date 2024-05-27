@@ -1,5 +1,12 @@
 <RCC>
-    <qresource prefix="/">
+    <qresource prefix="/images">
         <file>images/UserLight.png</file>
+        <file>images/HidePasswordLight.png</file>
+        <file>images/ShowPasswordLight.png</file>
+        <file>images/HidePasswordDark.png</file>
+        <file>images/PasswordDark.png</file>
+        <file>images/ShowPasswordDark.png</file>
+        <file>images/UserDark.png</file>
+        <file>images/PasswordLight.png</file>
     </qresource>
 </RCC>
