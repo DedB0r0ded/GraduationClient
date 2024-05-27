@@ -6,17 +6,21 @@ FocusScope{
   id: _root
   readonly property int radiusModifier: 32
 
-  x: _button.x; y: _button.y
-  width: _button.width
-  height: _button.height
+  x: _bg.x; y: _bg.y
+  width: _bg.width
+  height: _bg.height
   property int minWidth
   property int minHeight
+
+  readonly property int textWidth: _text.implicitWidth
+  readonly property int textHeight: _text.implicitHeight
+
   property Item nextTabItem
   property Item previousTabItem
 
-  property bool rounded: true
   property alias font: _text.font
   property alias text: _text.text
+  property bool rounded: true
   property GColorSet colors
   property GColorTriplet borderColors
 
@@ -53,7 +57,7 @@ FocusScope{
 
   onClicked: event => _funs.onClicked_default(event)
   onDoubleClicked: event => _funs.onDoubleClicked_default(event)
-  onFocusChanged: _button.forceActiveFocus()
+  onFocusChanged: if(focus) _button.forceActiveFocus()
 
   KeyNavigation.tab: _funs.nextTabItem()
   KeyNavigation.backtab: _funs.prevTabItem()
@@ -74,7 +78,7 @@ FocusScope{
     function bgcolor(){
       if(_button.hovered && !_button.down)
         return _root.colors.background.hover
-      else if(_button.down)
+      else if(_button.down || _button.activeFocus)
         return _root.colors.background.active
       else
         return _root.colors.background.idle
@@ -90,10 +94,7 @@ FocusScope{
     }
 
     function borderWidth(){
-      if(_root.activeFocus)
-        return 1
-      else
-        return 0
+      return 0
     }
 
 

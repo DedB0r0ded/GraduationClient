@@ -39,7 +39,7 @@ list(APPEND PROJECT_CONFIG_FILES
   config/DefaultColorSet.qml
   config/CurrentColorScheme.qml
   config/FontProperties.qml
-  config/ControlsProperties.qml
+  config/Controls.qml
 )
 
 list(APPEND PROJECT_JS_FILES

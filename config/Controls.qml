@@ -21,4 +21,11 @@ QtObject {
   readonly property real largeButtonsHeightRatio: 12.0
 
   readonly property bool roundedButtons: false
+
+  readonly property int menuProfile: 0
+  readonly property int menuTasks: 1
+  readonly property int menuOrganisations: 2
+  readonly property int menuContracts: 3
+  readonly property int menuDeveloper: 4
+  readonly property int menuSignOut: 5
 }
