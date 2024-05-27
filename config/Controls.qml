@@ -28,4 +28,11 @@ QtObject {
   readonly property int menuContracts: 3
   readonly property int menuDeveloper: 4
   readonly property int menuSignOut: 5
+
+  readonly property int devMenuBanks: 0
+  readonly property int devMenuComponents: 1
+  readonly property int devMenuFacilities: 2
+  readonly property int devMenuServices: 3
+  readonly property int devMenuManufacturers: 4
+  readonly property int devMenuBack: 5
 }

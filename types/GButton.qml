@@ -20,6 +20,7 @@ FocusScope {
 
   property bool dangerous: false
 
+  signal clicked
 
   GButtonTemplate{
     id: _button
@@ -28,6 +29,7 @@ FocusScope {
       : CurrentColorScheme.value.control
     borderColors: CurrentColorScheme.value.stroke
     font.pointSize: FontProperties.standartTextSize
+    onClicked: _root.clicked()
   }
 
   onFocusChanged: if(focus) _button.forceActiveFocus()

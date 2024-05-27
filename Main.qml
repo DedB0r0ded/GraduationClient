@@ -103,7 +103,7 @@ Window {
         id: menuDeveloperButton
         minWidth: menuDrawer.width
         minHeight: funs.calcMenuButtonHeight()
-        visible: false
+        dangerous: true
 
         rounded: Controls.roundedButtons
         text: Russian.menu.developer
@@ -114,6 +114,8 @@ Window {
 
         onFocusChanged:
             if(focus) funs.setMainMenuItem(Controls.menuDeveloper)
+
+        onClicked: funs.openDevMenu()
       }
 
       GButton{
@@ -131,8 +133,9 @@ Window {
                 : menuContractsButton
         nextTabItem: menuProfileButton
 
-        Layout.topMargin:
-            menuDrawer.height - height * 5
+        Layout.topMargin: menuDeveloperButton.visible
+            ? menuDrawer.height - height * 6
+            : menuDrawer.height - height * 5
 
         onFocusChanged:
             if(focus) funs.setMainMenuItem(Controls.menuSignOut)
@@ -149,12 +152,121 @@ Window {
       color: CurrentColorScheme.value.danger.background.idle
     }
 
+    ColumnLayout{
+      id: devMenuLayout
+      spacing: 0
+
+      GButton{
+        Layout.topMargin: -30
+        id: devMenuBanksButton
+        minWidth: devMenuDrawer.width
+        minHeight: funs.calcMenuButtonHeight()
+
+        rounded: Controls.roundedButtons
+        text: Russian.menu.banks
+        dangerous: true
+
+        focus: true
+        previousTabItem: devMenuBackButton
+        nextTabItem: devMenuComponentsButton
+
+        onFocusChanged:
+            if(focus) funs.setDeveloperMenuItem(Controls.devMenuBanks)
+      }
+
+      GButton{
+        id: devMenuComponentsButton
+        minWidth: devMenuDrawer.width
+        minHeight: funs.calcMenuButtonHeight()
+
+        rounded: Controls.roundedButtons
+        text: Russian.menu.components
+        dangerous: true
+
+        focus: false
+        previousTabItem: devMenuBanksButton
+        nextTabItem: devMenuFacilitesButton
+
+        onFocusChanged:
+            if(focus) funs.setDeveloperMenuItem(Controls.devMenuComponents)
+      }
+
+      GButton{
+        id: devMenuFacilitesButton
+        minWidth: devMenuDrawer.width
+        minHeight: funs.calcMenuButtonHeight()
+        dangerous: true
+
+        rounded: Controls.roundedButtons
+        text: Russian.menu.facilities
+
+        focus: false
+        previousTabItem: devMenuComponentsButton
+        nextTabItem: devMenuServicesButton
+
+        onFocusChanged:
+            if(focus) funs.setDeveloperMenuItem(Controls.devMenuFacilities)
+      }
+
+      GButton{
+        id: devMenuServicesButton
+        minWidth: devMenuDrawer.width
+        minHeight: funs.calcMenuButtonHeight()
+        dangerous: true
+
+        rounded: Controls.roundedButtons
+        text: Russian.menu.services
+
+        focus: false
+        previousTabItem: devMenuFacilitesButton
+        nextTabItem: devMenuManufacturersButton
+
+        onFocusChanged:
+            if(focus) funs.setDeveloperMenuItem(Controls.devMenuServices)
+      }
+
+      GButton{
+        id: devMenuManufacturersButton
+        minWidth: devMenuDrawer.width
+        minHeight: funs.calcMenuButtonHeight()
+        visible: true; dangerous: true
+
+        rounded: Controls.roundedButtons
+        text: Russian.menu.manufacturers
+
+        focus: false
+        previousTabItem: devMenuServicesButton
+        nextTabItem: devMenuBackButton
+
+        onFocusChanged:
+            if(focus) funs.setDeveloperMenuItem(Controls.devMenuManufacturers)
+      }
+
+      GButton{
+        id: devMenuBackButton
+        minWidth: devMenuDrawer.width
+        minHeight: funs.calcMenuButtonHeight()
+        visible: true; dangerous: true
+
+        rounded: Controls.roundedButtons
+        text: Russian.menu.back
+
+        focus: false
+        previousTabItem: devMenuManufacturersButton
+        nextTabItem: devMenuBanksButton
+
+        onFocusChanged:
+            if(focus) funs.setDeveloperMenuItem(Controls.devMenuBack)
+
+        onClicked: funs.openMenu()
+      }
+    }
   }
 
   Component.onCompleted: {
-    menuDrawer.open()
+    menuDeveloperButton.visible = false
+    funs.openMenu()
     mainWindow.minimumMenuWidth = funs.calcMinimumMenuWidth()
-    menuProfileButton.forceActiveFocus()
   }
 
   QtObject{
@@ -183,6 +295,19 @@ Window {
 
     function setDeveloperMenuItem(id){
       mainWindow.selectedDeveloperMenuItem = id
+      console.log("Current dev menu item: " + id)
+    }
+
+    function openMenu(){
+      devMenuDrawer.close()
+      menuDrawer.open()
+      menuProfileButton.forceActiveFocus()
+    }
+
+    function openDevMenu(){
+      devMenuDrawer.open()
+      menuDrawer.close()
+      devMenuBanksButton.forceActiveFocus()
     }
   }
 }

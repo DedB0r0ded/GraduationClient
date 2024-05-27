@@ -55,6 +55,7 @@ FocusScope{
     verticalAlignment: Text.AlignVCenter
   }
 
+  Keys.onEnterPressed: event => _funs.onClicked_default(event)
   onClicked: event => _funs.onClicked_default(event)
   onDoubleClicked: event => _funs.onDoubleClicked_default(event)
   onFocusChanged: if(focus) _button.forceActiveFocus()
