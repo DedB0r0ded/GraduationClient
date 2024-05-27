@@ -1,11 +1,13 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+
 import "strings"
 import "types"
 import "config"
 import "colorSchemes"
 import "js"
+import "pages"
 
 Window {
   property int minimumMenuWidth
@@ -19,252 +21,324 @@ Window {
   visible: true
   title: qsTr("Hello World")
 
-  Drawer{
-    id: menuDrawer
+
+  Item{
+    id: menuContainer
     width: funs.calcMenuDrawerWidth()
     height: mainWindow.height / Controls.menuHeightRatio
-    modal: false; interactive: false
-    background: Rectangle{
-      color: CurrentColorScheme.value.control.background.idle
+
+    Drawer{
+      id: menuDrawer
+      width: menuContainer.width; height: menuContainer.height
+      modal: false; interactive: false
+      background: Rectangle{
+        color: CurrentColorScheme.value.control.background.idle
+      }
+
+      ColumnLayout{
+        id: menuLayout
+        spacing: 0
+
+        GButton{
+          id: menuProfileButton
+          minWidth: menuDrawer.width
+          minHeight: funs.calcMenuButtonHeight()
+
+          rounded: Controls.roundedButtons
+          text: Russian.menu.profile
+
+          focus: true
+          previousTabItem: menuSignOutButton
+          nextTabItem: menuTasksButton
+
+          onFocusChanged:
+              if(focus) funs.setMainMenuItem(Controls.menuProfile)
+        }
+
+        GButton{
+          id: menuTasksButton
+          minWidth: menuDrawer.width
+          minHeight: funs.calcMenuButtonHeight()
+
+          rounded: Controls.roundedButtons
+          text: Russian.menu.tasks
+
+          focus: false
+          previousTabItem: menuProfileButton
+          nextTabItem: menuOrganisationsButton
+
+          onFocusChanged:
+              if(focus) funs.setMainMenuItem(Controls.menuTasks)
+        }
+
+        GButton{
+          id: menuOrganisationsButton
+          minWidth: menuDrawer.width
+          minHeight: funs.calcMenuButtonHeight()
+
+          rounded: Controls.roundedButtons
+          text: Russian.menu.organisations
+
+          focus: false
+          previousTabItem: menuTasksButton
+          nextTabItem: menuContractsButton
+
+          onFocusChanged:
+              if(focus) funs.setMainMenuItem(Controls.menuOrganisations)
+        }
+
+        GButton{
+          id: menuContractsButton
+          minWidth: menuDrawer.width
+          minHeight: funs.calcMenuButtonHeight()
+
+          rounded: Controls.roundedButtons
+          text: Russian.menu.contracts
+
+          focus: false
+          previousTabItem: menuOrganisationsButton
+          nextTabItem: menuDeveloperButton.visible
+                  ? menuDeveloperButton
+                  : menuSignOutButton
+
+          onFocusChanged:
+              if(focus) funs.setMainMenuItem(Controls.menuContracts)
+        }
+
+        GButton{
+          id: menuDeveloperButton
+          minWidth: menuDrawer.width
+          minHeight: funs.calcMenuButtonHeight()
+          dangerous: true
+
+          rounded: Controls.roundedButtons
+          text: Russian.menu.developer
+
+          focus: false
+          previousTabItem: menuContractsButton
+          nextTabItem: menuSignOutButton
+
+          onFocusChanged:
+              if(focus) funs.setMainMenuItem(Controls.menuDeveloper)
+
+          onClicked: funs.openDevMenu()
+        }
+
+        GButton{
+          id: menuSignOutButton
+          minWidth: menuDrawer.width
+          minHeight: funs.calcMenuButtonHeight()
+
+          rounded: Controls.roundedButtons
+          text: Russian.menu.signOut
+          dangerous: true
+
+          focus: false
+          previousTabItem: menuDeveloperButton.visible
+                  ? menuDeveloperButton
+                  : menuContractsButton
+          nextTabItem: menuProfileButton
+
+          Layout.topMargin: menuDeveloperButton.visible
+              ? menuDrawer.height - height * 6
+              : menuDrawer.height - height * 5
+
+          onFocusChanged:
+              if(focus) funs.setMainMenuItem(Controls.menuSignOut)
+
+          onClicked: funs.quit()
+        }
+      }
     }
 
-    ColumnLayout{
-      id: menuLayout
-      spacing: 0
-
-      GButton{
-        Layout.topMargin: -30
-        id: menuProfileButton
-        minWidth: menuDrawer.width
-        minHeight: funs.calcMenuButtonHeight()
-
-        rounded: Controls.roundedButtons
-        text: Russian.menu.profile
-
-        focus: true
-        previousTabItem: menuSignOutButton
-        nextTabItem: menuTasksButton
-
-        onFocusChanged:
-            if(focus) funs.setMainMenuItem(Controls.menuProfile)
+    Drawer{
+      id: devMenuDrawer
+      width: menuContainer.width; height: menuContainer.height
+      modal: false; interactive: false
+      background: Rectangle{
+        color: CurrentColorScheme.value.danger.background.idle
       }
 
-      GButton{
-        id: menuTasksButton
-        minWidth: menuDrawer.width
-        minHeight: funs.calcMenuButtonHeight()
+      ColumnLayout{
+        id: devMenuLayout
+        spacing: 0
 
-        rounded: Controls.roundedButtons
-        text: Russian.menu.tasks
+        GButton{
+          id: devMenuBanksButton
+          minWidth: devMenuDrawer.width
+          minHeight: funs.calcMenuButtonHeight()
 
-        focus: false
-        previousTabItem: menuProfileButton
-        nextTabItem: menuOrganisationsButton
+          rounded: Controls.roundedButtons
+          text: Russian.menu.banks
+          dangerous: true
 
-        onFocusChanged:
-            if(focus) funs.setMainMenuItem(Controls.menuTasks)
-      }
+          focus: true
+          previousTabItem: devMenuBackButton
+          nextTabItem: devMenuComponentsButton
 
-      GButton{
-        id: menuOrganisationsButton
-        minWidth: menuDrawer.width
-        minHeight: funs.calcMenuButtonHeight()
+          onFocusChanged:
+              if(focus) funs.setDeveloperMenuItem(Controls.devMenuBanks)
+        }
 
-        rounded: Controls.roundedButtons
-        text: Russian.menu.organisations
+        GButton{
+          id: devMenuComponentsButton
+          minWidth: devMenuDrawer.width
+          minHeight: funs.calcMenuButtonHeight()
 
-        focus: false
-        previousTabItem: menuTasksButton
-        nextTabItem: menuContractsButton
+          rounded: Controls.roundedButtons
+          text: Russian.menu.components
+          dangerous: true
 
-        onFocusChanged:
-            if(focus) funs.setMainMenuItem(Controls.menuOrganisations)
-      }
+          focus: false
+          previousTabItem: devMenuBanksButton
+          nextTabItem: devMenuFacilitesButton
 
-      GButton{
-        id: menuContractsButton
-        minWidth: menuDrawer.width
-        minHeight: funs.calcMenuButtonHeight()
+          onFocusChanged:
+              if(focus) funs.setDeveloperMenuItem(Controls.devMenuComponents)
+        }
 
-        rounded: Controls.roundedButtons
-        text: Russian.menu.contracts
+        GButton{
+          id: devMenuFacilitesButton
+          minWidth: devMenuDrawer.width
+          minHeight: funs.calcMenuButtonHeight()
+          dangerous: true
 
-        focus: false
-        previousTabItem: menuOrganisationsButton
-        nextTabItem: menuDeveloperButton.visible
-                ? menuDeveloperButton
-                : menuSignOutButton
+          rounded: Controls.roundedButtons
+          text: Russian.menu.facilities
 
-        onFocusChanged:
-            if(focus) funs.setMainMenuItem(Controls.menuContracts)
-      }
+          focus: false
+          previousTabItem: devMenuComponentsButton
+          nextTabItem: devMenuServicesButton
 
-      GButton{
-        id: menuDeveloperButton
-        minWidth: menuDrawer.width
-        minHeight: funs.calcMenuButtonHeight()
-        dangerous: true
+          onFocusChanged:
+              if(focus) funs.setDeveloperMenuItem(Controls.devMenuFacilities)
+        }
 
-        rounded: Controls.roundedButtons
-        text: Russian.menu.developer
+        GButton{
+          id: devMenuServicesButton
+          minWidth: devMenuDrawer.width
+          minHeight: funs.calcMenuButtonHeight()
+          dangerous: true
 
-        focus: false
-        previousTabItem: menuContractsButton
-        nextTabItem: menuSignOutButton
+          rounded: Controls.roundedButtons
+          text: Russian.menu.services
 
-        onFocusChanged:
-            if(focus) funs.setMainMenuItem(Controls.menuDeveloper)
+          focus: false
+          previousTabItem: devMenuFacilitesButton
+          nextTabItem: devMenuManufacturersButton
 
-        onClicked: funs.openDevMenu()
-      }
+          onFocusChanged:
+              if(focus) funs.setDeveloperMenuItem(Controls.devMenuServices)
+        }
 
-      GButton{
-        id: menuSignOutButton
-        minWidth: menuDrawer.width
-        minHeight: funs.calcMenuButtonHeight()
+        GButton{
+          id: devMenuManufacturersButton
+          minWidth: devMenuDrawer.width
+          minHeight: funs.calcMenuButtonHeight()
+          visible: true; dangerous: true
 
-        rounded: Controls.roundedButtons
-        text: Russian.menu.signOut
-        dangerous: true
+          rounded: Controls.roundedButtons
+          text: Russian.menu.manufacturers
 
-        focus: false
-        previousTabItem: menuDeveloperButton.visible
-                ? menuDeveloperButton
-                : menuContractsButton
-        nextTabItem: menuProfileButton
+          focus: false
+          previousTabItem: devMenuServicesButton
+          nextTabItem: devMenuBackButton
 
-        Layout.topMargin: menuDeveloperButton.visible
-            ? menuDrawer.height - height * 6
-            : menuDrawer.height - height * 5
+          onFocusChanged:
+              if(focus) funs.setDeveloperMenuItem(Controls.devMenuManufacturers)
+        }
 
-        onFocusChanged:
-            if(focus) funs.setMainMenuItem(Controls.menuSignOut)
+        GButton{
+          id: devMenuBackButton
+          minWidth: devMenuDrawer.width
+          minHeight: funs.calcMenuButtonHeight()
+          visible: true; dangerous: true
+
+          rounded: Controls.roundedButtons
+          text: Russian.menu.back
+
+          focus: false
+          previousTabItem: devMenuManufacturersButton
+          nextTabItem: devMenuBanksButton
+
+          onFocusChanged:
+              if(focus) funs.setDeveloperMenuItem(Controls.devMenuBack)
+
+          onClicked: funs.openMenu()
+        }
       }
     }
+
   }
 
-  Drawer{
-    id: devMenuDrawer
-    width: funs.calcMenuDrawerWidth()
-    height: mainWindow.height / Controls.menuHeightRatio
-    modal: false; interactive: false
-    background: Rectangle{
-      color: CurrentColorScheme.value.danger.background.idle
-    }
 
-    ColumnLayout{
-      id: devMenuLayout
-      spacing: 0
 
-      GButton{
-        Layout.topMargin: -30
-        id: devMenuBanksButton
-        minWidth: devMenuDrawer.width
-        minHeight: funs.calcMenuButtonHeight()
+  // SwipeView{
+  //   id: mainSwipeView
+  //   anchors.left: menuContainer.right
+  //   currentIndex: mainWindow.selectedMainMenuItem
 
-        rounded: Controls.roundedButtons
-        text: Russian.menu.banks
-        dangerous: true
+  //   Loader{
+  //     id: profileLoader
+  //     sourceComponent: ProfilePage{}
+  //   }
 
-        focus: true
-        previousTabItem: devMenuBackButton
-        nextTabItem: devMenuComponentsButton
+  //   Loader{
+  //     id: tasksLoader
+  //     sourceComponent: TasksPage{}
+  //   }
 
-        onFocusChanged:
-            if(focus) funs.setDeveloperMenuItem(Controls.devMenuBanks)
-      }
+  //   SwipeView{
+  //     id: organisationsSwipeView
+  //     Loader{
+  //       id: organisationListPageLoader
+  //       sourceComponent: OrganisationListPage{}
+  //     }
+  //     Loader{
+  //       id: organisationDetailsPageLoader
+  //       sourceComponent: OrganisationDetailsPage{}
+  //     }
+  //     Loader{
+  //       id: organisationLocalServicesPageLoader
+  //       sourceComponent: OrganisationLocalServicesPage{}
+  //     }
+  //   }
 
-      GButton{
-        id: devMenuComponentsButton
-        minWidth: devMenuDrawer.width
-        minHeight: funs.calcMenuButtonHeight()
+  //   SwipeView{
+  //     id: contractsSwipeView
+  //     Loader{
+  //       id: contractListPageLoader
+  //       sourceComponent: ContractListPage{}
+  //     }
+  //     Loader{
+  //       id: contractDetailsOneTimePageLoader
+  //       sourceComponent: ContractDetailsOneTimePage{}
+  //     }
+  //     Loader{
+  //       id: contractDetailsMaintenancePageLoader
+  //       sourceComponent: ContractDetailsMaintenancePage{}
+  //     }
+  //     Loader{
+  //       id: contractServiceListPageLoader
+  //       sourceComponent: ContractServiceListPage{}
+  //     }
+  //     Loader{
+  //       id: contractMaintenanceListPageLoader
+  //       sourceComponent: ContractMaintenanceListPage{}
+  //     }
+  //   }
 
-        rounded: Controls.roundedButtons
-        text: Russian.menu.components
-        dangerous: true
+  //   SwipeView{
+  //     id: developerSwipeView
+  //     Loader{
 
-        focus: false
-        previousTabItem: devMenuBanksButton
-        nextTabItem: devMenuFacilitesButton
+  //     }
+  //   }
+  // }
 
-        onFocusChanged:
-            if(focus) funs.setDeveloperMenuItem(Controls.devMenuComponents)
-      }
-
-      GButton{
-        id: devMenuFacilitesButton
-        minWidth: devMenuDrawer.width
-        minHeight: funs.calcMenuButtonHeight()
-        dangerous: true
-
-        rounded: Controls.roundedButtons
-        text: Russian.menu.facilities
-
-        focus: false
-        previousTabItem: devMenuComponentsButton
-        nextTabItem: devMenuServicesButton
-
-        onFocusChanged:
-            if(focus) funs.setDeveloperMenuItem(Controls.devMenuFacilities)
-      }
-
-      GButton{
-        id: devMenuServicesButton
-        minWidth: devMenuDrawer.width
-        minHeight: funs.calcMenuButtonHeight()
-        dangerous: true
-
-        rounded: Controls.roundedButtons
-        text: Russian.menu.services
-
-        focus: false
-        previousTabItem: devMenuFacilitesButton
-        nextTabItem: devMenuManufacturersButton
-
-        onFocusChanged:
-            if(focus) funs.setDeveloperMenuItem(Controls.devMenuServices)
-      }
-
-      GButton{
-        id: devMenuManufacturersButton
-        minWidth: devMenuDrawer.width
-        minHeight: funs.calcMenuButtonHeight()
-        visible: true; dangerous: true
-
-        rounded: Controls.roundedButtons
-        text: Russian.menu.manufacturers
-
-        focus: false
-        previousTabItem: devMenuServicesButton
-        nextTabItem: devMenuBackButton
-
-        onFocusChanged:
-            if(focus) funs.setDeveloperMenuItem(Controls.devMenuManufacturers)
-      }
-
-      GButton{
-        id: devMenuBackButton
-        minWidth: devMenuDrawer.width
-        minHeight: funs.calcMenuButtonHeight()
-        visible: true; dangerous: true
-
-        rounded: Controls.roundedButtons
-        text: Russian.menu.back
-
-        focus: false
-        previousTabItem: devMenuManufacturersButton
-        nextTabItem: devMenuBanksButton
-
-        onFocusChanged:
-            if(focus) funs.setDeveloperMenuItem(Controls.devMenuBack)
-
-        onClicked: funs.openMenu()
-      }
-    }
-  }
 
   Component.onCompleted: {
-    menuDeveloperButton.visible = false
+    //menuDeveloperButton.visible = false
     funs.openMenu()
     mainWindow.minimumMenuWidth = funs.calcMinimumMenuWidth()
   }
@@ -290,12 +364,12 @@ Window {
 
     function setMainMenuItem(id){
       mainWindow.selectedMainMenuItem = id
-      console.log("Current main menu item: " + id)
+      //console.log("Current main menu item: " + id)
     }
 
     function setDeveloperMenuItem(id){
       mainWindow.selectedDeveloperMenuItem = id
-      console.log("Current dev menu item: " + id)
+      //console.log("Current dev menu item: " + id)
     }
 
     function openMenu(){
@@ -308,6 +382,10 @@ Window {
       devMenuDrawer.open()
       menuDrawer.close()
       devMenuBanksButton.forceActiveFocus()
+    }
+
+    function quit(){
+      Qt.quit()
     }
   }
 }

@@ -46,10 +46,31 @@ list(APPEND PROJECT_JS_FILES
   js/script.js
 )
 
+list(APPEND PROJECT_PAGES
+  pages/ProfilePage.qml
+  pages/TasksPage.qml
+
+  pages/OrganisationListPage.qml
+  pages/OrganisationDetailsPage.qml
+  pages/OrganisationLocalServicesPage.qml
+
+  pages/ContractListPage.qml
+  pages/ContractDetailsOneTimePage.qml
+  pages/ContractDetailsMaintenancePage.qml
+  pages/ContractServiceListPage.qml
+  pages/ContractMaintenanceListPage.qml
+)
+
+list(APPEND PROJECT_WINDOWS
+
+)
+
 set_source_files_properties(
   ${PROJECT_STRINGS}
   ${PROJECT_CONFIG_FILES}
   ${PROJECT_COLOR_SCHEMES}
+  #${PROJECT_PAGES}
+  #${PROJECT_WINDOWS}
   PROPERTIES
   QT_QML_SINGLETON_TYPE TRUE
 )
@@ -65,7 +86,10 @@ qt_add_qml_module(appQtApp
         QML_FILES ${PROJECT_COLOR_SCHEMES}
         QML_FILES ${PROJECT_CONFIG_FILES}
         QML_FILES ${PROJECT_JS_FILES}
+        QML_FILES ${PROJECT_PAGES}
+        QML_FILES ${PROJECT_WINDOWS}
         RESOURCES Images.qrc
+        QML_FILES UserSignUpWindow.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
