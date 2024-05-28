@@ -17,6 +17,7 @@ list(APPEND PROJECT_STRINGS
 )
 
 list(APPEND PROJECT_BASIC_TYPES
+  types/basic/GCanvas.qml
   types/basic/GColorSet.qml
   types/basic/GColorScheme.qml
   types/basic/GColorTriplet.qml
@@ -27,6 +28,7 @@ list(APPEND PROJECT_TYPES
   types/GButton.qml
   types/GTextArea.qml
   types/GTextField.qml
+  types/GPage.qml
 )
 
 list(APPEND PROJECT_COLOR_SCHEMES

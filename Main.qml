@@ -4,6 +4,7 @@ import QtQuick.Controls
 
 import "strings"
 import "types"
+import "types/basic"
 import "config"
 import "colorSchemes"
 import "js"
@@ -21,6 +22,7 @@ Window {
   visible: true
   title: qsTr("Hello World")
 
+  GCanvas{ id: mainWindowBackground }
 
   Item{
     id: menuContainer
