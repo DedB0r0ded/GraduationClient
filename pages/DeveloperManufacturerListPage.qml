@@ -3,5 +3,6 @@ import '../types'
 import '../config'
 
 GPage{
-  groupIndex: Controls.menuOrganisations
+  groupIndex: Controls.menuDeveloper
+  index: 0
 }

@@ -1,5 +1,8 @@
 import QtQuick
+import '../types'
+import '../config'
 
-Item{
-
+GPage{
+  groupIndex: Controls.menuTasks
+  index: 0
 }

@@ -18,4 +18,15 @@ QtObject{
     'manufacturers' : 'Изготовители',
     'back'          : 'Назад'
   }
+
+  readonly property var labels: {
+    'firstName' : 'Имя',
+    'middleName': 'Отчество',
+    'lastName'  : 'Фамилия',
+    'email'     : 'Электронная почта'
+  }
+
+  readonly property var placeholders: {
+    'firstName' : ''
+  }
 }

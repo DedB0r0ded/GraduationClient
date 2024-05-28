@@ -21,6 +21,7 @@ list(APPEND PROJECT_BASIC_TYPES
   types/basic/GColorSet.qml
   types/basic/GColorScheme.qml
   types/basic/GColorTriplet.qml
+  types/basic/GCursor.qml
 )
 
 list(APPEND PROJECT_TYPES
@@ -29,6 +30,7 @@ list(APPEND PROJECT_TYPES
   types/GTextArea.qml
   types/GTextField.qml
   types/GPage.qml
+  types/GLabel.qml
 )
 
 list(APPEND PROJECT_COLOR_SCHEMES
@@ -61,6 +63,12 @@ list(APPEND PROJECT_PAGES
   pages/ContractDetailsMaintenancePage.qml
   pages/ContractServiceListPage.qml
   pages/ContractMaintenanceListPage.qml
+
+  pages/DeveloperBankListPage.qml
+  pages/DeveloperComponentListPage.qml
+  pages/DeveloperFacilityListPage.qml
+  pages/DeveloperServiceListPage.qml
+  pages/DeveloperManufacturerListPage.qml
 )
 
 list(APPEND PROJECT_WINDOWS

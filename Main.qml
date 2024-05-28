@@ -15,6 +15,9 @@ Window {
   property int selectedMainMenuItem: 0
   property int selectedDeveloperMenuItem: 0
 
+  property int pageWidth: funs.calcPageWidth()
+  property int menuWidth: funs.calcMenuWidth()
+
 
   id: mainWindow
   width: WindowSizes.stdWidth
@@ -26,7 +29,7 @@ Window {
 
   Item{
     id: menuContainer
-    width: funs.calcMenuDrawerWidth()
+    width: mainWindow.menuWidth
     height: mainWindow.height / Controls.menuHeightRatio
 
     Drawer{
@@ -142,10 +145,6 @@ Window {
                   : menuContractsButton
           nextTabItem: menuProfileButton
 
-          Layout.topMargin: menuDeveloperButton.visible
-              ? menuDrawer.height - height * 6
-              : menuDrawer.height - height * 5
-
           onFocusChanged:
               if(focus) funs.setMainMenuItem(Controls.menuSignOut)
 
@@ -250,9 +249,10 @@ Window {
           onFocusChanged:
               if(focus) funs.setDeveloperMenuItem(Controls.devMenuManufacturers)
         }
-
+      }
         GButton{
           id: devMenuBackButton
+          y: funs.calcLastMenuButtonY(devMenuDrawer, height)
           minWidth: devMenuDrawer.width
           minHeight: funs.calcMenuButtonHeight()
           visible: true; dangerous: true
@@ -269,7 +269,6 @@ Window {
 
           onClicked: funs.openMenu()
         }
-      }
     }
 
   }
@@ -278,63 +277,81 @@ Window {
 
   SwipeView{
     id: mainSwipeView
-    anchors.left: menuContainer.right
+    orientation: Qt.Vertical
+    anchors.fill: parent
     currentIndex: mainWindow.selectedMainMenuItem
+
 
     Loader{
       id: profileLoader
-      sourceComponent: ProfilePage{}
+      active: SwipeView.isCurrentItem
+      sourceComponent: ProfilePage{
+        width: mainWindow.width / Controls.pageWidthRatio
+        height: mainWindow.height
+      }
     }
 
     Loader{
       id: tasksLoader
+      active: SwipeView.isCurrentItem
       sourceComponent: TasksPage{}
     }
 
-    SwipeView{
-      id: organisationsSwipeView
-      Loader{
-        id: organisationListPageLoader
-        sourceComponent: OrganisationListPage{}
+    Loader{
+      id: organisationSwipeViewLoader
+      active: SwipeView.isCurrentItem
+      SwipeView{
+        id: organisationSwipeView
+        Loader{
+          id: organisationListPageLoader
+          sourceComponent: OrganisationListPage{}
+        }
+        Loader{
+          id: organisationDetailsPageLoader
+          sourceComponent: OrganisationDetailsPage{}
+        }
+        Loader{
+          id: organisationLocalServicesPageLoader
+          sourceComponent: OrganisationLocalServicesPage{}
+        }
       }
-      Loader{
-        id: organisationDetailsPageLoader
-        sourceComponent: OrganisationDetailsPage{}
-      }
-      Loader{
-        id: organisationLocalServicesPageLoader
-        sourceComponent: OrganisationLocalServicesPage{}
+    }
+    Loader{
+      id: contractSwipeViewLoader
+      active: SwipeView.isCurrentItem
+      SwipeView{
+        id: contractSwipeView
+        Loader{
+          id: contractListPageLoader
+          sourceComponent: ContractListPage{}
+        }
+        Loader{
+          id: contractDetailsOneTimePageLoader
+          sourceComponent: ContractDetailsOneTimePage{}
+        }
+        Loader{
+          id: contractDetailsMaintenancePageLoader
+          sourceComponent: ContractDetailsMaintenancePage{}
+        }
+        Loader{
+          id: contractServiceListPageLoader
+          sourceComponent: ContractServiceListPage{}
+        }
+        Loader{
+          id: contractMaintenanceListPageLoader
+          sourceComponent: ContractMaintenanceListPage{}
+        }
       }
     }
 
-    SwipeView{
-      id: contractsSwipeView
-      Loader{
-        id: contractListPageLoader
-        sourceComponent: ContractListPage{}
-      }
-      Loader{
-        id: contractDetailsOneTimePageLoader
-        sourceComponent: ContractDetailsOneTimePage{}
-      }
-      Loader{
-        id: contractDetailsMaintenancePageLoader
-        sourceComponent: ContractDetailsMaintenancePage{}
-      }
-      Loader{
-        id: contractServiceListPageLoader
-        sourceComponent: ContractServiceListPage{}
-      }
-      Loader{
-        id: contractMaintenanceListPageLoader
-        sourceComponent: ContractMaintenanceListPage{}
-      }
-    }
+    Loader{
+      id: developerSwipeViewLoader
+      active: SwipeView.isCurrentItem
+      SwipeView{
+        id: developerSwipeView
+        Loader{
 
-    SwipeView{
-      id: developerSwipeView
-      Loader{
-
+        }
       }
     }
   }
@@ -344,6 +361,7 @@ Window {
     //menuDeveloperButton.visible = false
     funs.openMenu()
     mainWindow.minimumMenuWidth = funs.calcMinimumMenuWidth()
+    mainWindow.width += 1; mainWindow.width -= 1
   }
 
   QtObject{
@@ -356,9 +374,13 @@ Window {
       return Math.max(...widths)
     }
 
-    function calcMenuDrawerWidth(){
+    function calcMenuWidth(){
       return Math.max(mainWindow.minimumMenuWidth,
             mainWindow.width / Controls.menuWidthRatio)
+    }
+
+    function calcPageWidth(){
+      return mainWindow.width - calcMenuWidth()
     }
 
     function calcMenuButtonHeight(){

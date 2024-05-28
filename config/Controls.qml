@@ -8,6 +8,9 @@ QtObject {
 
   readonly property real menuButtonsHeighRatio: 10.8
 
+  readonly property real pageWidthRatio: 1 * 4 / 3
+  readonly property real profileInfoLayoutHeightRatio: 1 * 54 / 19
+
   // 80x80
   readonly property real smallButtonsWidthRatio: 24.0
   readonly property real smallButtonsHeightRatio: 13.5
@@ -22,6 +25,9 @@ QtObject {
 
   readonly property bool roundedButtons: false
 
+  readonly property real basicInputWidthRatio: 3.0
+  readonly property real basicInputHeightRatio: 24.0
+
   readonly property int menuProfile: 0
   readonly property int menuTasks: 1
   readonly property int menuOrganisations: 2
@@ -35,4 +41,6 @@ QtObject {
   readonly property int devMenuServices: 3
   readonly property int devMenuManufacturers: 4
   readonly property int devMenuBack: 5
+
+
 }

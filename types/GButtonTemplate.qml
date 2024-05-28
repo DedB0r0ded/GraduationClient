@@ -32,6 +32,8 @@ FocusScope{
   id: _button
   focus: true
   padding: 0
+  topInset: 0
+  bottomInset: 0
 
   background: Rectangle{
     id: _bg
