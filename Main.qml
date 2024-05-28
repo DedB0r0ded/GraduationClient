@@ -35,7 +35,7 @@ Window {
         color: CurrentColorScheme.value.control.background.idle
       }
 
-      ColumnLayout{
+      Column{
         id: menuLayout
         spacing: 0
 
@@ -123,9 +123,10 @@ Window {
 
           onClicked: funs.openDevMenu()
         }
-
+      }
         GButton{
           id: menuSignOutButton
+          y: funs.calcLastMenuButtonY(menuDrawer, height)
           minWidth: menuDrawer.width
           minHeight: funs.calcMenuButtonHeight()
 
@@ -148,7 +149,7 @@ Window {
 
           onClicked: funs.quit()
         }
-      }
+
     }
 
     Drawer{
@@ -159,7 +160,7 @@ Window {
         color: CurrentColorScheme.value.danger.background.idle
       }
 
-      ColumnLayout{
+      Column{
         id: devMenuLayout
         spacing: 0
 
@@ -273,68 +274,68 @@ Window {
 
 
 
-  // SwipeView{
-  //   id: mainSwipeView
-  //   anchors.left: menuContainer.right
-  //   currentIndex: mainWindow.selectedMainMenuItem
+  SwipeView{
+    id: mainSwipeView
+    anchors.left: menuContainer.right
+    currentIndex: mainWindow.selectedMainMenuItem
 
-  //   Loader{
-  //     id: profileLoader
-  //     sourceComponent: ProfilePage{}
-  //   }
+    Loader{
+      id: profileLoader
+      sourceComponent: ProfilePage{}
+    }
 
-  //   Loader{
-  //     id: tasksLoader
-  //     sourceComponent: TasksPage{}
-  //   }
+    Loader{
+      id: tasksLoader
+      sourceComponent: TasksPage{}
+    }
 
-  //   SwipeView{
-  //     id: organisationsSwipeView
-  //     Loader{
-  //       id: organisationListPageLoader
-  //       sourceComponent: OrganisationListPage{}
-  //     }
-  //     Loader{
-  //       id: organisationDetailsPageLoader
-  //       sourceComponent: OrganisationDetailsPage{}
-  //     }
-  //     Loader{
-  //       id: organisationLocalServicesPageLoader
-  //       sourceComponent: OrganisationLocalServicesPage{}
-  //     }
-  //   }
+    SwipeView{
+      id: organisationsSwipeView
+      Loader{
+        id: organisationListPageLoader
+        sourceComponent: OrganisationListPage{}
+      }
+      Loader{
+        id: organisationDetailsPageLoader
+        sourceComponent: OrganisationDetailsPage{}
+      }
+      Loader{
+        id: organisationLocalServicesPageLoader
+        sourceComponent: OrganisationLocalServicesPage{}
+      }
+    }
 
-  //   SwipeView{
-  //     id: contractsSwipeView
-  //     Loader{
-  //       id: contractListPageLoader
-  //       sourceComponent: ContractListPage{}
-  //     }
-  //     Loader{
-  //       id: contractDetailsOneTimePageLoader
-  //       sourceComponent: ContractDetailsOneTimePage{}
-  //     }
-  //     Loader{
-  //       id: contractDetailsMaintenancePageLoader
-  //       sourceComponent: ContractDetailsMaintenancePage{}
-  //     }
-  //     Loader{
-  //       id: contractServiceListPageLoader
-  //       sourceComponent: ContractServiceListPage{}
-  //     }
-  //     Loader{
-  //       id: contractMaintenanceListPageLoader
-  //       sourceComponent: ContractMaintenanceListPage{}
-  //     }
-  //   }
+    SwipeView{
+      id: contractsSwipeView
+      Loader{
+        id: contractListPageLoader
+        sourceComponent: ContractListPage{}
+      }
+      Loader{
+        id: contractDetailsOneTimePageLoader
+        sourceComponent: ContractDetailsOneTimePage{}
+      }
+      Loader{
+        id: contractDetailsMaintenancePageLoader
+        sourceComponent: ContractDetailsMaintenancePage{}
+      }
+      Loader{
+        id: contractServiceListPageLoader
+        sourceComponent: ContractServiceListPage{}
+      }
+      Loader{
+        id: contractMaintenanceListPageLoader
+        sourceComponent: ContractMaintenanceListPage{}
+      }
+    }
 
-  //   SwipeView{
-  //     id: developerSwipeView
-  //     Loader{
+    SwipeView{
+      id: developerSwipeView
+      Loader{
 
-  //     }
-  //   }
-  // }
+      }
+    }
+  }
 
 
   Component.onCompleted: {
@@ -360,6 +361,10 @@ Window {
 
     function calcMenuButtonHeight(){
       return menuDrawer.height / Controls.menuButtonsHeighRatio
+    }
+
+    function calcLastMenuButtonY(drawer, buttonHeight){
+      return drawer.height - buttonHeight
     }
 
     function setMainMenuItem(id){
