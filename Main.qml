@@ -18,6 +18,8 @@ Window {
   property int pageWidth: funs.calcPageWidth()
   property int menuWidth: funs.calcMenuWidth()
 
+  signal drawnIncorrectly
+
 
   id: mainWindow
   width: WindowSizes.stdWidth
@@ -25,7 +27,11 @@ Window {
   visible: true
   title: qsTr("Hello World")
 
-  GCanvas{ id: mainWindowBackground }
+  GCanvas{
+    anchors.fill: parent
+    anchors.centerIn: parent
+    id: mainWindowBackground
+  }
 
   Item{
     id: menuContainer
@@ -52,7 +58,7 @@ Window {
           rounded: Controls.roundedButtons
           text: Russian.menu.profile
 
-          focus: true
+          focus: false
           previousTabItem: menuSignOutButton
           nextTabItem: menuTasksButton
 
@@ -119,7 +125,7 @@ Window {
           rounded: Controls.roundedButtons
           text: Russian.menu.developer
 
-          focus: false
+          focus: visible
           previousTabItem: menuContractsButton
           nextTabItem: menuSignOutButton
 
@@ -129,7 +135,7 @@ Window {
           onClicked: funs.openDevMenu()
         }
       }
-        GButton{
+      GButton{
           id: menuSignOutButton
           y: funs.calcLastMenuButtonY(menuDrawer, height)
           minWidth: menuDrawer.width
@@ -250,7 +256,7 @@ Window {
               if(focus) funs.setDeveloperMenuItem(Controls.devMenuManufacturers)
         }
       }
-        GButton{
+      GButton{
           id: devMenuBackButton
           y: funs.calcLastMenuButtonY(devMenuDrawer, height)
           minWidth: devMenuDrawer.width
@@ -280,14 +286,17 @@ Window {
     orientation: Qt.Vertical
     anchors.fill: parent
     currentIndex: mainWindow.selectedMainMenuItem
+    interactive: false
 
-
+    // TODO: Fix page components positioning when mainWindow is maximized
     Loader{
       id: profileLoader
       active: SwipeView.isCurrentItem
       sourceComponent: ProfilePage{
+        id: profilePage
         width: mainWindow.width / Controls.pageWidthRatio
         height: mainWindow.height
+        onDrawnIncorrectly: mainWindow.drawnIncorrectly()
       }
     }
 
@@ -302,6 +311,7 @@ Window {
       active: SwipeView.isCurrentItem
       SwipeView{
         id: organisationSwipeView
+        interactive: false
         Loader{
           id: organisationListPageLoader
           sourceComponent: OrganisationListPage{}
@@ -316,11 +326,13 @@ Window {
         }
       }
     }
+
     Loader{
       id: contractSwipeViewLoader
       active: SwipeView.isCurrentItem
       SwipeView{
         id: contractSwipeView
+        interactive: false
         Loader{
           id: contractListPageLoader
           sourceComponent: ContractListPage{}
@@ -349,20 +361,28 @@ Window {
       active: SwipeView.isCurrentItem
       SwipeView{
         id: developerSwipeView
+        interactive: false
         Loader{
 
         }
+        Component.onCompleted: funs.refreshMainWindowTitle()
       }
     }
   }
 
 
+  onSelectedMainMenuItemChanged: {
+    funs.refreshMainWindowWidth()
+    funs.refreshMainWindowTitle()
+  }
+
   Component.onCompleted: {
     //menuDeveloperButton.visible = false
     funs.openMenu()
     mainWindow.minimumMenuWidth = funs.calcMinimumMenuWidth()
-    mainWindow.width += 1; mainWindow.width -= 1
   }
+
+  onDrawnIncorrectly: funs.refreshMainWindowWidth()
 
   QtObject{
     id: funs
@@ -393,7 +413,7 @@ Window {
 
     function setMainMenuItem(id){
       mainWindow.selectedMainMenuItem = id
-      //console.log("Current main menu item: " + id)
+      console.log("Current main menu item: " + id)
     }
 
     function setDeveloperMenuItem(id){
@@ -413,8 +433,42 @@ Window {
       devMenuBanksButton.forceActiveFocus()
     }
 
+    function refreshMainWindowWidth(){
+      if(mainWindow.visibility == Window.FullScreen
+          || mainWindow.visibility == Window.Maximized)
+        return 0
+      mainWindow.width += 1; mainWindow.width -= 1
+    }
+
+    function refreshMainWindowTitle(){
+      let name = Russian.projectName + ' ('
+      switch(mainWindow.selectedMainMenuItem){
+      case Controls.menuProfile:
+        name += Russian.menu.profile
+        break;
+      case Controls.menuTasks:
+        name += Russian.menu.tasks
+        break;
+      case Controls.menuOrganisations:
+        name += Russian.menu.organisations
+        break;
+      case Controls.menuContracts:
+        name += Russian.menu.contracts
+        break;
+      case Controls.menuDeveloper:
+        name += Russian.menu.developer
+        break;
+      default:
+        name = Russian.projectName
+        return 0
+      }
+      name += ')'
+      mainWindow.title = name
+    }
+
     function quit(){
       Qt.quit()
     }
   }
+
 }

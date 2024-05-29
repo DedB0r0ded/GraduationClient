@@ -9,7 +9,12 @@ QtObject {
   readonly property real menuButtonsHeighRatio: 10.8
 
   readonly property real pageWidthRatio: 1 * 4 / 3
+
   readonly property real profileInfoLayoutHeightRatio: 1 * 54 / 19
+  readonly property real profileInfoLayoutRowSpacingRatio: 54
+  readonly property real profileInfoLayoutColumnSpacingRatio: 18
+  readonly property real profileNotificationLayoutRowSpacingRatio: 54
+  readonly property real profileNotificationLayoutColumnSpacingRatio: 108
 
   // 80x80
   readonly property real smallButtonsWidthRatio: 24.0

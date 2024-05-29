@@ -14,20 +14,20 @@ GPage{
   property int preferredLabelWidth
   property int preferredInputWidth
 
-
   GridLayout{
     id: _userInfoLayout
     anchors{
-      right: _root.right; rightMargin: 40
-      left: _root.left; leftMargin: 30
-      top: _root.top; topMargin: 30
+      right: parent.right; rightMargin: 30
+      left: parent.left; leftMargin: 30
+      top: parent.top; topMargin: 30
 
     }
 
     height: parent.height / Controls.profileInfoLayoutHeightRatio
 
     rows: 4; columns: 2
-    rowSpacing: 20; columnSpacing: 80
+    rowSpacing: 20
+    columnSpacing: 80
 
     GLabel{
       id: _lastNameLabel
@@ -98,14 +98,40 @@ GPage{
     }
   }
 
+  Row{
+    id: _bottomLayout
+    anchors{
+      right: parent.right; rightMargin: 30
+      left: parent.left; leftMargin: 30
+      bottom: parent.bottom; bottomMargin: 30
+      top: _userInfoLayout.bottom; topMargin: 40
+    }
+
+    GGroupBox{
+      id: _notificationGroupBox
+      title: qsTr(Russian.labels.notifications)
+
+      GridLayout{
+        id: _notificationLayout
+        rows: 4; columns: 3
+        rowSpacing: 20
+        columnSpacing: 10
+      }
+    }
+  }
+
   function calcPreferredWidth(){
     let res = WindowSizes.stdWidth / Controls.basicInputWidthRatio
-    console.log(res)
     return res
+  }
+
+  function assertDrawnCorrectly(){
+    if(_emailLabel.width !== _root.preferredInputWidth)
+      _root.drawnIncorrectly()
   }
 
   Component.onCompleted: {
     _root.preferredInputWidth = _root.calcPreferredWidth()
-    console.log(_emailLabel.width)
+    assertDrawnCorrectly()
   }
 }

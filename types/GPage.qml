@@ -10,6 +10,7 @@ FocusScope {
   width: parent.width / Controls.pageWidthRatio
   height: parent.height
   property alias border: _bg.border
+  signal drawnIncorrectly
 
   GCanvas{ id: _bg }
 

@@ -2,7 +2,10 @@ pragma Singleton
 
 import QtQuick
 
+// TODO: Describe strings in the same way as colorSchemes
 QtObject{
+  readonly property string projectName: 'Frius'
+
   readonly property var menu: {
     'profile'       : 'Профиль',
     'tasks'         : 'Задачи',
@@ -20,10 +23,11 @@ QtObject{
   }
 
   readonly property var labels: {
-    'firstName' : 'Имя',
-    'middleName': 'Отчество',
-    'lastName'  : 'Фамилия',
-    'email'     : 'Электронная почта'
+    'firstName'     : 'Имя',
+    'middleName'    : 'Отчество',
+    'lastName'      : 'Фамилия',
+    'email'         : 'Электронная почта',
+    'notifications' : 'Уведомления'
   }
 
   readonly property var placeholders: {

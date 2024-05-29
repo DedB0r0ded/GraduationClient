@@ -31,6 +31,7 @@ list(APPEND PROJECT_TYPES
   types/GTextField.qml
   types/GPage.qml
   types/GLabel.qml
+  types/GGroupBox.qml
 )
 
 list(APPEND PROJECT_COLOR_SCHEMES
