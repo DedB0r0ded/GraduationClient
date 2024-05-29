@@ -8,8 +8,14 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS Quick QuickControls2)
 
 qt_standard_project_setup(REQUIRES 6.5)
 
+set(SOURCES main.cpp)
+qt_add_resources(SOURCES Images.qrc)
+
+set(app_icon_resource_windows ${CMAKE_CURRENT_SOURCE_DIR}/icon.rc)
+
 qt_add_executable(appQtApp
-    main.cpp
+    ${SOURCES}
+    ${app_icon_resource_windows}
 )
 
 list(APPEND PROJECT_STRINGS
@@ -27,11 +33,13 @@ list(APPEND PROJECT_BASIC_TYPES
 list(APPEND PROJECT_TYPES
   types/GButtonTemplate.qml
   types/GButton.qml
+  types/GIconButton.qml
   types/GTextArea.qml
   types/GTextField.qml
   types/GPage.qml
   types/GLabel.qml
   types/GGroupBox.qml
+  types/GComboBox.qml
 )
 
 list(APPEND PROJECT_COLOR_SCHEMES

@@ -110,11 +110,15 @@ FocusScope{
     }
 
     function nextTabItem(){
+      if(!_root.nextTabItem)
+        return null
       _root.nextTabItem.forceActiveFocus()
       return _root.nextTabItem
     }
 
     function prevTabItem(){
+      if(!_root.previousTabItem)
+        return null
       _root.previousTabItem.forceActiveFocus()
       return _root.previousTabItem
     }

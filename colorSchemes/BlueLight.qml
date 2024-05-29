@@ -3,6 +3,7 @@ pragma Singleton
 import "../types/basic"
 
 GColorScheme{
+  dark: false
   basic: GColorSet{
     id: _basic
     background: GColorTriplet{

@@ -15,6 +15,7 @@ GroupBox{
 
   label: GLabel{
     x: parent.leftPadding
+    font.weight: FontProperties.headerTextWeight
     width: _root.availableWidth
     text: _root.title
   }

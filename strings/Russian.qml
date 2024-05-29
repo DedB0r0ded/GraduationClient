@@ -23,11 +23,15 @@ QtObject{
   }
 
   readonly property var labels: {
-    'firstName'     : 'Имя',
-    'middleName'    : 'Отчество',
-    'lastName'      : 'Фамилия',
-    'email'         : 'Электронная почта',
-    'notifications' : 'Уведомления'
+    'firstName'           : 'Имя',
+    'middleName'          : 'Отчество',
+    'lastName'            : 'Фамилия',
+    'email'               : 'Электронная почта',
+    'notifications'       : 'Уведомления',
+    'expiringContracts'   : 'Истекает срок договора',
+    'maintenanceRequired' : 'Необходимо ТО',
+    'changeRequired'      : 'Необходима замена',
+    'urgentMaintenance'   : 'Заявки на срочное ТО'
   }
 
   readonly property var placeholders: {

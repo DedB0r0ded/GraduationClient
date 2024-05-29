@@ -10,5 +10,17 @@
         <file>images/PasswordLight.png</file>
         <file>images/icon.png</file>
         <file>images/icon.ico</file>
+        <file>images/blackTickDark.png</file>
+        <file>images/blackTickLight.png</file>
+        <file>images/dotsDark.png</file>
+        <file>images/dotsLight.png</file>
+        <file>images/minusDark.png</file>
+        <file>images/minusLight.png</file>
+        <file>images/pencilDark.png</file>
+        <file>images/pencilLight.png</file>
+        <file>images/plusDark.png</file>
+        <file>images/plusLight.png</file>
+        <file>images/tickInCircleDark.png</file>
+        <file>images/tickInCircleLight.png</file>
     </qresource>
 </RCC>

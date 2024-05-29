@@ -98,7 +98,7 @@ GPage{
     }
   }
 
-  Row{
+  RowLayout{
     id: _bottomLayout
     anchors{
       right: parent.right; rightMargin: 30
@@ -111,13 +111,136 @@ GPage{
       id: _notificationGroupBox
       title: qsTr(Russian.labels.notifications)
 
+
       GridLayout{
         id: _notificationLayout
         rows: 4; columns: 3
         rowSpacing: 20
         columnSpacing: 10
+
+        GLabel{
+          id: _expiringContractsLabel
+          text: Russian.labels.expiringContracts
+          horizontalAlignment: Text.AlignRight
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+          Layout.horizontalStretchFactor: 20
+        }
+        GLabel{
+          id: _expiringContractsQuantityLabel
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+          Layout.horizontalStretchFactor: 10
+        }
+        GIconButton{
+          id: _expiringContractsMoreButton
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+          Layout.minimumWidth: _root.calcButtonPreferredWidth()
+          Layout.minimumHeight: _root.calcButtonPreferredHeight()
+          Layout.horizontalStretchFactor: 3
+          lightIconSource: "qrc:///images/dotsLight.png"
+          darkIconSource: "qrc:///images/dotsDark.png"
+        }
+
+        GLabel{
+          id: _maintenanceRequiredLabel
+          text: Russian.labels.maintenanceRequired
+          horizontalAlignment: Text.AlignRight
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+          Layout.horizontalStretchFactor: 20
+        }
+        GLabel{
+          id: _maintenanceRequiredQuantityLabel
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+          Layout.horizontalStretchFactor: 10
+        }
+        GIconButton{
+          id: _maintenanceRequiredMoreButton
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+          Layout.minimumWidth: _root.calcButtonPreferredWidth()
+          Layout.minimumHeight: _root.calcButtonPreferredHeight()
+          Layout.horizontalStretchFactor: 3
+          lightIconSource: "qrc:///images/dotsLight.png"
+          darkIconSource: "qrc:///images/dotsDark.png"
+        }
+
+        GLabel{
+          id: _changeRequiredLabel
+          text: Russian.labels.changeRequired
+          horizontalAlignment: Text.AlignRight
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+          Layout.horizontalStretchFactor: 20
+        }
+        GLabel{
+          id: _changeRequiredQuantityLabel
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+          Layout.horizontalStretchFactor: 10
+        }
+        GIconButton{
+          id: _changeRequiredMoreButton
+          Layout.fillWidth: true
+          Layout.fillHeight: false
+          Layout.minimumWidth: _root.calcButtonPreferredWidth()
+          Layout.minimumHeight: _root.calcButtonPreferredHeight()
+          Layout.horizontalStretchFactor: 3
+          lightIconSource: "qrc:///images/dotsLight.png"
+          darkIconSource: "qrc:///images/dotsDark.png"
+        }
+
+        GLabel{
+          id: _urgentMaintenanceLabel
+          text: Russian.labels.urgentMaintenance
+          horizontalAlignment: Text.AlignRight
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+          Layout.horizontalStretchFactor: 20
+        }
+        GLabel{
+          id: _urgentMaintenanceQuantityLabel
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+          Layout.horizontalStretchFactor: 10
+        }
+        GIconButton{
+          id: _urgentMaintenanceMoreButton
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+          Layout.minimumWidth: _root.calcButtonPreferredWidth()
+          Layout.minimumHeight: _root.calcButtonPreferredHeight()
+          Layout.horizontalStretchFactor: 3
+          lightIconSource: "qrc:///images/dotsLight.png"
+          darkIconSource: "qrc:///images/dotsDark.png"
+        }
       }
     }
+
+    GridLayout{
+      id: _miscLayout
+
+      columns: 2;
+      GLabel{}
+      GComboBox{}
+      GLabel{}
+      GLabel{}
+      GLabel{}
+      GLabel{}
+      GButton{}
+
+    }
+  }
+
+  function calcButtonPreferredWidth(){
+    return WindowSizes.stdWidth / Controls.smallButtonsWidthRatio
+  }
+
+  function calcButtonPreferredHeight(){
+    return WindowSizes.stdHeight / Controls.smallButtonsHeightRatio
   }
 
   function calcPreferredWidth(){

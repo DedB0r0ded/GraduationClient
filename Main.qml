@@ -370,9 +370,10 @@ Window {
     }
   }
 
+  onHeightChanged: drawnIncorrectly()
 
   onSelectedMainMenuItemChanged: {
-    funs.refreshMainWindowWidth()
+    drawnIncorrectly()
     funs.refreshMainWindowTitle()
   }
 

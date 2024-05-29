@@ -29,6 +29,7 @@ QtObject {
   readonly property real largeButtonsHeightRatio: 12.0
 
   readonly property bool roundedButtons: false
+  readonly property bool roundedIconButtons: true
 
   readonly property real basicInputWidthRatio: 3.0
   readonly property real basicInputHeightRatio: 24.0
