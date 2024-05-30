@@ -225,7 +225,10 @@ GPage{
 
       columns: 2;
       GLabel{}
-      GComboBox{}
+      GComboBox{
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+      }
       GLabel{}
       GLabel{}
       GLabel{}
