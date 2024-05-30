@@ -102,9 +102,9 @@ GPage{
     id: _bottomLayout
     spacing: 20
     anchors{
-      right: parent.right; rightMargin: 30
-      left: parent.left; leftMargin: 30
-      bottom: parent.bottom; bottomMargin: 30
+      right: _root.right; rightMargin: 30
+      left: _root.left; leftMargin: 30
+      bottom: _root.bottom; bottomMargin: 30
       top: _userInfoLayout.bottom; topMargin: 40
     }
 
@@ -183,7 +183,7 @@ GPage{
         }
         GLabel{
           id: _changeRequiredQuantityLabel
-          text: _root.getChengeRequiredQuantity()
+          text: _root.getChangeRequiredQuantity()
           Layout.fillWidth: true
           Layout.fillHeight: true
           Layout.horizontalStretchFactor: 10
@@ -232,6 +232,10 @@ GPage{
 
       columns: 2; rows: 6
       rowSpacing: 20
+
+      Layout.fillHeight: true
+      Layout.fillWidth: true
+
       GLabel{
         Layout.fillWidth: true
         Layout.fillHeight: true
@@ -256,10 +260,11 @@ GPage{
         Layout.columnSpan: 2
         Layout.preferredHeight: _refreshDataButton.minHeight
         Layout.preferredWidth: _refreshDataButton.minWidth
+        Layout.alignment: Qt.AlignRight
 
         GButton{
           id: _refreshDataButton
-          minWidth: _miscLayout.width
+          minWidth: _root.calcLargeButtonWidth()
           minHeight: _root.calcLargeButtonHeight()
         }
       }
@@ -269,10 +274,11 @@ GPage{
         Layout.columnSpan: 2
         Layout.preferredHeight: _clearCompletedButton.minHeight
         Layout.preferredWidth: _clearCompletedButton.minWidth
+        Layout.alignment: Qt.AlignRight
 
         GButton{
           id: _clearCompletedButton
-          minWidth: _miscLayout.width
+          minWidth: _root.calcLargeButtonWidth()
           minHeight: _root.calcLargeButtonHeight()
         }
       }
@@ -282,10 +288,11 @@ GPage{
         Layout.columnSpan: 2
         Layout.preferredHeight: _deleteAccountButton.minHeight
         Layout.preferredWidth: _deleteAccountButton.minWidth
+        Layout.alignment: Qt.AlignRight
 
         GButton{
           id: _deleteAccountButton
-          minWidth: _miscLayout.width
+          minWidth: _root.calcLargeButtonWidth()
           minHeight: _root.calcLargeButtonHeight()
           dangerous: true
         }
@@ -302,7 +309,11 @@ GPage{
   }
 
   function calcLargeButtonWidth(){
-    return WindowSizes.stdWidth / Controls.largeButtonsWidthRatio
+    let b = _bottomLayout
+    let m = _miscLayout
+    let res = (b.width - b.anchors.rightMargin -
+               b.anchors.leftMargin - m.columnSpacing) / 2
+    return res
   }
 
   function calcLargeButtonHeight(){
@@ -312,6 +323,26 @@ GPage{
   function calcPreferredWidth(){
     let res = WindowSizes.stdWidth / Controls.basicInputWidthRatio
     return res
+  }
+
+  function getExpiringContractsQuantity(){
+    // C++ REST
+    return 0
+  }
+
+  function getMaintenanceRequiredQuantity(){
+    // C++ REST
+    return 0
+  }
+
+  function getChangeRequiredQuantity(){
+    // C++ REST
+    return 0
+  }
+
+  function getUrgentMaintenanceQuantity(){
+    // C++ REST
+    return 0
   }
 
   function assertDrawnCorrectly(){

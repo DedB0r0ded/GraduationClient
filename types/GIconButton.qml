@@ -60,6 +60,6 @@ Button{
   }
 
   Component.onCompleted: {
-    console.log('src: ' + icon.source)
+    //console.log('src: ' + icon.source)
   }
 }
