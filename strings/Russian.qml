@@ -34,6 +34,11 @@ QtObject{
     'urgentMaintenance'   : 'Заявки на срочное ТО'
   }
 
+  readonly property var tableHeaders: {
+    'globalManufacturerName': 'Наименование',
+    'globalManufacturerCode': 'Код',
+  }
+
   readonly property var placeholders: {
     'firstName' : ''
   }

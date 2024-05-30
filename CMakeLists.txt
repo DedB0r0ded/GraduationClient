@@ -30,6 +30,26 @@ list(APPEND PROJECT_BASIC_TYPES
   types/basic/GCursor.qml
 )
 
+list(APPEND PROJECT_MODELS
+  types/models/ContractFacilityComponentTableModel.qml
+  types/models/ContractMaintenanceTableModel.qml
+  types/models/ContractServiceTableModel.qml
+  types/models/ContractTableModel.qml
+  types/models/GlobalBankTableModel.qml
+  types/models/GlobalComponentTableModel.qml
+  types/models/GlobalFacilityComponentTableModel.qml
+  types/models/GlobalFacilityTableModel.qml
+  types/models/GlobalManufacturerTableModel.qml
+  types/models/GlobalServiceTableModel.qml
+  types/models/LocalServiceTableModel.qml
+  types/models/OrganisationTableModel.qml
+  types/models/PrivilegeTableModel.qml
+  types/models/RegKeyTableModel.qml
+  types/models/TaskTableModel.qml
+
+  types/models/ReviewListModel.qml
+)
+
 list(APPEND PROJECT_TYPES
   types/GButtonTemplate.qml
   types/GButton.qml
@@ -101,6 +121,7 @@ qt_add_qml_module(appQtApp
         Main.qml
         QML_FILES ${PROJECT_STRINGS}
         QML_FILES ${PROJECT_BASIC_TYPES}
+        #QML_FILES ${PROJECT_MODELS}
         QML_FILES ${PROJECT_TYPES}
         QML_FILES ${PROJECT_COLOR_SCHEMES}
         QML_FILES ${PROJECT_CONFIG_FILES}

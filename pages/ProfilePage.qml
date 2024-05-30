@@ -100,6 +100,7 @@ GPage{
 
   RowLayout{
     id: _bottomLayout
+    spacing: 20
     anchors{
       right: parent.right; rightMargin: 30
       left: parent.left; leftMargin: 30
@@ -110,6 +111,11 @@ GPage{
     GGroupBox{
       id: _notificationGroupBox
       title: qsTr(Russian.labels.notifications)
+      anchors{
+        left: parent.left
+        top: parent.top
+        bottom: parent.bottom
+      }
 
 
       GridLayout{
@@ -223,17 +229,67 @@ GPage{
     GridLayout{
       id: _miscLayout
 
-      columns: 2;
-      GLabel{}
+      columns: 2; rows: 6
+      rowSpacing: 20
+      GLabel{
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+      }
       GComboBox{
         Layout.fillWidth: true
         Layout.fillHeight: true
       }
-      GLabel{}
-      GLabel{}
-      GLabel{}
-      GLabel{}
-      GButton{}
+      GLabel{
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+        Layout.columnSpan: 2
+      }
+      GLabel{
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+        Layout.columnSpan: 2
+      }
+      Item{
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+        Layout.columnSpan: 2
+        Layout.preferredHeight: _refreshDataButton.minHeight
+        Layout.preferredWidth: _refreshDataButton.minWidth
+
+        GButton{
+          id: _refreshDataButton
+          minWidth: _miscLayout.width
+          minHeight: _root.calcLargeButtonHeight()
+        }
+      }
+      Item{
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+        Layout.columnSpan: 2
+        Layout.preferredHeight: _clearCompletedButton.minHeight
+        Layout.preferredWidth: _clearCompletedButton.minWidth
+
+        GButton{
+          id: _clearCompletedButton
+          minWidth: _miscLayout.width
+          minHeight: _root.calcLargeButtonHeight()
+        }
+      }
+      Item{
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+        Layout.columnSpan: 2
+        Layout.preferredHeight: _deleteAccountButton.minHeight
+        Layout.preferredWidth: _deleteAccountButton.minWidth
+
+        GButton{
+          id: _deleteAccountButton
+          minWidth: _miscLayout.width
+          minHeight: _root.calcLargeButtonHeight()
+          dangerous: true
+        }
+      }
+
 
     }
   }
@@ -244,6 +300,14 @@ GPage{
 
   function calcButtonPreferredHeight(){
     return WindowSizes.stdHeight / Controls.smallButtonsHeightRatio
+  }
+
+  function calcLargeButtonWidth(){
+    return WindowSizes.stdWidth / Controls.largeButtonsWidthRatio
+  }
+
+  function calcLargeButtonHeight(){
+    return WindowSizes.stdHeight / Controls.largeButtonsHeightRatio
   }
 
   function calcPreferredWidth(){
