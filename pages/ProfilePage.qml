@@ -111,11 +111,8 @@ GPage{
     GGroupBox{
       id: _notificationGroupBox
       title: qsTr(Russian.labels.notifications)
-      anchors{
-        left: parent.left
-        top: parent.top
-        bottom: parent.bottom
-      }
+      Layout.fillHeight: true
+      Layout.fillWidth: true
 
 
       GridLayout{
@@ -134,6 +131,7 @@ GPage{
         }
         GLabel{
           id: _expiringContractsQuantityLabel
+          text: _root.getExpiringContractsQuantity()
           Layout.fillWidth: true
           Layout.fillHeight: true
           Layout.horizontalStretchFactor: 10
@@ -159,6 +157,7 @@ GPage{
         }
         GLabel{
           id: _maintenanceRequiredQuantityLabel
+          text: _root.getMaintenanceRequiredQuantity()
           Layout.fillWidth: true
           Layout.fillHeight: true
           Layout.horizontalStretchFactor: 10
@@ -184,6 +183,7 @@ GPage{
         }
         GLabel{
           id: _changeRequiredQuantityLabel
+          text: _root.getChengeRequiredQuantity()
           Layout.fillWidth: true
           Layout.fillHeight: true
           Layout.horizontalStretchFactor: 10
@@ -209,6 +209,7 @@ GPage{
         }
         GLabel{
           id: _urgentMaintenanceQuantityLabel
+          text: _root.getUrgentMaintenanceQuantity()
           Layout.fillWidth: true
           Layout.fillHeight: true
           Layout.horizontalStretchFactor: 10
@@ -289,8 +290,6 @@ GPage{
           dangerous: true
         }
       }
-
-
     }
   }
 
