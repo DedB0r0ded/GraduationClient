@@ -8,6 +8,10 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS Quick QuickControls2)
 
 qt_standard_project_setup(REQUIRES 6.5)
 
+list(APPEND REST_CLIENT_SOURCES
+  REST_AppWrapper.cpp REST_AppWrapper.h
+)
+
 set(SOURCES main.cpp)
 qt_add_resources(SOURCES Images.qrc)
 
@@ -15,6 +19,7 @@ set(app_icon_resource_windows ${CMAKE_CURRENT_SOURCE_DIR}/icon.rc)
 
 qt_add_executable(appQtApp
     ${SOURCES}
+    ${REST_CLIENT_SOURCES}
     ${app_icon_resource_windows}
 )
 
