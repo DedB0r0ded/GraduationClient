@@ -58,16 +58,20 @@ QtObject{
     'globalBankAddress' : 'Адрес',
     'globalBankRCBIC'   : 'БИК',
 
-    'regKeyUserFullName' : 'ФИО Пользователя',
-    'regKeyShortValue' : 'Ключ',
+    'regKeyUserFullName'  : 'ФИО Пользователя',
+    'regKeyShortValue'    : 'Ключ',
 
-    'taskUserFullName' : 'ФИО исполнителя',
-    'taskCreatorFullName' : 'ФИО создателя',
-    'taskOrganisationName' : 'Организация',
-    'taskSubject' : 'Название',
-    'taskCompleted' : 'Выполнена',
-    'taskCreatedOn' : 'Дата создания',
-    'taskExpiresOn' : 'Срок выполнения'
+    'taskUserFullName'      : 'ФИО исполнителя',
+    'taskCreatorFullName'   : 'ФИО создателя',
+    'taskOrganisationName'  : 'Организация',
+    'taskSubject'           : 'Название',
+    'taskCompleted'         : 'Выполнена',
+    'taskCreatedOn'         : 'Дата создания',
+    'taskExpiresOn'         : 'Срок выполнения',
+
+    'organisationName'    : 'Наименование',
+    'organisationAddress' : 'Юр. адрес',
+    'organisationTID'     : 'ИНН/УНП',
   }
 
   readonly property var placeholders: {
@@ -78,6 +82,7 @@ QtObject{
 
     'organisationName' : 'НАИМЕНОВАНИЕ_ОРГАНИЗАЦИИ',
     'address'   : 'АДРЕС',
+    'tid'       : 'AAAAA00',
     'date'      : '00.00.0000',
     'shortText' : 'Lorem ipsum dolor sit amet',
     'longText'  : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lectus purus, suscipit eget tortor ac, pellentesque blandit leo. Sed eget tellus a neque pharetra lobortis ut et leo. Nunc elementum.',
