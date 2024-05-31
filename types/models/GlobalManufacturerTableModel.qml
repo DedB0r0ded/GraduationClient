@@ -9,8 +9,8 @@ TableModel{
 
   rows: [
     {
-      name: "MANUFACTURER_NAME",
-      code: "CODE"
+      name: Russian.placeholders.manufacturerName,
+      code: Russian.placeholders.manufacturerCode,
     }
   ]
 

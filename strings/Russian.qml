@@ -35,14 +35,45 @@ QtObject{
   }
 
   readonly property var tableHeaders: {
-    'globalManufacturerName'        : 'Наименование',
-    'globalManufacturerCode'        : 'Код',
+    'globalManufacturerName'  : 'Наименование',
+    'globalManufacturerCode'  : 'Код',
+
     'globalServiceName'             : 'Наименование',
     'globalServiceDefaultFacility'  : 'Оборудование по умолчанию',
-    'globalServiceDefaultComponent' : 'Компонент по умолчанию'
+    'globalServiceDefaultComponent' : 'Компонент по умолчанию',
+
+    'globalFacilityName'            : 'Наименование',
+    'globalFacilityManufacturer'    : 'Изготовитель',
+    'globalFacilityManufactureYear' : 'Год выпуска',
+    'globalFacilityWarrantyPeriod'  : 'Срок гарантии',
+
+    'globalComponentName'            : 'Наименование',
+    'globalComponentManufacturer'    : 'Изготовитель',
+    'globalComponentManufactureYear' : 'Год выпуска',
+    'globalComponentWarrantyPeriod'  : 'Срок гарантии',
+
+    'globalFacilityComponentName' : 'Наименование компонента',
+
+    'globalBankName'    : 'Наименование',
+    'globalBankAddress' : 'Адрес',
+    'globalBankRCBIC'   : 'БИК',
   }
 
   readonly property var placeholders: {
-    'firstName' : ''
+    'userFirstName' : 'ИМЯ_ПОЛЬЗОВАТЕЛЯ',
+    'userMiddleName' : 'ОТЧЕСТВО_ПОЛЬЗОВАТЕЛЯ',
+    'userLastName' : 'ФАМИЛИЯ_ПОЛЬЗОВАТЕЛЯ',
+
+    'address' : 'АДРЕС',
+
+    'facilityName'      : 'НАИМЕНОВАНИЕ_ОБОРУДОВАНИЯ',
+    'componentName'     : 'НАИМЕНОВАНИЕ_КОМПОНЕНТА',
+    'manufactureYear'   : '0000',
+    'warrantyPeriod'    : '00_ЛЕТ',
+    'serviceName'       : 'НАИМЕНОВАНИЕ_УСЛУГИ',
+    'manufacturerName'  : 'НАИМЕНОВАНИЕ_ИЗГОТОВИТЕЛЯ',
+    'manufacturerCode'  : 'КОДБ',
+
+
   }
 }

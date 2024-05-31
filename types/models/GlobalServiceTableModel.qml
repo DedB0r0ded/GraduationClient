@@ -10,9 +10,9 @@ TableModel{
 
   rows:[
     {
-      name: "SERVICE_NAME",
-      defaultFacilityName: "FACILITY_NAME",
-      defaultComponentName: "COMPONENT_NAME"
+      name: Russian.placeholders.serviceName,
+      defaultFacilityName: Russian.placeholders.facilityName,
+      defaultComponentName: Russian.placeholders.componentName,
     }
   ]
 
