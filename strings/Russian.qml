@@ -77,6 +77,12 @@ QtObject{
     'organisationServiceCost'             : 'Стоимость',
     'organisationServiceDefaultFacility'  : 'Оборудование по умолчанию',
     'organisationServiceDefaultComponent' : 'Компонент по умолчанию',
+
+    'contractCustomerName'    : 'Заказчик',
+    'contractContractorName'  : 'Исполнитель',
+    'contractConclusionDate'  : 'Дата заключения',
+    'contractExpirationDate'  : 'Дата истечения',
+    'contractContinuous'      : 'Тип договора',
   }
 
   readonly property var placeholders: {
