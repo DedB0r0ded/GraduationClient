@@ -37,6 +37,7 @@ QtObject{
   readonly property var tableHeaders: {
     'globalManufacturerName'  : 'Наименование',
     'globalManufacturerCode'  : 'Код',
+    'globalManufacturerCountry' : 'Страна происхождения',
 
     'globalServiceName'             : 'Наименование',
     'globalServiceDefaultFacility'  : 'Оборудование по умолчанию',
@@ -71,7 +72,7 @@ QtObject{
 
     'organisationName'    : 'Наименование',
     'organisationAddress' : 'Юр. адрес',
-    'organisationTID'     : 'ИНН/УНП/ОКПО',
+    'organisationTID'     : 'УНП/ИНН/ИНП',
 
     'organisationServiceName'             : 'Наименование',
     'organisationServiceCost'             : 'Стоимость',
@@ -83,6 +84,18 @@ QtObject{
     'contractConclusionDate'  : 'Дата заключения',
     'contractExpirationDate'  : 'Дата истечения',
     'contractContinuous'      : 'Тип договора',
+
+    'contractServiceName' : 'Наименование',
+    'contractServiceCost' : 'Стоимость',
+    'contractServiceObject' : 'Объект',
+
+    'contractMaintenanceLastDate' : 'Последнее ТО',
+    'contractMaintenanceNextDate' : 'Следующее ТО',
+    'contractMaintenanceNextChangeDate' : 'Следующая замена',
+    'contractMaintenanceObject' : 'Объект',
+
+    'contractFacilityComponentName' : 'Наименование компонента',
+    'contractFacilityComponentMaintained' : 'Обслуживается',
   }
 
   readonly property var placeholders: {
@@ -92,6 +105,8 @@ QtObject{
     'userFullName'    : 'ФАМИЛИЯ И.О.',
 
     'organisationName' : 'НАИМЕНОВАНИЕ_ОРГАНИЗАЦИИ',
+    'phone'     : '+0 (00) 000-00-00',
+    'country'   : 'СТРАНА А',
     'address'   : 'АДРЕС',
     'tid'       : 'AAAAA00',
     'date'      : '00.00.0000',
