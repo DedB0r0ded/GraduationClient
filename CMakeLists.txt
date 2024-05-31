@@ -49,7 +49,7 @@ list(APPEND PROJECT_MODELS
   types/models/LocalServiceTableModel.qml
   types/models/OrganisationTableModel.qml
   types/models/PrivilegeTableModel.qml
-  types/models/RegKeyTableModel.qml
+  types/models/OrganisationRegKeyTableModel.qml
   types/models/TaskTableModel.qml
 
   types/models/ReviewListModel.qml
