@@ -72,6 +72,11 @@ QtObject{
     'organisationName'    : 'Наименование',
     'organisationAddress' : 'Юр. адрес',
     'organisationTID'     : 'ИНН/УНП',
+
+    'organisationServiceName'             : 'Наименование',
+    'organisationServiceCost'             : 'Стоимость',
+    'organisationServiceDefaultFacility'  : 'Оборудование по умолчанию',
+    'organisationServiceDefaultComponent' : 'Компонент по умолчанию',
   }
 
   readonly property var placeholders: {

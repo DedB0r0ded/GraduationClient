@@ -46,10 +46,10 @@ list(APPEND PROJECT_MODELS
   types/models/GlobalFacilityTableModel.qml
   types/models/GlobalManufacturerTableModel.qml
   types/models/GlobalServiceTableModel.qml
-  types/models/LocalServiceTableModel.qml
+  types/models/OrganisationLocalServiceTableModel.qml
   types/models/OrganisationTableModel.qml
-  types/models/PrivilegeTableModel.qml
   types/models/OrganisationRegKeyTableModel.qml
+  types/models/PrivilegeTableModel.qml
   types/models/TaskTableModel.qml
 
   types/models/ReviewListModel.qml
