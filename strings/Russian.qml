@@ -71,16 +71,16 @@ QtObject{
   }
 
   readonly property var placeholders: {
-    'userFirstName' : 'ИМЯ_ПОЛЬЗОВАТЕЛЯ',
-    'userMiddleName' : 'ОТЧЕСТВО_ПОЛЬЗОВАТЕЛЯ',
-    'userLastName' : 'ФАМИЛИЯ_ПОЛЬЗОВАТЕЛЯ',
-    'userFullName' : 'ФАМИЛИЯ И.О.',
+    'userFirstName'   : 'ИМЯ_ПОЛЬЗОВАТЕЛЯ',
+    'userMiddleName'  : 'ОТЧЕСТВО_ПОЛЬЗОВАТЕЛЯ',
+    'userLastName'    : 'ФАМИЛИЯ_ПОЛЬЗОВАТЕЛЯ',
+    'userFullName'    : 'ФАМИЛИЯ И.О.',
 
     'organisationName' : 'НАИМЕНОВАНИЕ_ОРГАНИЗАЦИИ',
-    'address' : 'АДРЕС',
-    'date' : '00.00.0000',
+    'address'   : 'АДРЕС',
+    'date'      : '00.00.0000',
     'shortText' : 'Lorem ipsum dolor sit amet',
-    'longText' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lectus purus, suscipit eget tortor ac, pellentesque blandit leo. Sed eget tellus a neque pharetra lobortis ut et leo. Nunc elementum.',
+    'longText'  : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lectus purus, suscipit eget tortor ac, pellentesque blandit leo. Sed eget tellus a neque pharetra lobortis ut et leo. Nunc elementum.',
 
     'facilityName'      : 'НАИМЕНОВАНИЕ_ОБОРУДОВАНИЯ',
     'componentName'     : 'НАИМЕНОВАНИЕ_КОМПОНЕНТА',
@@ -92,7 +92,8 @@ QtObject{
     'manufacturerName'  : 'НАИМЕНОВАНИЕ_ИЗГОТОВИТЕЛЯ',
     'manufacturerCode'  : 'КОДБ',
 
-    'regKeyShortValue' : '1f7a520a',
-    'regKeyFullValue' : '0e97b1a3818461f7a520a467b1a38c1f7a520a467b1a38c1ff7a57a520a47',
+    'regKeyShortValue'  : '1f7a520a',
+    'regKeyFullValue'   : '0e97b1a3818461f7a520a467b1a38c1f7a520a467b1a38c1ff7a57a520a47',
+    'privilegeName'     : 'ВЫПОЛНЯТЬ_ДЕЙСТВИЕ'
   }
 }
