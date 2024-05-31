@@ -68,6 +68,8 @@ QtObject{
 
     'facilityName'      : 'НАИМЕНОВАНИЕ_ОБОРУДОВАНИЯ',
     'componentName'     : 'НАИМЕНОВАНИЕ_КОМПОНЕНТА',
+    'bankName'          : 'НАИМЕНОВАНИЕ_БАНКА',
+    'rcbic'             : 'БИКБИКБИК',
     'manufactureYear'   : '0000',
     'warrantyPeriod'    : '00_ЛЕТ',
     'serviceName'       : 'НАИМЕНОВАНИЕ_УСЛУГИ',
