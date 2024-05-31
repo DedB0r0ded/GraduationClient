@@ -71,7 +71,7 @@ QtObject{
 
     'organisationName'    : 'Наименование',
     'organisationAddress' : 'Юр. адрес',
-    'organisationTID'     : 'ИНН/УНП',
+    'organisationTID'     : 'ИНН/УНП/ОКПО',
 
     'organisationServiceName'             : 'Наименование',
     'organisationServiceCost'             : 'Стоимость',
