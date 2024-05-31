@@ -9,9 +9,18 @@ TableModel{
 
   rows: [
     {
-      name: "MANUFACTURER_NAME"
+      name: "MANUFACTURER_NAME",
       code: "CODE"
     }
-
   ]
+
+  Component.onCompleted: {
+    fetchModel()
+  }
+
+  function fetchModel(){
+    // clear()
+    // C++ REST
+    return 0
+  }
 }

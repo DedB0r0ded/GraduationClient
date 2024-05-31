@@ -35,8 +35,11 @@ QtObject{
   }
 
   readonly property var tableHeaders: {
-    'globalManufacturerName': 'Наименование',
-    'globalManufacturerCode': 'Код',
+    'globalManufacturerName'        : 'Наименование',
+    'globalManufacturerCode'        : 'Код',
+    'globalServiceName'             : 'Наименование',
+    'globalServiceDefaultFacility'  : 'Оборудование по умолчанию',
+    'globalServiceDefaultComponent' : 'Компонент по умолчанию'
   }
 
   readonly property var placeholders: {
