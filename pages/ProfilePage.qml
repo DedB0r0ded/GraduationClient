@@ -5,6 +5,7 @@ import QtQuick.Layouts
 import '../types'
 import '../config'
 import '../strings'
+import '../colorSchemes'
 
 
 GPage{
@@ -117,13 +118,15 @@ GPage{
 
       GridLayout{
         id: _notificationLayout
+        anchors.fill: parent
         rows: 4; columns: 3
         rowSpacing: 20
-        columnSpacing: 10
+        columnSpacing: 40
 
         GLabel{
           id: _expiringContractsLabel
           text: Russian.labels.expiringContracts
+          font.pointSize: FontProperties.smallTextSize
           horizontalAlignment: Text.AlignRight
           Layout.fillWidth: true
           Layout.fillHeight: true
@@ -132,6 +135,7 @@ GPage{
         GLabel{
           id: _expiringContractsQuantityLabel
           text: _root.getExpiringContractsQuantity()
+          font.pointSize: FontProperties.smallTextSize
           Layout.fillWidth: true
           Layout.fillHeight: true
           Layout.horizontalStretchFactor: 10
@@ -141,7 +145,7 @@ GPage{
           Layout.fillWidth: true
           Layout.fillHeight: true
           Layout.minimumWidth: _root.calcButtonPreferredWidth()
-          Layout.minimumHeight: _root.calcButtonPreferredHeight()
+          Layout.maximumHeight: _root.calcButtonPreferredHeight()
           Layout.horizontalStretchFactor: 3
           lightIconSource: "qrc:///images/dotsLight.png"
           darkIconSource: "qrc:///images/dotsDark.png"
@@ -150,6 +154,7 @@ GPage{
         GLabel{
           id: _maintenanceRequiredLabel
           text: Russian.labels.maintenanceRequired
+          font.pointSize: FontProperties.smallTextSize
           horizontalAlignment: Text.AlignRight
           Layout.fillWidth: true
           Layout.fillHeight: true
@@ -158,6 +163,7 @@ GPage{
         GLabel{
           id: _maintenanceRequiredQuantityLabel
           text: _root.getMaintenanceRequiredQuantity()
+          font.pointSize: FontProperties.smallTextSize
           Layout.fillWidth: true
           Layout.fillHeight: true
           Layout.horizontalStretchFactor: 10
@@ -167,7 +173,7 @@ GPage{
           Layout.fillWidth: true
           Layout.fillHeight: true
           Layout.minimumWidth: _root.calcButtonPreferredWidth()
-          Layout.minimumHeight: _root.calcButtonPreferredHeight()
+          Layout.maximumHeight: _root.calcButtonPreferredHeight()
           Layout.horizontalStretchFactor: 3
           lightIconSource: "qrc:///images/dotsLight.png"
           darkIconSource: "qrc:///images/dotsDark.png"
@@ -176,6 +182,7 @@ GPage{
         GLabel{
           id: _changeRequiredLabel
           text: Russian.labels.changeRequired
+          font.pointSize: FontProperties.smallTextSize
           horizontalAlignment: Text.AlignRight
           Layout.fillWidth: true
           Layout.fillHeight: true
@@ -184,6 +191,7 @@ GPage{
         GLabel{
           id: _changeRequiredQuantityLabel
           text: _root.getChangeRequiredQuantity()
+          font.pointSize: FontProperties.smallTextSize
           Layout.fillWidth: true
           Layout.fillHeight: true
           Layout.horizontalStretchFactor: 10
@@ -191,9 +199,9 @@ GPage{
         GIconButton{
           id: _changeRequiredMoreButton
           Layout.fillWidth: true
-          Layout.fillHeight: false
+          Layout.fillHeight: true
           Layout.minimumWidth: _root.calcButtonPreferredWidth()
-          Layout.minimumHeight: _root.calcButtonPreferredHeight()
+          Layout.maximumHeight: _root.calcButtonPreferredHeight()
           Layout.horizontalStretchFactor: 3
           lightIconSource: "qrc:///images/dotsLight.png"
           darkIconSource: "qrc:///images/dotsDark.png"
@@ -202,6 +210,7 @@ GPage{
         GLabel{
           id: _urgentMaintenanceLabel
           text: Russian.labels.urgentMaintenance
+          font.pointSize: FontProperties.smallTextSize
           horizontalAlignment: Text.AlignRight
           Layout.fillWidth: true
           Layout.fillHeight: true
@@ -210,6 +219,7 @@ GPage{
         GLabel{
           id: _urgentMaintenanceQuantityLabel
           text: _root.getUrgentMaintenanceQuantity()
+          font.pointSize: FontProperties.smallTextSize
           Layout.fillWidth: true
           Layout.fillHeight: true
           Layout.horizontalStretchFactor: 10
@@ -219,7 +229,7 @@ GPage{
           Layout.fillWidth: true
           Layout.fillHeight: true
           Layout.minimumWidth: _root.calcButtonPreferredWidth()
-          Layout.minimumHeight: _root.calcButtonPreferredHeight()
+          Layout.maximumHeight: _root.calcButtonPreferredHeight()
           Layout.horizontalStretchFactor: 3
           lightIconSource: "qrc:///images/dotsLight.png"
           darkIconSource: "qrc:///images/dotsDark.png"
@@ -237,19 +247,46 @@ GPage{
       Layout.fillWidth: true
 
       GLabel{
+        text: Russian.labels.colorScheme
         Layout.fillWidth: true
         Layout.fillHeight: true
+        Layout.horizontalStretchFactor: 3
       }
       GComboBox{
+        id: _colorSchemeComboBox
+        model: ListModel{
+          id: _colorSchemeModel
+
+          ListElement{
+            text: "NONE"
+            dark: false
+          }
+        }
+        textRole: "text"
         Layout.fillWidth: true
         Layout.fillHeight: true
+        Layout.horizontalStretchFactor: 2
+        onCurrentIndexChanged: _root.setColorScheme()
+
+        Component.onCompleted: {
+          _colorSchemeModel.clear()
+          _colorSchemeModel.append({"text": Russian.labels.lightColorScheme, "dark": false})
+          _colorSchemeModel.append({"text": Russian.labels.darkColorScheme, "dark": true})
+          if(CurrentColorScheme.value.dark)
+            _colorSchemeComboBox.currentIndex = find(Russian.labels.darkColorScheme)
+          else
+            _colorSchemeComboBox.currentIndex = find(Russian.labels.lightColorScheme)
+        }
       }
+
       GLabel{
+        text: Russian.labels.userOrganisationQuantity
         Layout.fillWidth: true
         Layout.fillHeight: true
         Layout.columnSpan: 2
       }
       GLabel{
+        text: '0000'
         Layout.fillWidth: true
         Layout.fillHeight: true
         Layout.columnSpan: 2
@@ -258,12 +295,13 @@ GPage{
         Layout.fillWidth: true
         Layout.fillHeight: true
         Layout.columnSpan: 2
-        Layout.preferredHeight: _refreshDataButton.minHeight
-        Layout.preferredWidth: _refreshDataButton.minWidth
+        Layout.minimumHeight: _refreshDataButton.minHeight
+        Layout.minimumWidth: _refreshDataButton.minWidth
         Layout.alignment: Qt.AlignRight
 
         GButton{
           id: _refreshDataButton
+          text: Russian.buttons.profileRefreshTasks
           minWidth: _root.calcLargeButtonWidth()
           minHeight: _root.calcLargeButtonHeight()
         }
@@ -272,12 +310,13 @@ GPage{
         Layout.fillWidth: true
         Layout.fillHeight: true
         Layout.columnSpan: 2
-        Layout.preferredHeight: _clearCompletedButton.minHeight
-        Layout.preferredWidth: _clearCompletedButton.minWidth
+        Layout.minimumHeight: _clearCompletedButton.minHeight
+        Layout.minimumWidth: _clearCompletedButton.minWidth
         Layout.alignment: Qt.AlignRight
 
         GButton{
           id: _clearCompletedButton
+          text: Russian.buttons.profileClearCompletedTasks
           minWidth: _root.calcLargeButtonWidth()
           minHeight: _root.calcLargeButtonHeight()
         }
@@ -286,12 +325,13 @@ GPage{
         Layout.fillWidth: true
         Layout.fillHeight: true
         Layout.columnSpan: 2
-        Layout.preferredHeight: _deleteAccountButton.minHeight
-        Layout.preferredWidth: _deleteAccountButton.minWidth
+        Layout.minimumHeight: _deleteAccountButton.minHeight
+        Layout.minimumWidth: _deleteAccountButton.minWidth
         Layout.alignment: Qt.AlignRight
 
         GButton{
           id: _deleteAccountButton
+          text: Russian.buttons.profileDeleteAccount
           minWidth: _root.calcLargeButtonWidth()
           minHeight: _root.calcLargeButtonHeight()
           dangerous: true
@@ -348,6 +388,13 @@ GPage{
   function assertDrawnCorrectly(){
     if(_emailLabel.width !== _root.preferredInputWidth)
       _root.drawnIncorrectly()
+  }
+
+  function setColorScheme(){
+    if(_colorSchemeComboBox.currentText === Russian.labels.lightColorScheme)
+      CurrentColorScheme.value = BlueDark
+    else
+      CurrentColorScheme.value = BlueLight
   }
 
   Component.onCompleted: {

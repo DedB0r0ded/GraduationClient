@@ -5,7 +5,13 @@ import 'basic'
 
 ComboBox{
   id: _root
-  model: ["TEXT_1", "TEXT_2", "TEXT_3"]
+  textRole: "text"
+  model: ListModel{
+    id: model
+    ListElement { text: "TEXT_1" }
+    ListElement { text: "TEXT_2" }
+  }
+
   padding: 10
 
   delegate: ItemDelegate{
@@ -54,6 +60,7 @@ ComboBox{
       weight: FontProperties.standartTextWeight
     }
     text: _root.displayText
+    verticalAlignment: Text.AlignVCenter
   }
 
 

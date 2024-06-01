@@ -48,5 +48,11 @@ QtObject {
   readonly property int devMenuManufacturers: 4
   readonly property int devMenuBack: 5
 
+  readonly property int taskShowOptionAll: 0
+  readonly property int taskShowOptionSelf: 1
+  readonly property int taskShowOptionAllExceptSelf: 2
 
+  readonly property int taskSortOptionByCreatorFullName:  0
+  readonly property int taskSortOptionByCreationDate: 1
+  readonly property int taskSortOptionByExpirationDate: 2
 }

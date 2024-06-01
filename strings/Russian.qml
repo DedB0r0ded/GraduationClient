@@ -31,12 +31,29 @@ QtObject{
     'expiringContracts'   : 'Истекает срок договора',
     'maintenanceRequired' : 'Необходимо ТО',
     'changeRequired'      : 'Необходима замена',
-    'urgentMaintenance'   : 'Заявки на срочное ТО'
+    'urgentMaintenance'   : 'Заявки на срочное ТО',
+    'colorScheme'         : 'Цветовая схема',
+    'lightColorScheme'    : 'Светлая',
+    'darkColorScheme'     : 'Тёмная',
+    'userOrganisationQuantity' : 'Кол-во организаций:',
+
+    'taskShowOption'                : 'Показать:',
+    'taskShowOptionSelf'            : 'Мои задачи',
+    'taskShowOptionAll'             : 'Все задачи',
+    'taskSortOption'                : 'Сортировать по:',
+    'taskSortOptionCreationDate'    : 'Дате создания',
+    'taskSortOptionExpirationDate'  : 'Сроку выполнения',
+  }
+
+  readonly property var buttons: {
+    'profileRefreshTasks' : 'Обновить данные о задачах',
+    'profileClearCompletedTasks' : 'Очистить выполненные',
+    'profileDeleteAccount' : 'УДАЛИТЬ УЧЕТНУЮ ЗАПИСЬ',
   }
 
   readonly property var tableHeaders: {
-    'globalManufacturerName'  : 'Наименование',
-    'globalManufacturerCode'  : 'Код',
+    'globalManufacturerName'    : 'Наименование',
+    'globalManufacturerCode'    : 'Код',
     'globalManufacturerCountry' : 'Страна происхождения',
 
     'globalServiceName'             : 'Наименование',

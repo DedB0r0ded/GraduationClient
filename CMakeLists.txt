@@ -53,6 +53,9 @@ list(APPEND PROJECT_MODELS
   types/models/TaskTableModel.qml
 
   types/models/ReviewListModel.qml
+
+  types/models/comboBox/TaskShowOptionComboBoxListModel.qml
+  types/models/comboBox/TaskSortOptionComboBoxListModel.qml
 )
 
 list(APPEND PROJECT_TYPES
