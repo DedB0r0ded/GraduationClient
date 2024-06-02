@@ -33,16 +33,19 @@ GPage{
 
       GLabel{
         id: _firstNameLabel
+        text: Russian.placeholders.userFirstName
         Layout.fillHeight: true
         Layout.fillWidth: true
       }
       GLabel{
         id: _middleNameLabel
+        text: Russian.placeholders.userMiddleName
         Layout.fillHeight: true
         Layout.fillWidth: true
       }
       GLabel{
         id: _lastNameLabel
+        text: Russian.placeholders.userLastName
         Layout.fillHeight: true
         Layout.fillWidth: true
       }
@@ -57,6 +60,7 @@ GPage{
 
       GLabel{
         id: _taskShowOptionLabel
+        text: Russian.labels.taskShowOption
         Layout.fillHeight: true
         Layout.fillWidth: true
         Layout.horizontalStretchFactor: 3
@@ -71,6 +75,7 @@ GPage{
 
       GLabel{
         id: _taskSortOptionLabel
+        text: Russian.labels.taskSortOption
         Layout.fillHeight: true
         Layout.fillWidth: true
         Layout.horizontalStretchFactor: 3

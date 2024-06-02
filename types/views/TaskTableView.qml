@@ -24,7 +24,13 @@ TableView{
 
   selectionBehavior: TableView.SelectRows
   //selectionMode: TableView.SingleSelection
-  selectionModel: ItemSelectionModel{}
+  selectionModel: ItemSelectionModel{
+    id: _smodel
+    onCurrentChanged: ()=>{
+      let id = currentIndex
+      _smodel.select(currentIndex, ItemSelectionModel.Rows | ItemSelectionModel.Select)
+    }
+  }
 
   model: TableModel{
     id: _model
@@ -42,7 +48,35 @@ TableView{
         subject: Russian.placeholders.shortText,
         expiresOn: Russian.placeholders.date,
         completed: false,
-      }
+      },
+      {
+        creatorFullName: Russian.placeholders.userFullName,
+        organisationName: Russian.placeholders.organisationName,
+        subject: Russian.placeholders.shortText,
+        expiresOn: Russian.placeholders.date,
+        completed: false,
+      },
+      {
+        creatorFullName: Russian.placeholders.userFullName,
+        organisationName: Russian.placeholders.organisationName,
+        subject: Russian.placeholders.shortText,
+        expiresOn: Russian.placeholders.date,
+        completed: false,
+      },
+      {
+        creatorFullName: Russian.placeholders.userFullName,
+        organisationName: Russian.placeholders.organisationName,
+        subject: Russian.placeholders.shortText,
+        expiresOn: Russian.placeholders.date,
+        completed: false,
+      },
+      {
+        creatorFullName: Russian.placeholders.userFullName,
+        organisationName: Russian.placeholders.organisationName,
+        subject: Russian.placeholders.shortText,
+        expiresOn: Russian.placeholders.date,
+        completed: false,
+      },
     ]
 
     function fetchModel(){
@@ -53,30 +87,7 @@ TableView{
   }
 
   delegate: DelegateChooser{
-    DelegateChoice{
-      column: 0
-      delegate: GTableLabel{
-        text: model.display
-      }
-    }
-    DelegateChoice{
-      column: 1
-      delegate: GTableLabel{
-        text: model.display
-      }
-    }
-    DelegateChoice{
-      column: 2
-      delegate: GTableLabel{
-        text: model.display
-      }
-    }
-    DelegateChoice{
-      column: 3
-      delegate: GTableLabel{
-        text: model.display
-      }
-    }
+
     DelegateChoice{
       column: 4
       delegate: GTableLabel{
@@ -86,16 +97,17 @@ TableView{
           property bool current: parent.current
           property bool selected: parent.selected
           anchors{
-            fill: parent
             centerIn: parent
           }
           checked: model.display
-          nextCheckState: function() {
-            if(checked)
-              return Qt.Checked
-            return Qt.Unchecked
-          }
+          enabled: false
+
         }
+      }
+    }
+    DelegateChoice{
+      delegate: GTableLabel{
+        text: model.display
       }
     }
   }

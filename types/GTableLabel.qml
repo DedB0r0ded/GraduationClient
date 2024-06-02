@@ -25,6 +25,7 @@ GLabel{
   }
   text: "CELL"
 
+
   function bgcolor(){
     if(current || selected)
       return CurrentColorScheme.value.input.background.active

@@ -116,9 +116,9 @@ QtObject{
   }
 
   readonly property var placeholders: {
-    'userFirstName'   : 'ИМЯ_ПОЛЬЗОВАТЕЛЯ',
-    'userMiddleName'  : 'ОТЧЕСТВО_ПОЛЬЗОВАТЕЛЯ',
-    'userLastName'    : 'ФАМИЛИЯ_ПОЛЬЗОВАТЕЛЯ',
+    'userFirstName'   : 'ИМЯ',
+    'userMiddleName'  : 'ОТЧЕСТВО',
+    'userLastName'    : 'ФАМИЛИЯ',
     'userFullName'    : 'ФАМИЛИЯ И.О.',
 
     'organisationName' : 'НАИМЕНОВАНИЕ_ОРГАНИЗАЦИИ',
