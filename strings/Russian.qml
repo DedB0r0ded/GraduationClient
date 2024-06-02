@@ -43,6 +43,9 @@ QtObject{
     'taskSortOption'                : 'Сортировать по:',
     'taskSortOptionCreationDate'    : 'Дате создания',
     'taskSortOptionExpirationDate'  : 'Сроку выполнения',
+
+    'contractTypeContinuous' : 'Договор на ТО',
+    'contractTypeOneTime' : 'Разовый',
   }
 
   readonly property var buttons: {

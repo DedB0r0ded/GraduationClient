@@ -1,5 +1,5 @@
 import QtQuick
-import '../../../config'
+import '../../config'
 
 ListModel{
   id: _model

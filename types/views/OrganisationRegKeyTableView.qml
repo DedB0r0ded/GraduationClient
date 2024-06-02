@@ -1,26 +1,81 @@
+import QtQuick
+import QtQuick.Controls
 import Qt.labs.qmlmodels
+
+import '..'
+import '../models'
 import '../../strings'
+import '../../config'
 
-TableModel{
-  id: _model
 
-  TableModelColumn{ display: Russian.tableHeaders.regKeyUserFullName }
-  TableModelColumn{ display: Russian.tableHeaders.regKeyShortValue }
+TableView{
+  id: _root
+  property var columnWidths: [4, 3]
 
-  rows: [
-    {
-      userFullName: Russian.placeholders.userFullName,
-      shortValue: Russian.placeholders.regKeyShortValue,
+  columnSpacing: 1; rowSpacing: 10
+  columnWidthProvider: function(column) {
+    return width * (columnWidths[column] / columnWidths.reduce(sum, 0)) - columnSpacing
+  }
+  rowHeightProvider: (row) => {return 60}
+
+  interactive: false
+  boundsBehavior: TableView.StopAtBounds
+  resizableColumns: false; resizableRows: false
+
+  selectionBehavior: TableView.SelectRows
+  selectionMode: TableView.ContiguousSelection
+  selectionModel: ItemSelectionModel{
+    id: _smodel
+    onCurrentChanged: ()=>{
+      let id = currentIndex
+      _smodel.select(currentIndex, ItemSelectionModel.Rows | ItemSelectionModel.Select)
     }
-  ]
-
-  Component.onCompleted: {
-    fetchModel()
   }
 
-  function fetchModel(){
-    // clear()
-    // C++ REST
-    return 0
+  model: TableModel{
+    id: _model
+
+    TableModelColumn{ display: "userFullName" }
+    TableModelColumn{ display: "value" }
+
+    rows: [
+      {
+        userFullName: Russian.placeholders.userFullName,
+        value: Russian.placeholders.regKeyValue,
+      },
+      {
+        userFullName: Russian.placeholders.userFullName,
+        value: Russian.placeholders.regKeyValue,
+      },
+      {
+        userFullName: Russian.placeholders.userFullName,
+        value: Russian.placeholders.regKeyValue,
+      },
+      {
+        userFullName: Russian.placeholders.userFullName,
+        value: Russian.placeholders.regKeyValue,
+      },
+      {
+        userFullName: Russian.placeholders.userFullName,
+        value: Russian.placeholders.regKeyValue,
+      },
+    ]
+
+    function fetchModel(){
+      // clear()
+      // C++ REST
+      return 0
+    }
+  }
+
+  delegate: GTableLabel{ text: model.display }
+
+
+  Component.onCompleted: {
+  }
+
+  function sum(acc, item, index, arr){
+    acc += item
+    return acc
   }
 }

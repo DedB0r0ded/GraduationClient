@@ -1,31 +1,85 @@
+import QtQuick
+import QtQuick.Controls
 import Qt.labs.qmlmodels
+
+import '..'
+import '../models'
 import '../../strings'
+import '../../config'
 
-TableModel{
-  id: _model
+TableView{
+  id: _root
+  property var columnWidths: [3, 3, 2, 2]
 
-  // TODO: add warranty period if necessary
-  TableModelColumn{ display: Russian.tableHeaders.globalComponentName }
-  TableModelColumn{ display: Russian.tableHeaders.globalComponentManufacturer }
-  TableModelColumn{ display: Russian.tableHeaders.globalComponentManufactureYear }
-  TableModelColumn{ display: Russian.tableHeaders.globalComponentWarrantyPeriod }
+  columnSpacing: 1; rowSpacing: 10
+  columnWidthProvider: function(column) {
+    return width * (columnWidths[column] / columnWidths.reduce(sum, 0)) - columnSpacing
+  }
+  rowHeightProvider: (row) => {return 60}
 
-  rows:[
-    {
-      name: Russian.placeholders.componentName,
-      manufacturer: Russian.placeholders.manufactureYear,
-      manufactureYear: Russian.placeholders.manufactureYear,
-      warrantyPeriod: Russian.placeholders.warrantyPeriod,
+  interactive: false
+  boundsBehavior: TableView.StopAtBounds
+  resizableColumns: false; resizableRows: false
+
+  selectionBehavior: TableView.SelectRows
+  selectionMode: TableView.ContiguousSelection
+  selectionModel: ItemSelectionModel{
+    id: _smodel
+    onCurrentChanged: ()=>{
+      let id = currentIndex
+      _smodel.select(currentIndex, ItemSelectionModel.Rows | ItemSelectionModel.Select)
     }
-  ]
-
-  Component.onCompleted: {
-    fetchModel()
   }
 
-  function fetchModel(){
-    // clear()
-    // C++ REST
-    return 0
+  model: TableModel{
+    id: _model
+
+    TableModelColumn{ display: "name" }
+    TableModelColumn{ display: "manufacturer" }
+    TableModelColumn{ display: "manufactureYear" }
+    TableModelColumn{ display: "warrantyPeriod" }
+
+    rows: [
+      {
+        name: Russian.placeholders.componentName,
+        manufacturer: Russian.placeholders.manufactureYear,
+        manufactureYear: Russian.placeholders.manufactureYear,
+        warrantyPeriod: Russian.placeholders.warrantyPeriod,
+      },
+      {
+        name: Russian.placeholders.componentName,
+        manufacturer: Russian.placeholders.manufactureYear,
+        manufactureYear: Russian.placeholders.manufactureYear,
+        warrantyPeriod: Russian.placeholders.warrantyPeriod,
+      },
+      {
+        name: Russian.placeholders.componentName,
+        manufacturer: Russian.placeholders.manufactureYear,
+        manufactureYear: Russian.placeholders.manufactureYear,
+        warrantyPeriod: Russian.placeholders.warrantyPeriod,
+      },
+      {
+        name: Russian.placeholders.componentName,
+        manufacturer: Russian.placeholders.manufactureYear,
+        manufactureYear: Russian.placeholders.manufactureYear,
+        warrantyPeriod: Russian.placeholders.warrantyPeriod,
+      },
+      {
+        name: Russian.placeholders.componentName,
+        manufacturer: Russian.placeholders.manufactureYear,
+        manufactureYear: Russian.placeholders.manufactureYear,
+        warrantyPeriod: Russian.placeholders.warrantyPeriod,
+      },
+    ]
+  }
+
+  delegate: GTableLabel{ text: model.display }
+
+
+  Component.onCompleted: { }
+
+  function sum(acc, item, index, arr){
+    acc += item
+    return acc
   }
 }

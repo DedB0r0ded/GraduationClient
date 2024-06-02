@@ -46,7 +46,6 @@ list(APPEND PROJECT_VIEWS
   types/views/ContractMaintenanceTableView.qml
   types/views/ContractServiceTableView.qml
   types/views/ContractTableView.qml
-  types/views/GlobalBankTableView.qml
   types/views/GlobalComponentTableView.qml
   types/views/GlobalFacilityComponentTableView.qml
   types/views/GlobalFacilityTableView.qml

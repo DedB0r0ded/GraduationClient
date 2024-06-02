@@ -3,6 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 
 import '../types'
+import '../types/models'
 import '../types/basic'
 import '../types/views'
 import '../strings'

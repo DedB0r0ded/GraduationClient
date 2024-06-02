@@ -18,12 +18,12 @@ TableView{
   }
   rowHeightProvider: (row) => {return 60}
 
-  interactive: true
+  interactive: false
   boundsBehavior: TableView.StopAtBounds
   resizableColumns: false; resizableRows: false
 
   selectionBehavior: TableView.SelectRows
-  //selectionMode: TableView.SingleSelection
+  selectionMode: TableView.ContiguousSelection
   selectionModel: ItemSelectionModel{
     id: _smodel
     onCurrentChanged: ()=>{
