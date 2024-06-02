@@ -7,7 +7,6 @@ import '../types/basic'
 import '../types/views'
 import '../strings'
 import '../config'
-import '../types/models/comboBox'
 
 GPage{
   id: _root

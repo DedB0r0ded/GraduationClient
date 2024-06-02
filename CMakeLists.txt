@@ -36,26 +36,9 @@ list(APPEND PROJECT_BASIC_TYPES
 )
 
 list(APPEND PROJECT_MODELS
-  types/models/ContractFacilityComponentTableModel.qml
-  types/models/ContractMaintenanceTableModel.qml
-  types/models/ContractServiceTableModel.qml
-  types/models/ContractTableModel.qml
-  types/models/GlobalBankTableModel.qml
-  types/models/GlobalComponentTableModel.qml
-  types/models/GlobalFacilityComponentTableModel.qml
-  types/models/GlobalFacilityTableModel.qml
-  types/models/GlobalManufacturerTableModel.qml
-  types/models/GlobalServiceTableModel.qml
-  types/models/OrganisationLocalServiceTableModel.qml
-  types/models/OrganisationTableModel.qml
-  types/models/OrganisationRegKeyTableModel.qml
-  types/models/PrivilegeTableModel.qml
-  # types/models/TaskTableModel.qml
-
   types/models/ReviewListModel.qml
-
-  types/models/comboBox/TaskShowOptionComboBoxListModel.qml
-  types/models/comboBox/TaskSortOptionComboBoxListModel.qml
+  types/models/TaskShowOptionComboBoxListModel.qml
+  types/models/TaskSortOptionComboBoxListModel.qml
 )
 
 list(APPEND PROJECT_VIEWS
