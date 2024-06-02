@@ -50,12 +50,32 @@ list(APPEND PROJECT_MODELS
   types/models/OrganisationTableModel.qml
   types/models/OrganisationRegKeyTableModel.qml
   types/models/PrivilegeTableModel.qml
-  types/models/TaskTableModel.qml
+  # types/models/TaskTableModel.qml
 
   types/models/ReviewListModel.qml
 
   types/models/comboBox/TaskShowOptionComboBoxListModel.qml
   types/models/comboBox/TaskSortOptionComboBoxListModel.qml
+)
+
+list(APPEND PROJECT_VIEWS
+  types/views/ContractFacilityComponentTableView.qml
+  types/views/ContractMaintenanceTableView.qml
+  types/views/ContractServiceTableView.qml
+  types/views/ContractTableView.qml
+  types/views/GlobalBankTableView.qml
+  types/views/GlobalComponentTableView.qml
+  types/views/GlobalFacilityComponentTableView.qml
+  types/views/GlobalFacilityTableView.qml
+  types/views/GlobalManufacturerTableView.qml
+  types/views/GlobalServiceTableView.qml
+  types/views/OrganisationLocalServiceTableView.qml
+  types/views/OrganisationTableView.qml
+  types/views/OrganisationRegKeyTableView.qml
+  types/views/PrivilegeTableView.qml
+  types/views/TaskTableView.qml
+
+  types/views/ReviewListView.qml
 )
 
 list(APPEND PROJECT_TYPES
@@ -66,6 +86,7 @@ list(APPEND PROJECT_TYPES
   types/GTextField.qml
   types/GPage.qml
   types/GLabel.qml
+  types/GTableLabel.qml
   types/GGroupBox.qml
   types/GComboBox.qml
 )
@@ -127,15 +148,17 @@ qt_add_qml_module(appQtApp
     VERSION 1.0
     QML_FILES
         Main.qml
-        QML_FILES ${PROJECT_STRINGS}
-        QML_FILES ${PROJECT_BASIC_TYPES}
-        QML_FILES ${PROJECT_MODELS}
-        QML_FILES ${PROJECT_TYPES}
-        QML_FILES ${PROJECT_COLOR_SCHEMES}
-        QML_FILES ${PROJECT_CONFIG_FILES}
-        QML_FILES ${PROJECT_JS_FILES}
-        QML_FILES ${PROJECT_PAGES}
-        QML_FILES ${PROJECT_WINDOWS}
+        QML_FILES
+          ${PROJECT_STRINGS}
+          ${PROJECT_BASIC_TYPES}
+          ${PROJECT_MODELS}
+          ${PROJECT_VIEWS}
+          ${PROJECT_TYPES}
+          ${PROJECT_COLOR_SCHEMES}
+          ${PROJECT_CONFIG_FILES}
+          ${PROJECT_JS_FILES}
+          ${PROJECT_PAGES}
+          ${PROJECT_WINDOWS}
         RESOURCES Images.qrc
         QML_FILES UserSignUpWindow.qml
 )

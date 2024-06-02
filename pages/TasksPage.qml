@@ -1,6 +1,11 @@
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Controls
+
 import '../types'
+import '../types/basic'
+import '../types/views'
+import '../strings'
 import '../config'
 import '../types/models/comboBox'
 
@@ -19,77 +24,63 @@ GPage{
     spacing: 20
 
 
-    GridLayout{
-      id: _topLayout
+    RowLayout{
+      id: _userFullNameLayout
       Layout.fillHeight: true
       Layout.fillWidth: true
-      Layout.verticalStretchFactor: 9
-      rows: 2
-      columns: 12
+      Layout.verticalStretchFactor: 4
+      spacing: 20
 
       GLabel{
         id: _firstNameLabel
         Layout.fillHeight: true
         Layout.fillWidth: true
-        Layout.row: 0
-        Layout.column: 0
-        Layout.columnSpan: 4
       }
       GLabel{
         id: _middleNameLabel
         Layout.fillHeight: true
         Layout.fillWidth: true
-        Layout.row: 0
-        Layout.column: 4
-        Layout.columnSpan: 4
       }
       GLabel{
         id: _lastNameLabel
         Layout.fillHeight: true
         Layout.fillWidth: true
-        Layout.row: 0
-        Layout.column: 8
-        Layout.columnSpan: 4
       }
+    }
+
+    RowLayout{
+      id: _taskSortLayout
+      Layout.fillHeight: true
+      Layout.fillWidth: true
+      Layout.verticalStretchFactor: 4
+      spacing: 20
 
       GLabel{
         id: _taskShowOptionLabel
         Layout.fillHeight: true
         Layout.fillWidth: true
-        Layout.row: 1
-        Layout.column: 0
-        Layout.columnSpan: 3
-        Layout.horizontalStretchFactor: 6
+        Layout.horizontalStretchFactor: 3
       }
       GComboBox{
         id: _taskShowOptionComboBox
         model: TaskShowOptionComboBoxListModel{}
         Layout.fillHeight: true
         Layout.fillWidth: true
-        Layout.row: 1
-        Layout.column: 3
-        Layout.columnSpan: 3
-        Layout.horizontalStretchFactor: 9
+        Layout.horizontalStretchFactor: 2
       }
 
       GLabel{
         id: _taskSortOptionLabel
         Layout.fillHeight: true
         Layout.fillWidth: true
-        Layout.row: 1
-        Layout.column: 6
-        Layout.columnSpan: 3
-        Layout.horizontalStretchFactor: 10
+        Layout.horizontalStretchFactor: 3
       }
       GComboBox{
         id: _taskSortOptionComboBox
         model: TaskSortOptionComboBoxListModel{}
         Layout.fillHeight: true
         Layout.fillWidth: true
-        Layout.row: 1
-        Layout.column: 9
-        Layout.columnSpan: 3
-        Layout.horizontalStretchFactor: 7
+        Layout.horizontalStretchFactor: 2
       }
     }
     RowLayout{
@@ -97,9 +88,89 @@ GPage{
       Layout.fillHeight: true
       Layout.fillWidth: true
       Layout.verticalStretchFactor: 64
+      spacing: 20
+
+      GCanvas{
+        color: CurrentColorScheme.value.input.background.idle
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+        Layout.horizontalStretchFactor: 16
+        anchors{
+          fill: undefined
+          centerIn: undefined
+        }
+        HorizontalHeaderView{
+          id: _hHeaderView
+          anchors{
+            left: parent.left
+            right: parent.right
+            top: parent.top
+          }
+          rowHeightProvider: column => {return 80}
+          syncView: _taskTableView
+          model: [
+            Russian.tableHeaders.taskCreatorFullName,
+            Russian.tableHeaders.taskOrganisationName,
+            Russian.tableHeaders.taskSubject,
+            Russian.tableHeaders.taskExpiresOn,
+            Russian.tableHeaders.taskCompleted
+          ]
+          delegate: GLabel{
+            text: modelData
+            font.pointSize: FontProperties.plainTextSize
+          }
+        }
+        TaskTableView{
+          id: _taskTableView
+          anchors{
+            left: parent.left
+            right: parent.right
+            top: _hHeaderView.bottom
+            topMargin: rowSpacing
+            bottom: parent.bottom
+          }
+        }
+      }
+
+      Column{
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+        Layout.horizontalStretchFactor: 1
+        spacing: 20
+        GIconButton{
+          id: _taskTableAddButton
+          width: _root.calcButtonPreferredWidth(); height: width
+          lightIconSource: "qrc:///images/plusLight.png"
+          darkIconSource: "qrc:///images/plusDark.png"
+        }
+        GIconButton{
+          id: _taskTableCompleteButton
+          width: _root.calcButtonPreferredWidth(); height: width
+          lightIconSource: "qrc:///images/blackTickLight.png"
+          darkIconSource: "qrc:///images/blackTickDark.png"
+        }
+        GIconButton{
+          id: _taskTableEditButton
+          width: _root.calcButtonPreferredWidth(); height: width
+          lightIconSource: "qrc:///images/pencilLight.png"
+          darkIconSource: "qrc:///images/pencilDark.png"
+        }
+        GIconButton{
+          id: _taskTableDeleteButton
+          width: _root.calcButtonPreferredWidth(); height: width
+          lightIconSource: "qrc:///images/minusLight.png"
+          darkIconSource: "qrc:///images/minusDark.png"
+        }
+      }
     }
   }
 
 
+  function calcButtonPreferredWidth(){
+    return WindowSizes.stdWidth / Controls.smallButtonsWidthRatio
+  }
 
+  function calcButtonPreferredHeight(){
+    return WindowSizes.stdHeight / Controls.smallButtonsHeightRatio
+  }
 }
