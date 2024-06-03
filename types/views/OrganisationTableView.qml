@@ -22,7 +22,7 @@ TableView{
   resizableColumns: false; resizableRows: false
 
   selectionBehavior: TableView.SelectRows
-  selectionMode: TableView.ContiguousSelection
+  selectionMode: TableView.SingleSelection
   selectionModel: ItemSelectionModel{
     id: _smodel
     onCurrentChanged: ()=>{

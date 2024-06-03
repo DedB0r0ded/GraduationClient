@@ -35,29 +35,29 @@ TableView{
   model: TableModel{
     id: _model
 
-    TableModelColumn{ display: "userFullName" }
-    TableModelColumn{ display: "value" }
+    TableModelColumn{ display: "user" }
+    TableModelColumn{ display: "keyValue" }
 
     rows: [
       {
-        userFullName: Russian.placeholders.userFullName,
-        value: Russian.placeholders.regKeyValue,
+        user: Russian.placeholders.userFullName,
+        keyValue: Russian.placeholders.regKeyShortValue,
       },
       {
-        userFullName: Russian.placeholders.userFullName,
-        value: Russian.placeholders.regKeyValue,
+        user: Russian.placeholders.userFullName,
+        keyValue: Russian.placeholders.regKeyShortValue,
       },
       {
-        userFullName: Russian.placeholders.userFullName,
-        value: Russian.placeholders.regKeyValue,
+        user: Russian.placeholders.userFullName,
+        keyValue: Russian.placeholders.regKeyShortValue,
       },
       {
-        userFullName: Russian.placeholders.userFullName,
-        value: Russian.placeholders.regKeyValue,
+        user: Russian.placeholders.userFullName,
+        keyValue: Russian.placeholders.regKeyShortValue,
       },
       {
-        userFullName: Russian.placeholders.userFullName,
-        value: Russian.placeholders.regKeyValue,
+        user: Russian.placeholders.userFullName,
+        keyValue: Russian.placeholders.regKeyShortValue,
       },
     ]
 

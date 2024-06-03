@@ -14,4 +14,5 @@ FocusScope {
 
   GCanvas{ id: _bg }
 
+  onHeightChanged: drawnIncorrectly()
 }

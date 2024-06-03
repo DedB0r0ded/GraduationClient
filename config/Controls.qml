@@ -41,12 +41,15 @@ QtObject {
   readonly property int menuDeveloper: 4
   readonly property int menuSignOut: 5
 
-  readonly property int devMenuBanks: 0
-  readonly property int devMenuComponents: 1
-  readonly property int devMenuFacilities: 2
-  readonly property int devMenuServices: 3
-  readonly property int devMenuManufacturers: 4
-  readonly property int devMenuBack: 5
+  readonly property int devMenuComponents: 0
+  readonly property int devMenuFacilities: 1
+  readonly property int devMenuServices: 2
+  readonly property int devMenuManufacturers: 3
+  readonly property int devMenuBack: 4
+
+  readonly property int organisationListPage: 0
+  readonly property int organisationDetailsPage: 1
+  readonly property int organisationLocalServicesPage: 2
 
   readonly property int taskShowOptionAll: 0
   readonly property int taskShowOptionSelf: 1

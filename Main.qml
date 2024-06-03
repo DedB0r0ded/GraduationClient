@@ -3,8 +3,9 @@ import QtQuick.Layouts
 import QtQuick.Controls
 
 import "strings"
-import "types"
 import "types/basic"
+import "types"
+import "dialogs"
 import "config"
 import "colorSchemes"
 import "js"
@@ -31,6 +32,12 @@ Window {
     anchors.fill: parent
     anchors.centerIn: parent
     id: mainWindowBackground
+  }
+
+  LogInDialog{
+    id: logInDialog
+    anchors.centerIn: parent
+    onRejected: Qt.quit()
   }
 
   Item{
@@ -172,23 +179,6 @@ Window {
         spacing: 0
 
         GButton{
-          id: devMenuBanksButton
-          minWidth: devMenuDrawer.width
-          minHeight: funs.calcMenuButtonHeight()
-
-          rounded: Controls.roundedButtons
-          text: Russian.menu.banks
-          dangerous: true
-
-          focus: true
-          previousTabItem: devMenuBackButton
-          nextTabItem: devMenuComponentsButton
-
-          onFocusChanged:
-              if(focus) funs.setDeveloperMenuItem(Controls.devMenuBanks)
-        }
-
-        GButton{
           id: devMenuComponentsButton
           minWidth: devMenuDrawer.width
           minHeight: funs.calcMenuButtonHeight()
@@ -198,7 +188,7 @@ Window {
           dangerous: true
 
           focus: false
-          previousTabItem: devMenuBanksButton
+          previousTabItem: devMenuBackButton
           nextTabItem: devMenuFacilitesButton
 
           onFocusChanged:
@@ -268,7 +258,7 @@ Window {
 
           focus: false
           previousTabItem: devMenuManufacturersButton
-          nextTabItem: devMenuBanksButton
+          nextTabItem: devMenuComponentsButton
 
           onFocusChanged:
               if(focus) funs.setDeveloperMenuItem(Controls.devMenuBack)
@@ -294,8 +284,6 @@ Window {
       active: SwipeView.isCurrentItem
       sourceComponent: ProfilePage{
         id: profilePage
-        width: mainWindow.width / Controls.pageWidthRatio
-        height: mainWindow.height
         onDrawnIncorrectly: mainWindow.drawnIncorrectly()
       }
     }
@@ -303,7 +291,10 @@ Window {
     Loader{
       id: tasksLoader
       active: SwipeView.isCurrentItem
-      sourceComponent: TasksPage{}
+      sourceComponent: TasksPage{
+        id: tasksPage
+        onDrawnIncorrectly: mainWindow.drawnIncorrectly()
+      }
     }
 
     Loader{
@@ -311,19 +302,31 @@ Window {
       active: SwipeView.isCurrentItem
       SwipeView{
         id: organisationSwipeView
+        anchors.fill: parent
+        anchors.centerIn: parent
         interactive: false
+        currentIndex: 0
         Loader{
           id: organisationListPageLoader
-          sourceComponent: OrganisationListPage{}
+          active: SwipeView.isCurrentItem
+          sourceComponent: OrganisationListPage{
+            onPageCalled: index => organisationSwipeView.currentIndex = index
+          }
         }
+
+
         Loader{
           id: organisationDetailsPageLoader
-          sourceComponent: OrganisationDetailsPage{}
+          active: SwipeView.isCurrentItem
+          sourceComponent: OrganisationDetailsPage{
+            onDrawnIncorrectly: mainWindow.drawnIncorrectly()
+            onPageCalled: index => {
+              organisationSwipeView.currentIndex = index
+              mainWindow.drawnIncorrectly()
+            }
+          }
         }
-        Loader{
-          id: organisationLocalServicesPageLoader
-          sourceComponent: OrganisationLocalServicesPage{}
-        }
+        OrganisationLocalServicesPage{}
       }
     }
 
@@ -370,6 +373,10 @@ Window {
     }
   }
 
+
+
+
+
   onHeightChanged: drawnIncorrectly()
 
   onSelectedMainMenuItemChanged: {
@@ -381,6 +388,8 @@ Window {
     //menuDeveloperButton.visible = false
     funs.openMenu()
     mainWindow.minimumMenuWidth = funs.calcMinimumMenuWidth()
+    logInDialog.open()
+
   }
 
   onDrawnIncorrectly: funs.refreshMainWindowWidth()
@@ -414,7 +423,7 @@ Window {
 
     function setMainMenuItem(id){
       mainWindow.selectedMainMenuItem = id
-      console.log("Current main menu item: " + id)
+      //console.log("Current main menu item: " + id)
     }
 
     function setDeveloperMenuItem(id){
@@ -431,7 +440,7 @@ Window {
     function openDevMenu(){
       devMenuDrawer.open()
       menuDrawer.close()
-      devMenuBanksButton.forceActiveFocus()
+      devMenuComponentsButton.forceActiveFocus()
     }
 
     function refreshMainWindowWidth(){

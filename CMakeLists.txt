@@ -68,6 +68,7 @@ list(APPEND PROJECT_TYPES
   types/GTextField.qml
   types/GPage.qml
   types/GLabel.qml
+  types/GTextLink.qml
   types/GTableLabel.qml
   types/GGroupBox.qml
   types/GComboBox.qml
@@ -111,16 +112,21 @@ list(APPEND PROJECT_PAGES
   pages/DeveloperManufacturerListPage.qml
 )
 
-list(APPEND PROJECT_WINDOWS
-
+list(APPEND PROJECT_DIALOGS
+  # dialogs/ContractFacilityDialog.qml
+  # dialogs/CreateOrganisationDialog.qml
+  # dialogs/FacilityReviewDialog.qml
+  # dialogs/GlobalComponentDialog.qml
+  # dialogs/GlobalFacilityDialog.qml
+  # dialogs/GlobalServiceDialog.qml
+  dialogs/LogInDialog.qml
+  # dialogs/SignUpDialog.qml
 )
 
 set_source_files_properties(
   ${PROJECT_STRINGS}
   ${PROJECT_CONFIG_FILES}
   ${PROJECT_COLOR_SCHEMES}
-  #${PROJECT_PAGES}
-  #${PROJECT_WINDOWS}
   PROPERTIES
   QT_QML_SINGLETON_TYPE TRUE
 )
@@ -140,7 +146,7 @@ qt_add_qml_module(appQtApp
           ${PROJECT_CONFIG_FILES}
           ${PROJECT_JS_FILES}
           ${PROJECT_PAGES}
-          ${PROJECT_WINDOWS}
+          ${PROJECT_DIALOGS}
         RESOURCES Images.qrc
         QML_FILES UserSignUpWindow.qml
 )

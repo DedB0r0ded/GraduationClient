@@ -6,6 +6,8 @@ import QtQuick
 QtObject{
   readonly property string projectName: 'Frius'
 
+  readonly property regexp emailRegExp: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
   readonly property var menu: {
     'profile'       : 'Профиль',
     'tasks'         : 'Задачи',
@@ -37,6 +39,15 @@ QtObject{
     'darkColorScheme'     : 'Тёмная',
     'userOrganisationQuantity' : 'Кол-во организаций:',
 
+    'organisationName'        : 'Наименование',
+    'organisationFax'         : 'Факс',
+    'organisationAddress'     : 'Юр. адрес',
+    'organisationTID'         : 'УНП/ИНН/ИНП',
+    'organisationRCBIC'       : 'БИК',
+    'organisationBankAccount' : 'Рассчетный счет',
+    'organisationBankName'    : 'Банк',
+    'organisationBankAddress' : 'Адрес банка',
+
     'taskShowOption'                : 'Показать:',
     'taskShowOptionSelf'            : 'Мои задачи',
     'taskShowOptionAll'             : 'Все задачи',
@@ -46,12 +57,43 @@ QtObject{
 
     'contractTypeContinuous' : 'Договор на ТО',
     'contractTypeOneTime' : 'Разовый',
+
+    'connectedWith' : 'Вы зарегистрированы в ',
+    'noOrganisations' : 'Вы не зарегистрированы ни в одной организации',
+    'withOrganisation' : ' организации',
+    'withOrganisations' : ' организациях',
+
+  }
+
+  readonly property var dialogs: {
+    'logIn'             : 'Вход в аккаунт',
+    'signUp'            : 'Регистрация',
+    'globalComponent'   : 'Глобальные параметры компонента',
+    'globalService'     : 'Глобальный шаблон услуги',
+    'localService'      : 'Параметры услуги',
+    'contractService'   : 'Параметры услуги',
+    'globalFacility'    : 'Глобальные параметры оборудования',
+    'contractFacility'  : 'Параметры оборудования',
+    'facilityReview'    : 'Отзывы',
   }
 
   readonly property var buttons: {
-    'profileRefreshTasks' : 'Обновить данные о задачах',
-    'profileClearCompletedTasks' : 'Очистить выполненные',
-    'profileDeleteAccount' : 'УДАЛИТЬ УЧЕТНУЮ ЗАПИСЬ',
+    'profileRefreshTasks'         : 'Обновить данные о задачах',
+    'profileClearCompletedTasks'  : 'Очистить выполненные',
+    'profileDeleteAccount'        : 'Удалить учётную запись',
+
+    'organisationCreateNew'     : 'Зарегистрировать новую организацию',
+    'organisationDelete'        : 'Удалить организацию',
+    'organisationShowServices'  : 'Просмотреть услуги',
+    'organisationGenerateKeys'  : 'Сгенерировать ключи',
+    'returnToOrganisationList'  : 'Вернуться к списку',
+
+    'contractShowServiceList' : 'Подробнее',
+    'contractShowObjectList'  : 'Перейти к списку объектов',
+    'contractMakeReport'      : 'Сформировать отчёт',
+
+    'signUp'  : 'Зарегистрироваться',
+    'logIn'   : 'Войти',
   }
 
   readonly property var tableHeaders: {
@@ -83,16 +125,21 @@ QtObject{
     'regKeyShortValue'    : 'Ключ',
 
     'taskUserFullName'      : 'ФИО исполнителя',
-    'taskCreatorFullName'   : 'ФИО создателя',
+    'taskCreatorFullName'   : 'ФИО менеджера',
     'taskOrganisationName'  : 'Организация',
     'taskSubject'           : 'Название',
     'taskCompleted'         : 'Выполнена',
     'taskCreatedOn'         : 'Дата создания',
     'taskExpiresOn'         : 'Срок выполнения',
 
-    'organisationName'    : 'Наименование',
-    'organisationAddress' : 'Юр. адрес',
-    'organisationTID'     : 'УНП/ИНН/ИНП',
+    'organisationName'        : 'Наименование',
+    'organisationFax'         : 'Факс',
+    'organisationAddress'     : 'Юр. адрес',
+    'organisationTID'         : 'УНП/ИНН/ИНП',
+    'organisationRCBIC'       : 'БИК',
+    'organisationBankAccount' : 'Рассчетный счет',
+    'organisationBankName'    : 'Банк',
+    'organisationBankAddress' : 'Адрес банка',
 
     'organisationServiceName'             : 'Наименование',
     'organisationServiceCost'             : 'Стоимость',

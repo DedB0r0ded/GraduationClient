@@ -6,6 +6,10 @@ import 'basic'
 ComboBox{
   id: _root
   textRole: "text"
+  font{
+    pointSize: FontProperties.standartTextSize
+    weight: FontProperties.standartTextWeight
+  }
   model: ListModel{
     id: model
     ListElement { text: "TEXT_1" }
@@ -55,10 +59,7 @@ ComboBox{
   contentItem: Text{
     id: _text
     color: CurrentColorScheme.value.control.text.idle
-    font{
-      pointSize: FontProperties.standartTextSize
-      weight: FontProperties.standartTextWeight
-    }
+    font: _root.font
     text: _root.displayText
     verticalAlignment: Text.AlignVCenter
   }

@@ -68,6 +68,7 @@ GPage{
       GComboBox{
         id: _taskShowOptionComboBox
         model: TaskShowOptionComboBoxListModel{}
+        font.pointSize: FontProperties.smallTextSize
         Layout.fillHeight: true
         Layout.fillWidth: true
         Layout.horizontalStretchFactor: 2
@@ -83,6 +84,7 @@ GPage{
       GComboBox{
         id: _taskSortOptionComboBox
         model: TaskSortOptionComboBoxListModel{}
+        font.pointSize: FontProperties.smallTextSize
         Layout.fillHeight: true
         Layout.fillWidth: true
         Layout.horizontalStretchFactor: 2
