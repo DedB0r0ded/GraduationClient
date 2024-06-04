@@ -325,13 +325,13 @@ GPage{
         Layout.fillWidth: true
         Layout.fillHeight: true
         Layout.columnSpan: 2
-        Layout.minimumHeight: _deleteAccountButton.minHeight
-        Layout.minimumWidth: _deleteAccountButton.minWidth
+        Layout.minimumHeight: _logOutButton.minHeight
+        Layout.minimumWidth: _logOutButton.minWidth
         Layout.alignment: Qt.AlignRight
 
         GButton{
-          id: _deleteAccountButton
-          text: Russian.buttons.profileDeleteAccount
+          id: _logOutButton
+          text: Russian.buttons.profileSignOut
           minWidth: _root.calcLargeButtonWidth()
           minHeight: _root.calcLargeButtonHeight()
           dangerous: true

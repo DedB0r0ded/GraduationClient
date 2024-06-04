@@ -29,8 +29,9 @@ Dialog{
         top: parent.top
       }
       height: _dialog.calcLabelHeight()
+      font.weight: FontProperties.headerTextWeight
       border{
-        width: 1
+        width: 3
         color: CurrentColorScheme.value.stroke.idle
       }
     }
@@ -39,7 +40,7 @@ Dialog{
       height: _dialog.calcImageWidth()
       anchors.top: _label.bottom
       anchors.margins: 20
-      anchors.topMargin: 40
+      anchors.topMargin: 60
       anchors.left: parent.left
       anchors.right: parent.right
       Image {
@@ -106,7 +107,7 @@ Dialog{
         top: _pwdRow.bottom
         topMargin: 40
         bottom: _logInButton.top
-        bottomMargin: 40
+        bottomMargin: 20
         horizontalCenter: parent.horizontalCenter
       }
 
@@ -141,7 +142,6 @@ Dialog{
   }
 
   function calcButtonWidth(){
-    console.log(width)
     return width / 2
   }
   function calcButtonHeight(){

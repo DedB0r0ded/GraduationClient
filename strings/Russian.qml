@@ -81,6 +81,7 @@ QtObject{
     'profileRefreshTasks'         : 'Обновить данные о задачах',
     'profileClearCompletedTasks'  : 'Очистить выполненные',
     'profileDeleteAccount'        : 'Удалить учётную запись',
+    'profileSignOut'              : 'Выйти из учетной записи',
 
     'organisationCreateNew'     : 'Зарегистрировать новую организацию',
     'organisationDelete'        : 'Удалить организацию',

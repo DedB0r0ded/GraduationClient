@@ -119,8 +119,8 @@ list(APPEND PROJECT_DIALOGS
   # dialogs/GlobalComponentDialog.qml
   # dialogs/GlobalFacilityDialog.qml
   # dialogs/GlobalServiceDialog.qml
-  dialogs/LogInDialog.qml
   # dialogs/SignUpDialog.qml
+  dialogs/LogInDialog.qml
 )
 
 set_source_files_properties(
