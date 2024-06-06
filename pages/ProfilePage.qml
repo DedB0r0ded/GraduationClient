@@ -12,6 +12,7 @@ GPage{
   id: _root
   groupIndex: Controls.menuProfile
   index: 0
+  property bool pageLoaded: false
   property int preferredLabelWidth
   property int preferredInputWidth
 
@@ -266,16 +267,23 @@ GPage{
         Layout.fillWidth: true
         Layout.fillHeight: true
         Layout.horizontalStretchFactor: 2
-        onCurrentIndexChanged: _root.setColorScheme()
+        onCurrentIndexChanged: if(_root.pageLoaded) _root.setColorScheme()
 
         Component.onCompleted: {
-          _colorSchemeModel.clear()
-          _colorSchemeModel.append({"text": Russian.labels.lightColorScheme, "dark": false})
-          _colorSchemeModel.append({"text": Russian.labels.darkColorScheme, "dark": true})
+          if(count === 1){
+            _colorSchemeModel.clear()
+            _colorSchemeModel.append({"text": Russian.labels.lightColorScheme, "dark": false})
+            _colorSchemeModel.append({"text": Russian.labels.darkColorScheme, "dark": true})
+          }
           if(CurrentColorScheme.value.dark)
             _colorSchemeComboBox.currentIndex = find(Russian.labels.darkColorScheme)
           else
             _colorSchemeComboBox.currentIndex = find(Russian.labels.lightColorScheme)
+          _root.pageLoaded = true
+        }
+
+        Component.onDestruction: {
+          _root.pageLoaded = false
         }
       }
 
@@ -302,6 +310,7 @@ GPage{
         GButton{
           id: _refreshDataButton
           text: Russian.buttons.profileRefreshTasks
+          anchors.horizontalCenter: parent.horizontalCenter
           minWidth: _root.calcLargeButtonWidth()
           minHeight: _root.calcLargeButtonHeight()
         }
@@ -316,6 +325,7 @@ GPage{
 
         GButton{
           id: _clearCompletedButton
+          anchors.horizontalCenter: parent.horizontalCenter
           text: Russian.buttons.profileClearCompletedTasks
           minWidth: _root.calcLargeButtonWidth()
           minHeight: _root.calcLargeButtonHeight()
@@ -331,6 +341,7 @@ GPage{
 
         GButton{
           id: _logOutButton
+          anchors.horizontalCenter: parent.horizontalCenter
           text: Russian.buttons.profileSignOut
           minWidth: _root.calcLargeButtonWidth()
           minHeight: _root.calcLargeButtonHeight()
@@ -351,7 +362,7 @@ GPage{
   function calcLargeButtonWidth(){
     let b = _bottomLayout
     let m = _miscLayout
-    let res = (b.width - b.anchors.rightMargin -
+    let res = (_root.width - b.anchors.rightMargin -
                b.anchors.leftMargin - m.columnSpacing) / 2
     return res
   }
@@ -391,7 +402,11 @@ GPage{
   }
 
   function setColorScheme(){
-    if(_colorSchemeComboBox.currentText === Russian.labels.lightColorScheme)
+    console.log(_colorSchemeComboBox.currentText)
+    console.log(Russian.labels.lightColorScheme)
+
+    console.log(_colorSchemeComboBox.currentText == Russian.labels.lightColorScheme)
+    if(_colorSchemeComboBox.currentText == Russian.labels.lightColorScheme)
       CurrentColorScheme.value = BlueDark
     else
       CurrentColorScheme.value = BlueLight
