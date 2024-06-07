@@ -404,8 +404,8 @@ Window {
     //menuDeveloperButton.visible = false
     funs.openMenu()
     mainWindow.minimumMenuWidth = funs.calcMinimumMenuWidth()
-    logInDialog.open()
     AppState.setActiveSectionTitle(Russian.menu.profile)
+    logInDialog.open()
   }
 
   onDrawnIncorrectly: funs.refreshMainWindowWidth()

@@ -72,6 +72,7 @@ list(APPEND PROJECT_TYPES
   types/GTableLabel.qml
   types/GGroupBox.qml
   types/GComboBox.qml
+  types/GDialog.qml
 )
 
 list(APPEND PROJECT_COLOR_SCHEMES

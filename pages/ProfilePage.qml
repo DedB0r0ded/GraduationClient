@@ -22,7 +22,6 @@ GPage{
       right: parent.right; rightMargin: 30
       left: parent.left; leftMargin: 30
       top: parent.top; topMargin: 30
-
     }
 
     height: parent.height / Controls.profileInfoLayoutHeightRatio

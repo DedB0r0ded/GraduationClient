@@ -2,12 +2,13 @@
 #define APP_STATE_H
 
 #include <QObject>
+#include <QStack>
 
 class AppState : public QObject{
   Q_OBJECT
 private:
-  QString _prevActiveSectionTitle;
-  QString _activeSectionTitle;
+  QStack<QString> _sectionTitles;
+  QString popSectionTitle(void);
 
 public:
   explicit AppState(QObject *parent = nullptr);
@@ -20,7 +21,8 @@ public slots:
   bool healthCheck(void);
   void buttonEcho(void);
   void setActiveSectionTitle(QString title);
-  QString previousActiveSectionTitle(void);
+  void pushActiveSectionTitle(QString title);
+  void popActiveSectionTitle(void);
 };
 
 #endif

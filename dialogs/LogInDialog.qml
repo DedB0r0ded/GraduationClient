@@ -10,9 +10,9 @@ import "../colorSchemes"
 import "../js"
 import "../pages"
 
-Dialog{
+GDialog{
   id: _dialog
-  modal: true; dim: true
+  sectionTitle: Russian.dialogs.logIn
   width: WindowSizes.logInWidth
   height: WindowSizes.logInHeight
 
@@ -130,10 +130,6 @@ Dialog{
       text: Russian.buttons.logIn
       onClicked: _dialog.accept()
     }
-
-  }
-
-  onOpened: {
 
   }
 

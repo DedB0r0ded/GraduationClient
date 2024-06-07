@@ -10,9 +10,9 @@ import "../colorSchemes"
 import "../js"
 import "../pages"
 
-Dialog{
+GDialog{
   id: _dialog; clip: true
-  modal: true; dim: true
+  sectionTitle: Russian.dialogs.info
   width: WindowSizes.dialogWidth
   height: WindowSizes.dialogHeight
   padding: 0

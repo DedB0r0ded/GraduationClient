@@ -62,7 +62,6 @@ QtObject{
     'noOrganisations' : 'Вы не зарегистрированы ни в одной организации',
     'withOrganisation' : ' организации',
     'withOrganisations' : ' организациях',
-
   }
 
   readonly property var dialogs: {
@@ -75,6 +74,7 @@ QtObject{
     'globalFacility'    : 'Глобальные параметры оборудования',
     'contractFacility'  : 'Параметры оборудования',
     'facilityReview'    : 'Отзывы',
+    'info'              : 'Справка',
   }
 
   readonly property var buttons: {

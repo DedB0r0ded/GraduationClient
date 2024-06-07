@@ -3,8 +3,13 @@
 #include <QTime>
 
 
+QString AppState::popSectionTitle()
+{
+  return _sectionTitles.pop();
+}
+
 AppState::AppState(QObject *parent)
-    : _prevActiveSectionTitle {}, _activeSectionTitle {}
+    : _sectionTitles {}
 {
 
 }
@@ -28,13 +33,21 @@ void AppState::buttonEcho()
 
 void AppState::setActiveSectionTitle(QString title)
 {
-  _prevActiveSectionTitle = _activeSectionTitle;
-  _activeSectionTitle = title;
+  if(_sectionTitles.count() > 0)
+    _sectionTitles.pop();
+  _sectionTitles.push(title);
   emit activeSectionTitleChanged(title);
 }
 
-QString AppState::previousActiveSectionTitle()
+void AppState::pushActiveSectionTitle(QString title)
 {
-  return _prevActiveSectionTitle;
+  _sectionTitles.push(title);
+  emit activeSectionTitleChanged(title);
+}
+
+void AppState::popActiveSectionTitle()
+{
+  popSectionTitle();
+  emit activeSectionTitleChanged(_sectionTitles.top());
 }
 
