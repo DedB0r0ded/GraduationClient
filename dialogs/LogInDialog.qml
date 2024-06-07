@@ -133,6 +133,10 @@ Dialog{
 
   }
 
+  onOpened: {
+
+  }
+
   function calcImageWidth(){
     return width / 7.5
   }

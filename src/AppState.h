@@ -5,15 +5,22 @@
 
 class AppState : public QObject{
   Q_OBJECT
+private:
+  QString _prevActiveSectionTitle;
+  QString _activeSectionTitle;
+
 public:
   explicit AppState(QObject *parent = nullptr);
+  static QString getCurrentTimeString(void);
 
 signals:
+  void activeSectionTitleChanged(QString title);
 
 public slots:
   bool healthCheck(void);
-  static QString getCurrentTimeString(void);
-  void becho(void);
+  void buttonEcho(void);
+  void setActiveSectionTitle(QString title);
+  QString previousActiveSectionTitle(void);
 };
 
 #endif

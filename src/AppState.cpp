@@ -4,6 +4,7 @@
 
 
 AppState::AppState(QObject *parent)
+    : _prevActiveSectionTitle {}, _activeSectionTitle {}
 {
 
 }
@@ -20,8 +21,20 @@ QString AppState::getCurrentTimeString()
   return currentTime.toString("hh:mm:ss");
 }
 
-void AppState::becho()
+void AppState::buttonEcho()
 {
   qDebug() << getCurrentTimeString() << "Button pressed.";
+}
+
+void AppState::setActiveSectionTitle(QString title)
+{
+  _prevActiveSectionTitle = _activeSectionTitle;
+  _activeSectionTitle = title;
+  emit activeSectionTitleChanged(title);
+}
+
+QString AppState::previousActiveSectionTitle()
+{
+  return _prevActiveSectionTitle;
 }
 

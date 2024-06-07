@@ -402,11 +402,7 @@ GPage{
   }
 
   function setColorScheme(){
-    console.log(_colorSchemeComboBox.currentText)
-    console.log(Russian.labels.lightColorScheme)
-
-    console.log(_colorSchemeComboBox.currentText == Russian.labels.lightColorScheme)
-    if(_colorSchemeComboBox.currentText == Russian.labels.lightColorScheme)
+    if(_colorSchemeComboBox.currentText === Russian.labels.lightColorScheme)
       CurrentColorScheme.value = BlueDark
     else
       CurrentColorScheme.value = BlueLight

@@ -73,6 +73,7 @@ Window {
 
           onFocusChanged:
               if(focus) funs.setMainMenuItem(Controls.menuProfile)
+          onClicked: AppState.setActiveSectionTitle(Russian.menu.profile)
         }
 
         GButton{
@@ -89,6 +90,7 @@ Window {
 
           onFocusChanged:
               if(focus) funs.setMainMenuItem(Controls.menuTasks)
+          onClicked: AppState.setActiveSectionTitle(Russian.menu.tasks)
         }
 
         GButton{
@@ -105,6 +107,7 @@ Window {
 
           onFocusChanged:
               if(focus) funs.setMainMenuItem(Controls.menuOrganisations)
+          onClicked: AppState.setActiveSectionTitle(Russian.menu.organisations)
         }
 
         GButton{
@@ -123,6 +126,7 @@ Window {
 
           onFocusChanged:
               if(focus) funs.setMainMenuItem(Controls.menuContracts)
+          onClicked: AppState.setActiveSectionTitle(Russian.menu.contracts)
         }
 
         GButton{
@@ -141,7 +145,10 @@ Window {
           onFocusChanged:
               if(focus) funs.setMainMenuItem(Controls.menuDeveloper)
 
-          onClicked: funs.openDevMenu()
+          onClicked: {
+            funs.openDevMenu()
+            AppState.setActiveSectionTitle(Russian.menu.developer)
+          }
         }
       }
       GButton{
@@ -265,7 +272,10 @@ Window {
           onFocusChanged:
               if(focus) funs.setDeveloperMenuItem(Controls.devMenuBack)
 
-          onClicked: funs.openMenu()
+          onClicked:{
+            AppState.setActiveSectionTitle(Russian.menu.profile)
+            funs.openMenu()
+          }
         }
     }
 
@@ -370,20 +380,24 @@ Window {
         Loader{
 
         }
-        Component.onCompleted: funs.refreshMainWindowTitle()
       }
     }
   }
 
 
 
-
+  Connections{
+    target: AppState
+    function onActiveSectionTitleChanged(title){
+      let name = Russian.projectName + ' (' + title + ')'
+      mainWindow.title = name
+    }
+  }
 
   onHeightChanged: drawnIncorrectly()
 
   onSelectedMainMenuItemChanged: {
     drawnIncorrectly()
-    funs.refreshMainWindowTitle()
   }
 
   Component.onCompleted: {
@@ -391,7 +405,7 @@ Window {
     funs.openMenu()
     mainWindow.minimumMenuWidth = funs.calcMinimumMenuWidth()
     logInDialog.open()
-
+    AppState.setActiveSectionTitle(Russian.menu.profile)
   }
 
   onDrawnIncorrectly: funs.refreshMainWindowWidth()
@@ -450,32 +464,6 @@ Window {
           || mainWindow.visibility == Window.Maximized)
         return 0
       mainWindow.width += 1; mainWindow.width -= 1
-    }
-
-    function refreshMainWindowTitle(){
-      let name = Russian.projectName + ' ('
-      switch(mainWindow.selectedMainMenuItem){
-      case Controls.menuProfile:
-        name += Russian.menu.profile
-        break;
-      case Controls.menuTasks:
-        name += Russian.menu.tasks
-        break;
-      case Controls.menuOrganisations:
-        name += Russian.menu.organisations
-        break;
-      case Controls.menuContracts:
-        name += Russian.menu.contracts
-        break;
-      case Controls.menuDeveloper:
-        name += Russian.menu.developer
-        break;
-      default:
-        name = Russian.projectName
-        return 0
-      }
-      name += ')'
-      mainWindow.title = name
     }
 
     function quit(){
