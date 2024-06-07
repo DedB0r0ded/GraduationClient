@@ -16,8 +16,11 @@ Dialog{
   width: WindowSizes.logInWidth
   height: WindowSizes.logInHeight
 
+
   contentItem: GCanvas{
     id: _content
+    border.color: CurrentColorScheme.value.stroke.idle
+    border.width: 1
 
     GLabel {
       id: _label

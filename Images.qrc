@@ -22,5 +22,7 @@
         <file>images/plusLight.png</file>
         <file>images/tickInCircleDark.png</file>
         <file>images/tickInCircleLight.png</file>
+        <file>images/questionMarkDark.png</file>
+        <file>images/questionMarkLight.png</file>
     </qresource>
 </RCC>

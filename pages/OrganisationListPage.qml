@@ -14,7 +14,7 @@ GPage{
   groupIndex: Controls.menuOrganisations
   index: Controls.organisationListPage
 
-  property int organisations
+  property int organisations: 5
   signal pageCalled(int index)
 
   ColumnLayout{
@@ -112,6 +112,7 @@ GPage{
 
     GButton{
       id: _organisationCreateButton
+      text: Russian.buttons.organisationCreate
       anchors{
         bottom: parent.bottom
         horizontalCenter: parent.horizontalCenter
@@ -128,7 +129,7 @@ GPage{
     let str = Russian.labels.connectedWith + _root.organisations
     if(_root.organisations !== 0
         && _root.organisations % 10 !== 1
-        || _root.organisations == 11)
+        || _root.organisations % 100 == 11)
       str += Russian.labels.withOrganisations
     else
       str += Russian.labels.withOrganisation

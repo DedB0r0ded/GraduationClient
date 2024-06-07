@@ -41,6 +41,8 @@ Button{
     verticalAlignment: Text.AlignVCenter
   }
 
+  onClicked: AppState.becho()
+
   function radius(){
     if(!Controls.roundedIconButtons)
       return 0;

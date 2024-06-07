@@ -19,10 +19,10 @@ QtObject{
   readonly property int dialogHeight: 960
 
   readonly property int bigDialogWidth: 960
-  readonly property int bigDialogHeight: 1280
+  readonly property int bigDialogHeight: 1080
 
   readonly property int tallDialogWidth: 640
-  readonly property int tallDialogHeight: 1280
+  readonly property int tallDialogHeight: 1080
 }
 
 

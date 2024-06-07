@@ -1,25 +1,25 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(QtApp VERSION 0.1 LANGUAGES CXX)
+project(Frius VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Quick QuickControls2)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core Quick QuickControls2)
 
 qt_standard_project_setup(REQUIRES 6.5)
 
-list(APPEND REST_CLIENT_SOURCES
-  REST_AppWrapper.cpp REST_AppWrapper.h
+list(APPEND MY_CXX_SOURCES
+  src/REST_AppWrapper.cpp src/REST_AppWrapper.h
 )
 
-set(SOURCES main.cpp)
+set(SOURCES main.cpp src/AppState.h src/AppState.cpp)
 qt_add_resources(SOURCES Images.qrc)
 
 set(app_icon_resource_windows ${CMAKE_CURRENT_SOURCE_DIR}/icon.rc)
 
-qt_add_executable(appQtApp
+qt_add_executable(appFrius
     ${SOURCES}
-    ${REST_CLIENT_SOURCES}
+    ${MY_CXX_SOURCES}
     ${app_icon_resource_windows}
 )
 
@@ -121,6 +121,7 @@ list(APPEND PROJECT_DIALOGS
   # dialogs/GlobalServiceDialog.qml
   # dialogs/SignUpDialog.qml
   dialogs/LogInDialog.qml
+  dialogs/InfoDialog.qml
 )
 
 set_source_files_properties(
@@ -131,8 +132,8 @@ set_source_files_properties(
   QT_QML_SINGLETON_TYPE TRUE
 )
 
-qt_add_qml_module(appQtApp
-    URI QtApp
+qt_add_qml_module(appFrius
+    URI Frius
     VERSION 1.0
     QML_FILES
         Main.qml
@@ -154,20 +155,20 @@ qt_add_qml_module(appQtApp
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
-set_target_properties(appQtApp PROPERTIES
-#    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appQtApp
+set_target_properties(appFrius PROPERTIES
+#    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appFrius
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE
     WIN32_EXECUTABLE TRUE
 )
 
-target_link_libraries(appQtApp
-    PRIVATE Qt6::Quick Qt6::QuickControls2
+target_link_libraries(appFrius
+    PRIVATE Qt6::Core Qt6::Quick Qt6::QuickControls2
 )
 
 include(GNUInstallDirs)
-install(TARGETS appQtApp
+install(TARGETS appFrius
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

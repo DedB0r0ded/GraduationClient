@@ -149,24 +149,28 @@ GPage{
           width: _root.calcButtonPreferredWidth(); height: width
           lightIconSource: "qrc:///images/plusLight.png"
           darkIconSource: "qrc:///images/plusDark.png"
+          //onClicked:
         }
         GIconButton{
           id: _taskTableCompleteButton
           width: _root.calcButtonPreferredWidth(); height: width
           lightIconSource: "qrc:///images/blackTickLight.png"
           darkIconSource: "qrc:///images/blackTickDark.png"
+          //onClicked:
         }
         GIconButton{
           id: _taskTableEditButton
           width: _root.calcButtonPreferredWidth(); height: width
           lightIconSource: "qrc:///images/pencilLight.png"
           darkIconSource: "qrc:///images/pencilDark.png"
+          //onClicked:
         }
         GIconButton{
           id: _taskTableDeleteButton
           width: _root.calcButtonPreferredWidth(); height: width
           lightIconSource: "qrc:///images/minusLight.png"
           darkIconSource: "qrc:///images/minusDark.png"
+          //onClicked:
         }
       }
     }

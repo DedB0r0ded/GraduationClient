@@ -40,6 +40,8 @@ Window {
     onRejected: Qt.quit()
   }
 
+
+
   Item{
     id: menuContainer
     width: mainWindow.menuWidth

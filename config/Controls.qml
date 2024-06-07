@@ -51,6 +51,21 @@ QtObject {
   readonly property int organisationDetailsPage: 1
   readonly property int organisationLocalServicesPage: 2
 
+  readonly property int logInDialog: 100
+  readonly property int signUpDialog: 110
+  readonly property int organisationCreateDialog: 120
+  readonly property int globalComponentDialog: 130
+  readonly property int globalFacilityDialog: 140
+  readonly property int globalServiceDialog: 150
+
+  readonly property int contractFacilityDialog: 142
+  readonly property int facilityReviewDialog: 143
+  readonly property int localServiceDialog: 151
+  readonly property int contractServiceDialog: 152
+
+  readonly property int regKeyDialog: 160
+  readonly property int regKeyGenerationDialog: 161
+
   readonly property int taskShowOptionAll: 0
   readonly property int taskShowOptionSelf: 1
   readonly property int taskShowOptionAllExceptSelf: 2

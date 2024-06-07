@@ -252,6 +252,7 @@ GPage{
             right: parent.right
             left: parent.left
           }
+          onClicked: _root.pageCalled(Controls.regKeyGenerationDialog)
         }
         GButton{
           id: _showLocalServicesButton
@@ -264,6 +265,7 @@ GPage{
             right: parent.right
             left: parent.left
           }
+          onClicked: _root.pageCalled(Controls.organisationLocalServicesPage)
         }
         GButton{
           id: _returnToOrganisationListButton

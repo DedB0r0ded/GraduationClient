@@ -5,5 +5,5 @@ import "../types/basic"
 import "../colorSchemes"
 
 QtObject {
-  property GColorScheme value: BlueDark
+  property GColorScheme value: BlueLight
 }

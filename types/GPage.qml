@@ -1,5 +1,7 @@
 import QtQuick
+import QtQuick.Controls
 import '../config'
+import '../dialogs'
 import 'basic'
 
 FocusScope {
@@ -15,4 +17,27 @@ FocusScope {
   GCanvas{ id: _bg }
 
   onHeightChanged: drawnIncorrectly()
+
+  InfoDialog{
+    id: _info
+    anchors.centerIn: Overlay.overlay
+  }
+
+  GIconButton{
+    anchors{
+      right: parent.right
+      bottom: parent.bottom
+      rightMargin: 10
+      bottomMargin: 10
+    }
+    opacity: 10
+    lightIconSource: "qrc:///images/questionMarkLight.png"
+    darkIconSource: "qrc:///images/questionMarkDark.png"
+    width: 30
+    height: width
+
+    onClicked: {
+      _info.open()
+    }
+  }
 }
