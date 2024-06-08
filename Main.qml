@@ -297,6 +297,7 @@ Window {
       sourceComponent: ProfilePage{
         id: profilePage
         onDrawnIncorrectly: mainWindow.drawnIncorrectly()
+        onLoggedOut: logInDialog.open()
       }
     }
 
@@ -312,7 +313,7 @@ Window {
     Loader{
       id: organisationSwipeViewLoader
       active: SwipeView.isCurrentItem
-      SwipeView{
+      sourceComponent: SwipeView{
         id: organisationSwipeView
         anchors.fill: parent
         anchors.centerIn: parent
@@ -322,10 +323,12 @@ Window {
           id: organisationListPageLoader
           active: SwipeView.isCurrentItem
           sourceComponent: OrganisationListPage{
-            onPageCalled: index => organisationSwipeView.currentIndex = index
+            onPageCalled: index => {
+              organisationSwipeView.currentIndex = index
+              mainWindow.drawnIncorrectly()
+            }
           }
         }
-
 
         Loader{
           id: organisationDetailsPageLoader
@@ -338,35 +341,80 @@ Window {
             }
           }
         }
-        OrganisationLocalServicesPage{}
+        Loader{
+          id: organisationLocalServicesPageLoader
+          active: SwipeView.isCurrentItem
+          sourceComponent: OrganisationLocalServicesPage{
+            onDrawnIncorrectly: mainWindow.drawnIncorrectly()
+            onPageCalled: index => {
+              organisationSwipeView.currentIndex = index
+              mainWindow.drawnIncorrectly()
+            }
+          }
+        }
       }
     }
 
     Loader{
       id: contractSwipeViewLoader
       active: SwipeView.isCurrentItem
-      SwipeView{
+      sourceComponent: SwipeView{
         id: contractSwipeView
         interactive: false
         Loader{
           id: contractListPageLoader
-          sourceComponent: ContractListPage{}
+          active: SwipeView.isCurrentItem
+          sourceComponent: ContractListPage{
+            onDrawnIncorrectly: mainWindow.drawnIncorrectly()
+            onPageCalled: index => {
+              contractSwipeView.currentIndex = index
+              mainWindow.drawnIncorrectly()
+            }
+          }
         }
         Loader{
           id: contractDetailsOneTimePageLoader
-          sourceComponent: ContractDetailsOneTimePage{}
+          active: SwipeView.isCurrentItem
+          sourceComponent: ContractDetailsOneTimePage{
+            onDrawnIncorrectly: mainWindow.drawnIncorrectly()
+            onPageCalled: index => {
+              contractSwipeView.currentIndex = index
+              mainWindow.drawnIncorrectly()
+            }
+          }
         }
         Loader{
           id: contractDetailsMaintenancePageLoader
-          sourceComponent: ContractDetailsMaintenancePage{}
+          active: SwipeView.isCurrentItem
+          sourceComponent: ContractDetailsMaintenancePage{
+            onDrawnIncorrectly: mainWindow.drawnIncorrectly()
+            onPageCalled: index => {
+              contractSwipeView.currentIndex = index
+              mainWindow.drawnIncorrectly()
+            }
+          }
         }
         Loader{
           id: contractServiceListPageLoader
-          sourceComponent: ContractServiceListPage{}
+          active: SwipeView.isCurrentItem
+          sourceComponent: ContractServiceListPage{
+            onDrawnIncorrectly: mainWindow.drawnIncorrectly()
+            onPageCalled: index => {
+              contractSwipeView.currentIndex = index
+              mainWindow.drawnIncorrectly()
+            }
+          }
         }
         Loader{
           id: contractMaintenanceListPageLoader
-          sourceComponent: ContractMaintenanceListPage{}
+          active: SwipeView.isCurrentItem
+          sourceComponent: ContractMaintenanceListPage{
+            onDrawnIncorrectly: mainWindow.drawnIncorrectly()
+            onPageCalled: index => {
+              contractSwipeView.currentIndex = index
+              mainWindow.drawnIncorrectly()
+            }
+          }
         }
       }
     }
@@ -378,7 +426,44 @@ Window {
         id: developerSwipeView
         interactive: false
         Loader{
-
+          id: developerComponentListPageLoader
+          sourceComponent: DeveloperComponentListPage{
+            onDrawnIncorrectly: mainWindow.drawnIncorrectly()
+            onPageCalled: index => {
+              organisationSwipeView.currentIndex = index
+              mainWindow.drawnIncorrectly()
+            }
+          }
+        }
+        Loader{
+          id: developerFacilityListPageLoader
+          sourceComponent: DeveloperFacilityListPage{
+            onDrawnIncorrectly: mainWindow.drawnIncorrectly()
+            onPageCalled: index => {
+              organisationSwipeView.currentIndex = index
+              mainWindow.drawnIncorrectly()
+            }
+          }
+        }
+        Loader{
+          id: developerServiceListPageLoader
+          sourceComponent: DeveloperServiceListPage{
+            onDrawnIncorrectly: mainWindow.drawnIncorrectly()
+            onPageCalled: index => {
+              organisationSwipeView.currentIndex = index
+              mainWindow.drawnIncorrectly()
+            }
+          }
+        }
+        Loader{
+          id: developerManufacturerListPageLoader
+          sourceComponent: DeveloperManufacturerListPage{
+            onDrawnIncorrectly: mainWindow.drawnIncorrectly()
+            onPageCalled: index => {
+              organisationSwipeView.currentIndex = index
+              mainWindow.drawnIncorrectly()
+            }
+          }
         }
       }
     }

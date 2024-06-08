@@ -13,7 +13,7 @@ import '../config'
 GPage{
   id: _root
   groupIndex: Controls.menuOrganisations
-  index: 2
+  index: Controls.organisationLocalServicesPage
 
   signal pageCalled(int index)
 
@@ -24,41 +24,59 @@ GPage{
       centerIn: parent
     }
 
-    HorizontalHeaderView{
-      id: _hHeaderView
+    GCanvas{
+      id: _tableCanvas
+      color: CurrentColorScheme.value.input.background.idle
+      width: parent.width * 0.9
       anchors{
         left: parent.left
-        right: parent.right
         top: parent.top
-      }
-      rowHeightProvider: row => {return 80}
-      syncView: _serviceTableView
-      model: [
-        Russian.tableHeaders.organisationServiceName,
-        Russian.tableHeaders.organisationServiceCost,
-        Russian.tableHeaders.organisationServiceFacility,
-      ]
-      delegate: GLabel{
-        text: modelData
-        font.pointSize: FontProperties.plainTextSize
-      }
-    }
-
-    OrganisationLocalServiceTableView{
-      id: _serviceTableView
-      anchors{
-        left: parent.left
-        right: parent.right
-        top: _hHeaderView.bottom
-        topMargin: rowSpacing
+        topMargin: 20
+        leftMargin: 20
         bottom: parent.bottom
+        bottomMargin: 20
+        fill: undefined
+        centerIn: undefined
+      }
+
+      HorizontalHeaderView{
+        id: _hHeaderView
+        anchors{
+          left: _serviceTableView.left
+          right: _serviceTableView.right
+          top: parent.top
+        }
+        rowHeightProvider: row => {return 80}
+        syncView: _serviceTableView
+        model: [
+          Russian.tableHeaders.organisationServiceName,
+          Russian.tableHeaders.organisationServiceCost,
+          Russian.tableHeaders.organisationServiceFacility,
+        ]
+        delegate: GLabel{
+          text: modelData
+          font.pointSize: FontProperties.plainTextSize
+        }
+      }
+
+      OrganisationLocalServiceTableView{
+        id: _serviceTableView
+        anchors{
+          left: parent.left
+          right: parent.right
+          top: _hHeaderView.bottom
+          topMargin: rowSpacing
+          bottom: parent.bottom
+        }
       }
     }
-
     Column{
       anchors{
-        right: parent
-        top: parent
+        right: parent.right
+        left: _tableCanvas.right
+        leftMargin: 10
+        top: parent.top
+        topMargin: _tableCanvas.anchors.topMargin + 10
       }
 
       spacing: 20
@@ -79,6 +97,12 @@ GPage{
         width: _root.calcButtonPreferredWidth(); height: width
         lightIconSource: "qrc:///images/pencilLight.png"
         darkIconSource: "qrc:///images/pencilDark.png"
+      }
+      GIconButton{
+        id: _backToDetailsButton
+        width: _root.calcButtonPreferredWidth(); height: width
+        lightIconSource: "qrc:///images/backArrowLight.png"
+        darkIconSource: "qrc:///images/backArrowDark.png"
         onClicked: _root.pageCalled(Controls.organisationDetailsPage)
       }
     }

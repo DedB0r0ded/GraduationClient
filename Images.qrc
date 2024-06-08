@@ -24,5 +24,7 @@
         <file>images/tickInCircleLight.png</file>
         <file>images/questionMarkDark.png</file>
         <file>images/questionMarkLight.png</file>
+        <file>images/backArrowDark.png</file>
+        <file>images/backArrowLight.png</file>
     </qresource>
 </RCC>

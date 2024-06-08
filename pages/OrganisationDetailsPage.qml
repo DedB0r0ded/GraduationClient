@@ -288,6 +288,7 @@ GPage{
           minHeight: _root.calcButtonHeight()
           anchors{
             bottom: parent.bottom
+            bottomMargin: 30
             right: parent.right
             left: parent.left
           }

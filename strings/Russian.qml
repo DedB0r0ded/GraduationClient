@@ -56,7 +56,7 @@ QtObject{
     'taskSortOptionExpirationDate'  : 'Сроку выполнения',
 
     'contractTypeContinuous' : 'Договор на ТО',
-    'contractTypeOneTime' : 'Разовый',
+    'contractTypeService' : 'Разовый',
 
     'connectedWith' : 'Вы зарегистрированы в ',
     'noOrganisations' : 'Вы не зарегистрированы ни в одной организации',
@@ -149,8 +149,8 @@ QtObject{
 
     'contractCustomerName'    : 'Заказчик',
     'contractContractorName'  : 'Исполнитель',
-    'contractConclusionDate'  : 'Дата заключения',
-    'contractExpirationDate'  : 'Дата истечения',
+    'contractConclusionDate'  : 'Заключен',
+    'contractExpirationDate'  : 'Истекает',
     'contractContinuous'      : 'Тип договора',
 
     'contractServiceName' : 'Наименование',

@@ -10,7 +10,7 @@ import '../../config'
 
 TableView{
   id: _root
-  property var columnWidths: [3, 3, 1, 2]
+  property var columnWidths: [3, 3, 1, 1]
 
   columnSpacing: 1; rowSpacing: 10
   columnWidthProvider: function(column) {
@@ -35,39 +35,34 @@ TableView{
   model: TableModel{
     id: _model
 
-    TableModelColumn{ display: "creatorFullName" }
-    TableModelColumn{ display: "organisationName" }
-    TableModelColumn{ display: "subject" }
-    TableModelColumn{ display: "expiresOn" }
-    TableModelColumn{ display: "completed" }
+    TableModelColumn{ display: "customerName" }
+    TableModelColumn{ display: "contractorName" }
+    TableModelColumn{ display: "conclusionDate" }
+    TableModelColumn{ display: "continuous" }
 
     rows: [
       {
         customerName: Russian.placeholders.organisationName,
         contractorName: Russian.placeholders.organisationName,
         conclusionDate: Russian.placeholders.date,
-        expirationDate: Russian.placeholders.date,
         continuous: false,
       },
       {
         customerName: Russian.placeholders.organisationName,
         contractorName: Russian.placeholders.organisationName,
         conclusionDate: Russian.placeholders.date,
-        expirationDate: Russian.placeholders.date,
         continuous: false,
       },
       {
         customerName: Russian.placeholders.organisationName,
         contractorName: Russian.placeholders.organisationName,
         conclusionDate: Russian.placeholders.date,
-        expirationDate: Russian.placeholders.date,
         continuous: false,
       },
       {
         customerName: Russian.placeholders.organisationName,
         contractorName: Russian.placeholders.organisationName,
         conclusionDate: Russian.placeholders.date,
-        expirationDate: Russian.placeholders.date,
         continuous: false,
       },
     ]
@@ -82,9 +77,9 @@ TableView{
   delegate: DelegateChooser{
 
     DelegateChoice{
-      column: 4
+      column: 3
       delegate: GTableLabel{
-        text: model.display ? "contractTypeContinuous" : "contractTypeOneTime"
+        text: model.display ? Russian.labels.contractTypeContinuous : Russian.labels.contractTypeService
       }
     }
     DelegateChoice{

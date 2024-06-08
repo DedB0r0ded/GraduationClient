@@ -6,6 +6,7 @@ import '../types'
 import '../config'
 import '../strings'
 import '../colorSchemes'
+import '../dialogs'
 
 
 GPage{
@@ -15,6 +16,8 @@ GPage{
   property bool pageLoaded: false
   property int preferredLabelWidth
   property int preferredInputWidth
+
+  signal loggedOut()
 
   GridLayout{
     id: _userInfoLayout
@@ -345,6 +348,7 @@ GPage{
           minWidth: _root.calcLargeButtonWidth()
           minHeight: _root.calcLargeButtonHeight()
           dangerous: true
+          onClicked: _root.loggedOut()
         }
       }
     }
@@ -410,5 +414,6 @@ GPage{
   Component.onCompleted: {
     _root.preferredInputWidth = _root.calcPreferredWidth()
     assertDrawnCorrectly()
+
   }
 }

@@ -94,17 +94,17 @@ GPage{
           darkIconSource: "qrc:///images/plusDark.png"
         }
         GIconButton{
-          id: _organisationTableDeleteButton
-          width: _root.calcButtonPreferredWidth(); height: width
-          lightIconSource: "qrc:///images/minusLight.png"
-          darkIconSource: "qrc:///images/minusDark.png"
-        }
-        GIconButton{
           id: _organisationTableMoreButton
           width: _root.calcButtonPreferredWidth(); height: width
           lightIconSource: "qrc:///images/dotsLight.png"
           darkIconSource: "qrc:///images/dotsDark.png"
           onClicked: _root.pageCalled(Controls.organisationDetailsPage)
+        }
+        GIconButton{
+          id: _organisationTableDeleteButton
+          width: _root.calcButtonPreferredWidth(); height: width
+          lightIconSource: "qrc:///images/minusLight.png"
+          darkIconSource: "qrc:///images/minusDark.png"
         }
       }
     }

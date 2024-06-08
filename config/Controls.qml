@@ -43,13 +43,19 @@ QtObject {
 
   readonly property int devMenuComponents: 0
   readonly property int devMenuFacilities: 1
-  readonly property int devMenuServices: 2
-  readonly property int devMenuManufacturers: 3
+  readonly property int devMenuManufacturers: 2
+  readonly property int devMenuServices: 3
   readonly property int devMenuBack: 4
 
   readonly property int organisationListPage: 0
   readonly property int organisationDetailsPage: 1
   readonly property int organisationLocalServicesPage: 2
+
+  readonly property int contractListPage: 0
+  readonly property int contractDetailsOneTimePage: 1
+  readonly property int contractDetailsMaintenancePage: 2
+  readonly property int contractMaintenanceListPage: 3
+  readonly property int contractServiceListPage: 4
 
   readonly property int logInDialog: 100
   readonly property int signUpDialog: 110

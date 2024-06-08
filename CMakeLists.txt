@@ -10,9 +10,10 @@ qt_standard_project_setup(REQUIRES 6.5)
 
 list(APPEND MY_CXX_SOURCES
   src/REST_AppWrapper.cpp src/REST_AppWrapper.h
+  src/AppState.h src/AppState.cpp
 )
 
-set(SOURCES main.cpp src/AppState.h src/AppState.cpp)
+set(SOURCES main.cpp )
 qt_add_resources(SOURCES Images.qrc)
 
 set(app_icon_resource_windows ${CMAKE_CURRENT_SOURCE_DIR}/icon.rc)
@@ -106,7 +107,6 @@ list(APPEND PROJECT_PAGES
   pages/ContractServiceListPage.qml
   pages/ContractMaintenanceListPage.qml
 
-  pages/DeveloperBankListPage.qml
   pages/DeveloperComponentListPage.qml
   pages/DeveloperFacilityListPage.qml
   pages/DeveloperServiceListPage.qml
