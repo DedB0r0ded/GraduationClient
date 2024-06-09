@@ -5,9 +5,6 @@
 #include <QtQml>
 #include <QDebug>
 
-#include "REST_Classes.h"
-
-
 class UserState : public QObject{
 
 private:

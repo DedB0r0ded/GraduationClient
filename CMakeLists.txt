@@ -9,7 +9,13 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS Core Quick QuickControls2)
 qt_standard_project_setup(REQUIRES 6.5)
 
 list(APPEND MY_CXX_SOURCES
-  src/REST_Classes.h src/REST_Classes.cpp
+  src/Manufacturer.h
+  src/Component.h
+  src/Facility.h
+  src/Organisation.h
+  src/User.h
+  src/RegKey.h
+  src/Contract.h
   src/REST_AppWrapper.cpp src/REST_AppWrapper.h
   src/AppState.h src/AppState.cpp
   src/UserState.h src/UserState.cpp
@@ -159,7 +165,7 @@ qt_add_qml_module(appFrius
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
 set_target_properties(appFrius PROPERTIES
-#    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appFrius
+#    MACOSX_BUNDLE_GUI_IDENTIFIER app.example.appFrius
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE

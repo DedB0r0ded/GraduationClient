@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import com.frius.states
+import app.frius.stateManagement
 
 import '../types'
 import '../config'
