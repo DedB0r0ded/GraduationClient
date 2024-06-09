@@ -10,8 +10,8 @@ struct User{
   QString lastName;
   QString email;
   QString password;
-  bool operator==(const User& other);
-  bool operator!=(const User& other);
+  bool operator==(const User& other) const;
+  bool operator!=(const User& other) const;
 };
 
 struct Organisation{
@@ -25,8 +25,8 @@ struct Organisation{
   QString bankName;
   QString bankAddress;
   bool client;
-  bool operator==(const Organisation& other);
-  bool operator!=(const Organisation& other);
+  bool operator==(const Organisation& other) const;
+  bool operator!=(const Organisation& other) const;
 };
 
 struct RegKey{
@@ -35,8 +35,8 @@ struct RegKey{
   Organisation organisation;
   int power;
   bool admin;
-  bool operator==(const RegKey& other);
-  bool operator!=(const RegKey& other);
+  bool operator==(const RegKey& other) const;
+  bool operator!=(const RegKey& other) const;
 };
 
 #endif

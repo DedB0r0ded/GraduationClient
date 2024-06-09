@@ -1,6 +1,6 @@
 #include "REST_Classes.h"
 
-bool User::operator==(const User &other)
+bool User::operator==(const User &other) const
 {
   return  firstName == other.firstName
           && middleName == other.middleName
@@ -8,12 +8,12 @@ bool User::operator==(const User &other)
           && email == other.email;
 }
 
-bool User::operator!=(const User &other)
+bool User::operator!=(const User &other) const
 {
   return !(*this == other);
 }
 
-bool Organisation::operator==(const Organisation &other)
+bool Organisation::operator==(const Organisation &other) const
 {
   return  id == other.id
           && name == other.name
@@ -27,12 +27,12 @@ bool Organisation::operator==(const Organisation &other)
           && client == other.client;
 }
 
-bool Organisation::operator!=(const Organisation &other)
+bool Organisation::operator!=(const Organisation &other) const
 {
   return !(*this == other);
 }
 
-bool RegKey::operator==(const RegKey &other)
+bool RegKey::operator==(const RegKey &other) const
 {
   return id == other.id
          && value == other.value
@@ -41,7 +41,7 @@ bool RegKey::operator==(const RegKey &other)
          && organisation == other.organisation;
 }
 
-bool RegKey::operator!=(const RegKey &other)
+bool RegKey::operator!=(const RegKey &other) const
 {
   return !(*this == other);
 }

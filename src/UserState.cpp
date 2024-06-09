@@ -40,8 +40,12 @@ QList<RegKey> UserState::regKeys() const
 
 void UserState::setRegKeys(const QList<RegKey> &newRegKeys)
 {
-  if (_regKeys == newRegKeys)
-    return;
-  _regKeys = newRegKeys;
+  if(newRegKeys.size() == _regKeys.size()){
+    for(size_t i = 0; i < _regKeys.size(); i++)
+      if(newRegKeys[i] != _regKeys[i]){
+
+      }
+  }
+
   emit regKeysChanged();
 }
