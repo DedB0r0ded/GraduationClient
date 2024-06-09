@@ -11,8 +11,14 @@ struct User{
   QString lastName;
   QString email;
   QString password;
+
   bool operator==(const User& other) const;
   bool operator!=(const User& other) const;
+};
+
+struct Task{
+  size_t id;
+  QString subject;
 };
 
 struct Organisation{
@@ -26,6 +32,7 @@ struct Organisation{
   QString bankName;
   QString bankAddress;
   bool client;
+
   bool operator==(const Organisation& other) const;
   bool operator!=(const Organisation& other) const;
 };
@@ -36,6 +43,7 @@ struct RegKey{
   Organisation organisation;
   int power;
   bool admin;
+
   bool operator==(const RegKey& other) const;
   bool operator!=(const RegKey& other) const;
 };
@@ -63,6 +71,7 @@ struct Manufacturer{
   QString country;
   QString description;
   int rating;
+
   bool operator==(const Manufacturer& other) const;
   bool operator!=(const Manufacturer& other) const;
 };

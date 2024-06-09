@@ -80,7 +80,7 @@ TableView{
     ]
 
     function fetchModel(){
-      // clear()
+      //clear()
       // C++ REST
       return 0
     }
