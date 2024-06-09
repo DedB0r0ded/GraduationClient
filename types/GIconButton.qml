@@ -1,6 +1,8 @@
 import QtQuick
 import QtQuick.Controls
 
+import com.frius.states
+
 import '../config'
 import 'basic'
 

@@ -9,8 +9,10 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS Core Quick QuickControls2)
 qt_standard_project_setup(REQUIRES 6.5)
 
 list(APPEND MY_CXX_SOURCES
+  src/REST_Classes.h src/REST_Classes.cpp
   src/REST_AppWrapper.cpp src/REST_AppWrapper.h
   src/AppState.h src/AppState.cpp
+  src/UserState.h src/UserState.cpp
 )
 
 set(SOURCES main.cpp )

@@ -2,6 +2,8 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 
+import com.frius.states
+
 import "../strings"
 import "../types"
 import "../types/basic"
