@@ -114,15 +114,13 @@ GPage{
 
     GButton{
       id: _organisationCreateButton
-      text: Russian.buttons.organisationCreate
+      width: _root.calcButtonWidth(); height: _root.calcButtonHeight()
       anchors{
         bottom: parent.bottom
         horizontalCenter: parent.horizontalCenter
         bottomMargin: 20
       }
-
-      minWidth: _root.calcButtonWidth()
-      minHeight: _root.calcButtonHeight()
+      text: Russian.buttons.organisationCreate
     }
 
   function getTopLabelText(){

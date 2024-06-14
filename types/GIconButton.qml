@@ -31,6 +31,8 @@ Button{
     width: _root.width
     height: _root.height
     color: _root.bgcolor()
+    border.width: 1
+    border.color: _root.borderColor()
   }
 
   contentItem: Text{
@@ -43,7 +45,7 @@ Button{
     verticalAlignment: Text.AlignVCenter
   }
 
-  onClicked: AppState.buttonEcho()
+  onClicked: AppState.defaultIconButtonEcho()
 
   function radius(){
     if(!Controls.roundedIconButtons)
@@ -55,12 +57,16 @@ Button{
   }
 
   function bgcolor(){
-    if((_root.hovered || _root.activeFocus) && !_root.down)
+    if(_root.hovered && !_root.down)
       return CurrentColorScheme.value.control.background.hover
     else if(_root.down)
       return  CurrentColorScheme.value.control.background.active
     else
       return  CurrentColorScheme.value.control.background.idle
+  }
+
+  function borderColor(){
+    return _root.activeFocus ? CurrentColorScheme.value.stroke.active : 'transparent'
   }
 
   Component.onCompleted: {

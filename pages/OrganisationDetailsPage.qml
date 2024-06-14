@@ -16,6 +16,7 @@ GPage{
   groupIndex: Controls.menuOrganisations
   index: Controls.organisationDetailsPage
 
+  // TODO: refactor `pageCalled` signal
   signal pageCalled(int index)
 
   ColumnLayout{
@@ -246,8 +247,7 @@ GPage{
         GButton{
           id: _generateRegKeys
           text: Russian.buttons.organisationGenerateKeys
-          minWidth: _root.calcButtonWidth()
-          minHeight: _root.calcButtonHeight()
+          width: _root.calcButtonWidth(); height: _root.calcButtonHeight()
           anchors{
             bottom: _showLocalServicesButton.top
             bottomMargin: 20
@@ -259,8 +259,7 @@ GPage{
         GButton{
           id: _showLocalServicesButton
           text: Russian.buttons.organisationShowServices
-          minWidth: _root.calcButtonWidth()
-          minHeight: _root.calcButtonHeight()
+          width: _root.calcButtonWidth(); height: _root.calcButtonHeight()
           anchors{
             bottom: _returnToOrganisationListButton.top
             bottomMargin: 20
@@ -272,8 +271,7 @@ GPage{
         GButton{
           id: _returnToOrganisationListButton
           text: Russian.buttons.returnToOrganisationList
-          minWidth: _root.calcButtonWidth()
-          minHeight: _root.calcButtonHeight()
+          width: _root.calcButtonWidth(); height: _root.calcButtonHeight()
           anchors{
             bottom: _deleteButton.top
             bottomMargin: 20
@@ -284,10 +282,9 @@ GPage{
         }
         GButton{
           id: _deleteButton
+          width: _root.calcButtonWidth(); height: _root.calcButtonHeight()
           text: Russian.buttons.organisationDelete
           dangerous: true
-          minWidth: _root.calcButtonWidth()
-          minHeight: _root.calcButtonHeight()
           anchors{
             bottom: parent.bottom
             bottomMargin: 30

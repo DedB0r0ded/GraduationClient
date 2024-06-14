@@ -70,7 +70,6 @@ list(APPEND PROJECT_VIEWS
 )
 
 list(APPEND PROJECT_TYPES
-  types/GButtonTemplate.qml
   types/GButton.qml
   types/GIconButton.qml
   types/GTextArea.qml

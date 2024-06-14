@@ -84,14 +84,13 @@ GDialog{
       anchors.right: parent.right
       Image {
         id: _pwdImage
+        width: _dialog.calcImageWidth(); height: width
         anchors{
           left: parent.left
           top: parent.top
         }
         source: CurrentColorScheme.value.dark ? "qrc:///images/PasswordDark"
                                               : "qrc:///images/PasswordLight"
-        width: _dialog.calcImageWidth()
-        height: width
       }
       GTextField{
         id: _pwdInput
@@ -122,13 +121,12 @@ GDialog{
 
     GButton{
       id: _logInButton
+      width: _dialog.calcButtonWidth(); height: _dialog.calcButtonHeight()
       anchors{
         bottom: parent.bottom
         bottomMargin: 40
         horizontalCenter: parent.horizontalCenter
       }
-      minWidth: _dialog.calcButtonWidth()
-      minHeight: _dialog.calcButtonHeight()
       text: Russian.buttons.logIn
       onClicked: _dialog.accept()
     }

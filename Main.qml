@@ -62,16 +62,9 @@ Window {
         spacing: 0
 
         GButton{
-          id: menuProfileButton
-          minWidth: menuDrawer.width
-          minHeight: funs.calcMenuButtonHeight()
-
-          rounded: Controls.roundedButtons
+          id: menuProfileButton; focus: false
+          width: menuDrawer.width; height: funs.calcMenuButtonHeight()
           text: Russian.menu.profile
-
-          focus: false
-          previousTabItem: menuSignOutButton
-          nextTabItem: menuTasksButton
 
           onFocusChanged:
               if(focus) funs.setMainMenuItem(Controls.menuProfile)
@@ -79,16 +72,9 @@ Window {
         }
 
         GButton{
-          id: menuTasksButton
-          minWidth: menuDrawer.width
-          minHeight: funs.calcMenuButtonHeight()
-
-          rounded: Controls.roundedButtons
+          id: menuTasksButton; focus: false
+          width: menuDrawer.width; height: funs.calcMenuButtonHeight()
           text: Russian.menu.tasks
-
-          focus: false
-          previousTabItem: menuProfileButton
-          nextTabItem: menuOrganisationsButton
 
           onFocusChanged:
               if(focus) funs.setMainMenuItem(Controls.menuTasks)
@@ -96,16 +82,9 @@ Window {
         }
 
         GButton{
-          id: menuOrganisationsButton
-          minWidth: menuDrawer.width
-          minHeight: funs.calcMenuButtonHeight()
-
-          rounded: Controls.roundedButtons
+          id: menuOrganisationsButton; focus: false
+          width: menuDrawer.width; height: funs.calcMenuButtonHeight()
           text: Russian.menu.organisations
-
-          focus: false
-          previousTabItem: menuTasksButton
-          nextTabItem: menuContractsButton
 
           onFocusChanged:
               if(focus) funs.setMainMenuItem(Controls.menuOrganisations)
@@ -113,18 +92,9 @@ Window {
         }
 
         GButton{
-          id: menuContractsButton
-          minWidth: menuDrawer.width
-          minHeight: funs.calcMenuButtonHeight()
-
-          rounded: Controls.roundedButtons
+          id: menuContractsButton; focus: false
+          width: menuDrawer.width; height: funs.calcMenuButtonHeight()
           text: Russian.menu.contracts
-
-          focus: false
-          previousTabItem: menuOrganisationsButton
-          nextTabItem: menuDeveloperButton.visible
-                  ? menuDeveloperButton
-                  : menuSignOutButton
 
           onFocusChanged:
               if(focus) funs.setMainMenuItem(Controls.menuContracts)
@@ -132,17 +102,10 @@ Window {
         }
 
         GButton{
-          id: menuDeveloperButton
-          minWidth: menuDrawer.width
-          minHeight: funs.calcMenuButtonHeight()
+          id: menuDeveloperButton; focus: false
+          width: menuDrawer.width; height: funs.calcMenuButtonHeight()
           dangerous: true
-
-          rounded: Controls.roundedButtons
           text: Russian.menu.developer
-
-          focus: visible
-          previousTabItem: menuContractsButton
-          nextTabItem: menuSignOutButton
 
           onFocusChanged:
               if(focus) funs.setMainMenuItem(Controls.menuDeveloper)
@@ -154,20 +117,11 @@ Window {
         }
       }
       GButton{
-          id: menuSignOutButton
+          id: menuSignOutButton; focus: false
           y: funs.calcLastMenuButtonY(menuDrawer, height)
-          minWidth: menuDrawer.width
-          minHeight: funs.calcMenuButtonHeight()
-
-          rounded: Controls.roundedButtons
+          width: menuDrawer.width; height: funs.calcMenuButtonHeight()
           text: Russian.menu.signOut
           dangerous: true
-
-          focus: false
-          previousTabItem: menuDeveloperButton.visible
-                  ? menuDeveloperButton
-                  : menuContractsButton
-          nextTabItem: menuProfileButton
 
           onFocusChanged:
               if(focus) funs.setMainMenuItem(Controls.menuSignOut)
@@ -190,86 +144,51 @@ Window {
         spacing: 0
 
         GButton{
-          id: devMenuComponentsButton
-          minWidth: devMenuDrawer.width
-          minHeight: funs.calcMenuButtonHeight()
-
-          rounded: Controls.roundedButtons
+          id: devMenuComponentsButton; focus: false
+          width: devMenuDrawer.width; height: funs.calcMenuButtonHeight()
           text: Russian.menu.components
           dangerous: true
-
-          focus: false
-          previousTabItem: devMenuBackButton
-          nextTabItem: devMenuFacilitesButton
 
           onFocusChanged:
               if(focus) funs.setDeveloperMenuItem(Controls.devMenuComponents)
         }
 
         GButton{
-          id: devMenuFacilitesButton
-          minWidth: devMenuDrawer.width
-          minHeight: funs.calcMenuButtonHeight()
+          id: devMenuFacilitesButton; focus: false
+          width: devMenuDrawer.width; height: funs.calcMenuButtonHeight()
           dangerous: true
-
-          rounded: Controls.roundedButtons
           text: Russian.menu.facilities
-
-          focus: false
-          previousTabItem: devMenuComponentsButton
-          nextTabItem: devMenuServicesButton
 
           onFocusChanged:
               if(focus) funs.setDeveloperMenuItem(Controls.devMenuFacilities)
         }
 
         GButton{
-          id: devMenuServicesButton
-          minWidth: devMenuDrawer.width
-          minHeight: funs.calcMenuButtonHeight()
-          dangerous: true
-
-          rounded: Controls.roundedButtons
+          id: devMenuServicesButton; focus: false
+          width: devMenuDrawer.width; height: funs.calcMenuButtonHeight()
           text: Russian.menu.services
-
-          focus: false
-          previousTabItem: devMenuFacilitesButton
-          nextTabItem: devMenuManufacturersButton
+          dangerous: true
 
           onFocusChanged:
               if(focus) funs.setDeveloperMenuItem(Controls.devMenuServices)
         }
 
         GButton{
-          id: devMenuManufacturersButton
-          minWidth: devMenuDrawer.width
-          minHeight: funs.calcMenuButtonHeight()
+          id: devMenuManufacturersButton; focus: false
+          width: devMenuDrawer.width; height: funs.calcMenuButtonHeight()
           visible: true; dangerous: true
-
-          rounded: Controls.roundedButtons
           text: Russian.menu.manufacturers
-
-          focus: false
-          previousTabItem: devMenuServicesButton
-          nextTabItem: devMenuBackButton
 
           onFocusChanged:
               if(focus) funs.setDeveloperMenuItem(Controls.devMenuManufacturers)
         }
       }
       GButton{
-          id: devMenuBackButton
+          id: devMenuBackButton; focus: false
           y: funs.calcLastMenuButtonY(devMenuDrawer, height)
-          minWidth: devMenuDrawer.width
-          minHeight: funs.calcMenuButtonHeight()
-          visible: true; dangerous: true
-
-          rounded: Controls.roundedButtons
+          width: devMenuDrawer.width; height: funs.calcMenuButtonHeight()
           text: Russian.menu.back
-
-          focus: false
-          previousTabItem: devMenuManufacturersButton
-          nextTabItem: devMenuComponentsButton
+          dangerous: true
 
           onFocusChanged:
               if(focus) funs.setDeveloperMenuItem(Controls.devMenuBack)

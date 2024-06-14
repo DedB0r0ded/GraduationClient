@@ -26,9 +26,14 @@ QString AppState::getCurrentTimeString()
   return currentTime.toString("hh:mm:ss");
 }
 
-void AppState::buttonEcho()
+void AppState::defaultButtonEcho()
 {
   qDebug() << getCurrentTimeString() << "Button pressed.";
+}
+
+void AppState::defaultIconButtonEcho()
+{
+  qDebug() << getCurrentTimeString() << "IconButton pressed.";
 }
 
 void AppState::setActiveSectionTitle(QString title)

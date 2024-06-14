@@ -14,6 +14,8 @@ import "../colorSchemes"
 import "../js"
 import "../pages"
 
+
+// TODO: Refactor
 GPage{
   id: _root
   groupIndex: Controls.menuContracts
@@ -31,7 +33,7 @@ GPage{
     }
 
     GGroupBox{
-      id: _customerBox
+      id: _customerGroupBox
       width: _root.width / 36 * 17
       height: _root.height / 27 * 10
       GLabel{
@@ -218,18 +220,18 @@ GPage{
       left: parent.left; leftMargin: 20
       right: parent.right; rightMargin: 20
     }
-    XGButton{
+    GButton{
       width: 400
       height: 80
       atext: "Сохранить изменения"
     }
-    XGButton{
+    GButton{
       width: 400
       height: 80
       atext: c1.checked ? "К списку услуг" : "К списку объектов"
       onClicked: mouse => _root.nav(mouse)
     }
-    XGButton{
+    GButton{
       width: 400
       height: 80
       dangerous: true

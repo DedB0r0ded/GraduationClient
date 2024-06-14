@@ -19,7 +19,8 @@ signals:
 
 public slots:
   bool healthCheck(void);
-  void buttonEcho(void);
+  void defaultButtonEcho(void);
+  void defaultIconButtonEcho(void);
   void setActiveSectionTitle(QString title);
   void pushActiveSectionTitle(QString title);
   void popActiveSectionTitle(void);

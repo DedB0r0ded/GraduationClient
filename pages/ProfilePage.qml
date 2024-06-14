@@ -307,48 +307,45 @@ GPage{
         Layout.fillWidth: true
         Layout.fillHeight: true
         Layout.columnSpan: 2
-        Layout.minimumHeight: _refreshDataButton.minHeight
-        Layout.minimumWidth: _refreshDataButton.minWidth
+        Layout.minimumHeight: _refreshDataButton.height
+        Layout.minimumWidth: _refreshDataButton.width
         Layout.alignment: Qt.AlignRight
 
         GButton{
           id: _refreshDataButton
-          text: Russian.buttons.profileRefreshTasks
+          width: _root.calcLargeButtonWidth(); height: _root.calcLargeButtonHeight()
           anchors.horizontalCenter: parent.horizontalCenter
-          minWidth: _root.calcLargeButtonWidth()
-          minHeight: _root.calcLargeButtonHeight()
+          text: Russian.buttons.profileRefreshTasks
         }
       }
       Item{
         Layout.fillWidth: true
         Layout.fillHeight: true
         Layout.columnSpan: 2
-        Layout.minimumHeight: _clearCompletedButton.minHeight
-        Layout.minimumWidth: _clearCompletedButton.minWidth
+        Layout.minimumHeight: _clearCompletedButton.height
+        Layout.minimumWidth: _clearCompletedButton.width
         Layout.alignment: Qt.AlignRight
 
         GButton{
           id: _clearCompletedButton
+          width: _root.calcLargeButtonWidth(); height: _root.calcLargeButtonHeight()
           anchors.horizontalCenter: parent.horizontalCenter
           text: Russian.buttons.profileClearCompletedTasks
-          minWidth: _root.calcLargeButtonWidth()
-          minHeight: _root.calcLargeButtonHeight()
         }
       }
       Item{
         Layout.fillWidth: true
         Layout.fillHeight: true
         Layout.columnSpan: 2
-        Layout.minimumHeight: _logOutButton.minHeight
-        Layout.minimumWidth: _logOutButton.minWidth
+        Layout.minimumHeight: _logOutButton.height
+        Layout.minimumWidth: _logOutButton.width
         Layout.alignment: Qt.AlignRight
 
         GButton{
           id: _logOutButton
+          width: _root.calcLargeButtonWidth(); height: _root.calcLargeButtonHeight()
           anchors.horizontalCenter: parent.horizontalCenter
           text: Russian.buttons.profileSignOut
-          minWidth: _root.calcLargeButtonWidth()
-          minHeight: _root.calcLargeButtonHeight()
           dangerous: true
           onClicked: _root.loggedOut()
         }
