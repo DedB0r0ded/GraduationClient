@@ -18,13 +18,10 @@ public:
 
 signals:
 
-
 public slots:
-
 
 private:
   bool _isDeveloper;
-
 
 };
 

@@ -9,6 +9,7 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS Core Quick QuickControls2)
 qt_standard_project_setup(REQUIRES 6.5)
 
 list(APPEND MY_CXX_SOURCES
+  src/GBase.h
   src/Manufacturer.h
   src/Component.h
   src/Facility.h
@@ -16,7 +17,7 @@ list(APPEND MY_CXX_SOURCES
   src/User.h
   src/RegKey.h
   src/Contract.h
-  src/REST_AppWrapper.cpp src/REST_AppWrapper.h
+  src/REST_Wrapper.h src/REST_Wrapper.cpp
   src/AppState.h src/AppState.cpp
   src/UserState.h src/UserState.cpp
 )
