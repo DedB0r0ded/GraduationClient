@@ -98,10 +98,10 @@ GDialog{
     font.pointSize: FontProperties.plainTextSize
   }
 
-  XGButton{
+  GButton{
     x: 250; y: 520
     height: 60; width: 300
-    atext: root.edited ? "Сохранить" : "Написать отзыв"
+    text: root.edited ? "Сохранить" : "Написать отзыв"
     font.pointSize: FontProperties.plainTextSize
     onClicked: {
       if(root.edited){

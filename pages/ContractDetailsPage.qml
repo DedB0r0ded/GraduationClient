@@ -223,19 +223,19 @@ GPage{
     GButton{
       width: 400
       height: 80
-      atext: "Сохранить изменения"
+      text: "Сохранить изменения"
     }
     GButton{
       width: 400
       height: 80
-      atext: c1.checked ? "К списку услуг" : "К списку объектов"
+      text: c1.checked ? "К списку услуг" : "К списку объектов"
       onClicked: mouse => _root.nav(mouse)
     }
     GButton{
       width: 400
       height: 80
       dangerous: true
-      atext: "Удалить запись"
+      text: "Удалить запись"
     }
   }
 

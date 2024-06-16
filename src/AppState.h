@@ -9,10 +9,11 @@ class AppState : public QObject{
 private:
   QStack<QString> _sectionTitles;
   QString popSectionTitle(void);
+  static QString getCurrentTimeString(void);
+  static QString getPrompt(void);
 
 public:
   explicit AppState(QObject *parent = nullptr);
-  static QString getCurrentTimeString(void);
 
 signals:
   void activeSectionTitleChanged(QString title);

@@ -52,6 +52,8 @@ list(APPEND PROJECT_MODELS
 )
 
 list(APPEND PROJECT_VIEWS
+  types/views/GTableView.qml
+
   types/views/ContractFacilityComponentTableView.qml
   types/views/ContractMaintenanceTableView.qml
   types/views/ContractServiceTableView.qml
@@ -110,8 +112,7 @@ list(APPEND PROJECT_PAGES
   pages/OrganisationLocalServicesPage.qml
 
   pages/ContractListPage.qml
-  pages/ContractDetailsOneTimePage.qml
-  pages/ContractDetailsMaintenancePage.qml
+  pages/ContractDetailsPage.qml
   pages/ContractServiceListPage.qml
   pages/ContractMaintenanceListPage.qml
 

@@ -52,10 +52,9 @@ QtObject {
   readonly property int organisationLocalServicesPage: 2
 
   readonly property int contractListPage: 0
-  readonly property int contractDetailsOneTimePage: 1
-  readonly property int contractDetailsMaintenancePage: 2
-  readonly property int contractMaintenanceListPage: 3
-  readonly property int contractServiceListPage: 4
+  readonly property int contractDetailsPage: 1
+  readonly property int contractMaintenanceListPage: 2
+  readonly property int contractServiceListPage: 3
 
   readonly property int logInDialog: 100
   readonly property int signUpDialog: 110

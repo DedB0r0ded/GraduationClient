@@ -98,6 +98,13 @@ GPage{
   }
 
 
+  Connections{
+    target: _tableView.mySelectionModel
+    function onSelectionChanged(){
+      console.log(_tableView.mySelectionModel.currentIndex.row)
+    }
+  }
+
   function calcButtonPreferredWidth(){
     return WindowSizes.stdWidth / Controls.smallButtonsWidthRatio
   }

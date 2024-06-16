@@ -8,22 +8,27 @@ QString AppState::popSectionTitle()
   return _sectionTitles.pop();
 }
 
-AppState::AppState(QObject *parent)
-    : _sectionTitles {}
-{
-
-}
-
-bool AppState::healthCheck()
-{
-  qDebug() << getCurrentTimeString() << "AppStatehealthCheck() finished correctly.";
-  return true;
-}
-
 QString AppState::getCurrentTimeString()
 {
   QTime currentTime = QTime::currentTime();
   return currentTime.toString("hh:mm:ss");
+}
+
+QString AppState::getPrompt()
+{
+  return "Frius " + getCurrentTimeString() + ": ";
+}
+
+AppState::AppState(QObject *parent)
+    : _sectionTitles {}
+{
+  healthCheck();
+}
+
+bool AppState::healthCheck()
+{
+  qDebug() << getPrompt() << "App health check finished correctly.";
+  return true;
 }
 
 void AppState::defaultButtonEcho()

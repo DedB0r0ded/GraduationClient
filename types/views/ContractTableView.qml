@@ -8,29 +8,9 @@ import '../../strings'
 import '../../config'
 
 
-TableView{
+GTableView{
   id: _root
-  property var columnWidths: [3, 3, 1, 1]
-
-  columnSpacing: 1; rowSpacing: 10
-  columnWidthProvider: function(column) {
-    return width * (columnWidths[column] / columnWidths.reduce(sum, 0)) - columnSpacing
-  }
-  rowHeightProvider: (row) => {return 60}
-
-  interactive: false
-  boundsBehavior: TableView.StopAtBounds
-  resizableColumns: false; resizableRows: false
-
-  selectionBehavior: TableView.SelectRows
-  selectionMode: TableView.ContiguousSelection
-  selectionModel: ItemSelectionModel{
-    id: _smodel
-    onCurrentChanged: ()=>{
-      let id = currentIndex
-      _smodel.select(currentIndex, ItemSelectionModel.Rows | ItemSelectionModel.Select)
-    }
-  }
+  columnWidths: [3, 3, 1, 1]
 
   model: TableModel{
     id: _model
@@ -90,11 +70,5 @@ TableView{
   }
 
 
-  Component.onCompleted: {
-  }
-
-  function sum(acc, item, index, arr){
-    acc += item
-    return acc
-  }
+  Component.onCompleted: {  }
 }

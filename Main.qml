@@ -212,6 +212,7 @@ Window {
     interactive: false
 
     // TODO: Fix page components positioning when mainWindow is maximized
+    // Ну когда-нибудь потом
     Loader{
       id: profileLoader
       active: SwipeView.isCurrentItem
@@ -296,18 +297,7 @@ Window {
         Loader{
           id: contractDetailsOneTimePageLoader
           active: SwipeView.isCurrentItem
-          sourceComponent: ContractDetailsOneTimePage{
-            onDrawnIncorrectly: mainWindow.drawnIncorrectly()
-            onPageCalled: index => {
-              contractSwipeView.currentIndex = index
-              mainWindow.drawnIncorrectly()
-            }
-          }
-        }
-        Loader{
-          id: contractDetailsMaintenancePageLoader
-          active: SwipeView.isCurrentItem
-          sourceComponent: ContractDetailsMaintenancePage{
+          sourceComponent: ContractDetailsPage{
             onDrawnIncorrectly: mainWindow.drawnIncorrectly()
             onPageCalled: index => {
               contractSwipeView.currentIndex = index
@@ -348,6 +338,7 @@ Window {
         interactive: false
         Loader{
           id: developerComponentListPageLoader
+          active: SwipeView.isCurrentItem
           sourceComponent: DeveloperComponentListPage{
             onDrawnIncorrectly: mainWindow.drawnIncorrectly()
             onPageCalled: index => {
@@ -368,6 +359,7 @@ Window {
         }
         Loader{
           id: developerServiceListPageLoader
+          active: SwipeView.isCurrentItem
           sourceComponent: DeveloperServiceListPage{
             onDrawnIncorrectly: mainWindow.drawnIncorrectly()
             onPageCalled: index => {
@@ -378,6 +370,7 @@ Window {
         }
         Loader{
           id: developerManufacturerListPageLoader
+          active: SwipeView.isCurrentItem
           sourceComponent: DeveloperManufacturerListPage{
             onDrawnIncorrectly: mainWindow.drawnIncorrectly()
             onPageCalled: index => {
@@ -389,7 +382,6 @@ Window {
       }
     }
   }
-
 
 
   Connections{
