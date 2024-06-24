@@ -7,7 +7,7 @@ QtObject{
   readonly property int stdHeight: 1080
   
   readonly property int signUpWidth: 600
-  readonly property int signUpHeight: 880
+  readonly property int signUpHeight: 800
   
   readonly property int logInWidth: 560
   readonly property int logInHeight: 600

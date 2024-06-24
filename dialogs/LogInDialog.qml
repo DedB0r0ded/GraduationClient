@@ -18,6 +18,15 @@ GDialog{
   width: WindowSizes.logInWidth
   height: WindowSizes.logInHeight
 
+  SignUpDialog{ id: _signUpDialog }
+  GErrorDialog{
+    id: _invalidEmailMessage
+    title: Russian.messages.invalidEmail
+  }
+  GErrorDialog{
+    id: _invalidPasswordMessage
+    title: Russian.messages.invalidPassword
+  }
 
   contentItem: GCanvas{
     id: _content
@@ -101,6 +110,10 @@ GDialog{
           right: parent.right
           top: parent.top
         }
+        validator: RegularExpressionValidator{
+          regularExpression: Russian.passwordRegExp
+        }
+
         height: _dialog.calcInputHeight()
       }
     }
@@ -116,7 +129,7 @@ GDialog{
       }
 
       text: Russian.buttons.signUp
-      //onClicked:
+      onClicked: _signUpDialog.open()
     }
 
     GButton{
@@ -128,7 +141,7 @@ GDialog{
         horizontalCenter: parent.horizontalCenter
       }
       text: Russian.buttons.logIn
-      onClicked: _dialog.accept()
+      onClicked: _dialog.initLogIn()
     }
 
   }
@@ -153,5 +166,18 @@ GDialog{
 
   function calcLabelHeight(){
     return height / 5
+  }
+
+  function initLogIn(){
+    if(!_userEmailInput.acceptableInput){
+      _invalidEmailMessage.open()
+      return
+    }
+    if(!_pwdInput.acceptableInput){
+      _invalidPasswordMessage.open()
+      return
+    }
+    AppWrapper.fetchUser(_userEmailInput.text, _pwdInput.text)
+    accept()
   }
 }

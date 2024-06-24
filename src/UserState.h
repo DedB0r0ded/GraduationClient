@@ -9,8 +9,6 @@ class UserState : public QObject{
 
 private:
   Q_OBJECT
-  //QML_SINGLETON
-  //QML_ELEMENT
 
 
 public:

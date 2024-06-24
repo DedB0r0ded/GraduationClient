@@ -16,28 +16,28 @@ GTableView{
     id: _model
 
     TableModelColumn{ display: "user" }
-    TableModelColumn{ display: "keyValue" }
+    TableModelColumn{ display: "status" }
 
     rows: [
       {
         user: Russian.placeholders.userFullName,
-        keyValue: Russian.placeholders.regKeyShortValue,
+        status: Russian.placeholders.regKeyShortValue,
       },
       {
         user: Russian.placeholders.userFullName,
-        keyValue: Russian.placeholders.regKeyShortValue,
+        status: Russian.placeholders.regKeyShortValue,
       },
       {
         user: Russian.placeholders.userFullName,
-        keyValue: Russian.placeholders.regKeyShortValue,
+        status: Russian.placeholders.regKeyShortValue,
       },
       {
         user: Russian.placeholders.userFullName,
-        keyValue: Russian.placeholders.regKeyShortValue,
+        status: Russian.placeholders.regKeyShortValue,
       },
       {
         user: Russian.placeholders.userFullName,
-        keyValue: Russian.placeholders.regKeyShortValue,
+        status: Russian.placeholders.regKeyShortValue,
       },
     ]
 

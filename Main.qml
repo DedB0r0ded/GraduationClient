@@ -18,8 +18,8 @@ Window {
   property int selectedMainMenuItem: 0
   property int selectedDeveloperMenuItem: 0
 
-  property int pageWidth: funs.calcPageWidth()
-  property int menuWidth: funs.calcMenuWidth()
+  property int pageWidth: AppState.pageWidth
+  property int menuWidth: AppState.menuWidth
 
   signal drawnIncorrectly
 
@@ -392,17 +392,17 @@ Window {
     }
   }
 
+  onWidthChanged: drawnIncorrectly()
   onHeightChanged: drawnIncorrectly()
 
-  onSelectedMainMenuItemChanged: {
-    drawnIncorrectly()
-  }
+  onSelectedMainMenuItemChanged: drawnIncorrectly()
 
   Component.onCompleted: {
     //menuDeveloperButton.visible = false
     funs.openMenu()
     mainWindow.minimumMenuWidth = funs.calcMinimumMenuWidth()
     AppState.setActiveSectionTitle(Russian.menu.profile)
+    funs.refreshMainWindowWidth()
     logInDialog.open()
   }
 
@@ -419,12 +419,15 @@ Window {
     }
 
     function calcMenuWidth(){
-      return Math.max(mainWindow.minimumMenuWidth,
-            mainWindow.width / Controls.menuWidthRatio)
+      AppState.setMenuWidth(mainWindow.width / Controls.menuWidthRatio)
+      //console.log("Menu width: " + AppState.menuWidth)
+      return AppState.menuWidth
     }
 
     function calcPageWidth(){
-      return mainWindow.width - calcMenuWidth()
+      AppState.setPageWidth(mainWindow.width - mainWindow.menuWidth)
+      //console.log("Page width: " + AppState.pageWidth)
+      return AppState.pageWidth
     }
 
     function calcMenuButtonHeight(){
@@ -437,6 +440,7 @@ Window {
 
     function setMainMenuItem(id){
       mainWindow.selectedMainMenuItem = id
+      refreshMainWindowWidth()
       //console.log("Current main menu item: " + id)
     }
 
@@ -461,7 +465,9 @@ Window {
       if(mainWindow.visibility == Window.FullScreen
           || mainWindow.visibility == Window.Maximized)
         return 0
-      mainWindow.width += 1; mainWindow.width -= 1
+      AppState.setMenuWidth(calcMenuWidth())
+      AppState.setPageWidth(calcPageWidth())
+      //mainWindow.width += 1; mainWindow.width -= 1
     }
 
     function quit(){

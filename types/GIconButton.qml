@@ -14,10 +14,15 @@ Button{
 
   readonly property int radiusModifier: 8
 
+  property bool smoothIcon: true
+  property bool mipmapIcon: false
+
   Image{
     width: parent.width * 0.6
     height: width
     anchors.centerIn: parent
+    mipmap: _root.mipmapIcon
+    smooth: _root.smoothIcon
     source: CurrentColorScheme.value.dark ? darkIconSource : lightIconSource
   }
 

@@ -61,3 +61,21 @@ void AppState::popActiveSectionTitle()
   emit activeSectionTitleChanged(_sectionTitles.top());
 }
 
+void AppState::setPageWidth(qreal pageWidth){
+  _pageWidth = pageWidth;
+  emit pageWidthChanged(pageWidth);
+}
+
+qreal AppState::pageWidth(){
+  return _pageWidth;
+}
+
+
+void AppState::setMenuWidth(qreal menuWidth){
+  _menuWidth = menuWidth;
+  emit menuWidthChanged(menuWidth);
+}
+
+qreal AppState::menuWidth(){
+  return _menuWidth;
+}

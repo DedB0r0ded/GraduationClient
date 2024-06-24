@@ -17,7 +17,7 @@ list(APPEND MY_CXX_SOURCES
   src/User.h
   src/RegKey.h
   src/Contract.h
-  src/REST_Wrapper.h src/REST_Wrapper.cpp
+  src/AppWrapper.h src/AppWrapper.cpp
   src/AppState.h src/AppState.cpp
   src/UserState.h src/UserState.cpp
 )
@@ -84,6 +84,7 @@ list(APPEND PROJECT_TYPES
   types/GGroupBox.qml
   types/GComboBox.qml
   types/GDialog.qml
+  types/GErrorDialog.qml
 )
 
 list(APPEND PROJECT_COLOR_SCHEMES
@@ -123,13 +124,15 @@ list(APPEND PROJECT_PAGES
 )
 
 list(APPEND PROJECT_DIALOGS
-  # dialogs/ContractFacilityDialog.qml
-  # dialogs/CreateOrganisationDialog.qml
-  # dialogs/FacilityReviewDialog.qml
-  # dialogs/GlobalComponentDialog.qml
-  # dialogs/GlobalFacilityDialog.qml
-  # dialogs/GlobalServiceDialog.qml
-  # dialogs/SignUpDialog.qml
+  dialogs/ContractFacilityDialog.qml
+  dialogs/CreateOrganisationDialog.qml
+  dialogs/FacilityReviewDialog.qml
+  dialogs/GlobalComponentDialog.qml
+  dialogs/GlobalFacilityDialog.qml
+  dialogs/GlobalServiceDialog.qml
+  dialogs/LocalServiceDialog.qml
+  dialogs/ContractServiceDialog.qml
+  dialogs/SignUpDialog.qml
   dialogs/LogInDialog.qml
   dialogs/InfoDialog.qml
 )

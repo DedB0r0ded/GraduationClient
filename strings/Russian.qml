@@ -7,6 +7,7 @@ QtObject{
   readonly property string projectName: 'Frius'
 
   readonly property regexp emailRegExp: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+  readonly property regexp passwordRegExp: /.{6,}/
 
   readonly property var menu: {
     'profile'       : 'Профиль',
@@ -29,6 +30,8 @@ QtObject{
     'middleName'          : 'Отчество',
     'lastName'            : 'Фамилия',
     'email'               : 'Электронная почта',
+    'password'            : 'Пароль',
+    'passwordConfirmation': 'Подтверждение пароля',
     'notifications'       : 'Уведомления',
     'expiringContracts'   : 'Истекает срок договора',
     'maintenanceRequired' : 'Необходимо ТО',
@@ -95,6 +98,8 @@ QtObject{
 
     'signUp'  : 'Зарегистрироваться',
     'logIn'   : 'Войти',
+
+    'info' : 'Справка',
   }
 
   readonly property var tableHeaders: {
@@ -194,6 +199,12 @@ QtObject{
     'regKeyShortValue'  : '1f7a520a',
     'regKeyFullValue'   : '0e97b1a3818461f7a520a467b1a38c1f7a520a467b1a38c1ff7a57a520a47',
     'privilegeName'     : 'ВЫПОЛНЯТЬ_ДЕЙСТВИЕ'
+  }
+
+  readonly property var messages: {
+    'invalidEmail' : 'Неверный формат электронной почты.',
+    'invalidPassword' : 'Неверный формат пароля.',
+    'error' : 'Ошибка!',
   }
 
   readonly property string info: "1 Авторизация (Вход)

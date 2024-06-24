@@ -198,11 +198,11 @@ GPage{
         }
 
         GIconButton{
-          id: _organisationTableAddButton
+          id: _regKeyTableApproveButton
           width: _root.calcButtonPreferredWidth()
           height: width
-          lightIconSource: "qrc:///images/plusLight.png"
-          darkIconSource: "qrc:///images/plusDark.png"
+          lightIconSource: "qrc:///images/blackTickLight.png"
+          darkIconSource: "qrc:///images/blackTickDark.png"
           anchors{
             top: parent.top
             topMargin: 20
@@ -210,25 +210,26 @@ GPage{
           }
         }
         GIconButton{
-          id: _organisationTableDeleteButton
+          id: _regKeyTableDeleteButton
           width: _root.calcButtonPreferredWidth()
           height: width
-          lightIconSource: "qrc:///images/minusLight.png"
-          darkIconSource: "qrc:///images/minusDark.png"
+          mipmapIcon: true
+          lightIconSource: "qrc:///images/trashBinLight.png"
+          darkIconSource: "qrc:///images/trashBinDark.png"
           anchors{
-            top: _organisationTableAddButton.bottom
+            top: _regKeyTableApproveButton.bottom
             topMargin: 20
             horizontalCenter: parent.horizontalCenter
           }
         }
         GIconButton{
-          id: _organisationTableMoreButton
+          id: _regKeyTableEditButton
           width: _root.calcButtonPreferredWidth()
           height: width
           lightIconSource: "qrc:///images/pencilLight.png"
           darkIconSource: "qrc:///images/pencilDark.png"
           anchors{
-            top: _organisationTableDeleteButton.bottom
+            top: _regKeyTableDeleteButton.bottom
             topMargin: 20
             horizontalCenter: parent.horizontalCenter
           }

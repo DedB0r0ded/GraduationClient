@@ -26,5 +26,7 @@
         <file>images/questionMarkLight.png</file>
         <file>images/backArrowDark.png</file>
         <file>images/backArrowLight.png</file>
+        <file>images/trashBinDark.png</file>
+        <file>images/trashBinLight.png</file>
     </qresource>
 </RCC>

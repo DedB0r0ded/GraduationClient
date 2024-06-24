@@ -1,16 +1,19 @@
 import QtQuick
 import QtQuick.Controls
+
+import app.frius.stateManagement
+
 import '../config'
 import '../dialogs'
 import 'basic'
 
-FocusScope {
+Item {
   id: _root; focus: true
   property int groupIndex: -1
   property int index: -1
-  x: parent.width / Controls.menuWidthRatio
-  width: parent.width / Controls.pageWidthRatio
-  height: parent.height
+  x: AppState.menuWidth
+  width: AppState.pageWidth
+  height: WindowSizes.stdHeight
   property alias border: _bg.border
   signal drawnIncorrectly
 
@@ -40,4 +43,6 @@ FocusScope {
       _info.open()
     }
   }
+
+  Component.onCompleted: console.log("Parent width: " + parent.parent.parent.parent.parent + "; width: " + width + "; menu width: " + x)
 }

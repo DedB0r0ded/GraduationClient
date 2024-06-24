@@ -11,6 +11,7 @@ Button{
 
   property bool dangerous: false
   readonly property int radiusModifier: 8
+  property int textSize: FontProperties.buttonTextSize
 
   background: Rectangle{
     id: _bg
@@ -31,7 +32,7 @@ Button{
     anchors.centerIn: parent
     color: _root.fgcolor()
 
-    font.pointSize: FontProperties.buttonTextSize
+    font.pointSize: _root.textSize
     font.weight: FontProperties.buttonTextWeight
     wrapMode: Text.WordWrap
     horizontalAlignment: Text.AlignHCenter

@@ -12,7 +12,7 @@ class Component : public QObject
 
 public:
     explicit Component(QObject* parent = nullptr)
-        : QObject(parent){}
+      : QObject(parent), m_id{0} {}
 
 signals:
 
